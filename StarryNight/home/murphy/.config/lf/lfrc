@@ -1,0 +1,53 @@
+#Basic settings
+set hidden
+set ignorecase
+set icons
+set previewer lf-ueberzug-previewer
+set cleaner lf-ueberzug-cleaner
+set sortby ext 
+set info size
+
+#Key mapping
+map t shell
+map u push :unselect<enter>:clear<enter>
+map <enter> open
+map <delete> delete
+map D delete
+map m mkdir
+map a zip
+map x extract
+map c compress
+
+#Custom functions
+cmd mkdir %{{
+    echo " mkdir: "
+    read name
+    mkdir $name
+}}
+
+cmd zip ${{
+    set -f
+    mkdir Archive
+    cp -r $fx Archive
+    zip -r Archive.zip Archive
+    rm -rf Archive
+}}
+
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+	*.tar) tar xvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+cmd compress %{{
+    for name in $fx ; do
+        ffmpeg -i $name -vf "scale=trunc(iw/4)*2:trunc(ih/4)*2" -c:v libx265 -crf 28 Compressed_$(basename $name) &
+    done
+}}

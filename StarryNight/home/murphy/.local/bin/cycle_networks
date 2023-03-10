@@ -1,0 +1,70 @@
+#!/bin/bash
+# made by Murphy
+
+# setup guide ------------------------------------------------------------------------------------
+#
+# replace interfaces to your device names get device names by typing nmcli device
+# make sure to only enable one of the interfaces and also disable auto start for others by typing
+# nmcli connection modify your_connection_name connection.autoconnect "no"
+# nmcli connection up your_connection_name
+# nmcli connection down your_connection_name
+# then restart to see if it worked
+# you can check by typing
+# nmcli d 
+# and only one device should be connected
+#
+# setup guide ------------------------------------------------------------------------------------
+
+# Only run the program if there isn't another instance running
+if [[ "$(pgrep -x cycle_networks)" != $$ ]]; then
+	exit 1
+fi
+
+# Updateing eww variables to match the current interface
+UpdateEww() {
+	eww update cycle_btn_class="cycle_btn_class$2"
+	eww update cycle_btn_status_class="cycle_btn_status_class$2"
+	eww update cycle_btn_status="$1"
+}
+
+# Get the current network interfaces and their states
+interface1="eno1"
+interface2="enp0s20f0u14"
+interface3="wlp0s20f0u10"
+interface1_state=$( nmcli connection | grep -o $interface1 )
+interface2_state=$( nmcli connection | grep -o $interface2 )
+interface3_state=$( nmcli connection | grep -o $interface3 )
+interface2_existance=$( nmcli device | grep -o $interface2 )
+
+# Cycling through interfaces
+if [[ $interface1_state == $interface1 ]]; then
+
+	nmcli device disconnect $interface1
+	if [[ $interface2_existance == $interface2 ]]; then
+		nmcli device connect $interface2
+		UpdateEww "P-Murphy" "2"
+	else
+		nmcli device connect $interface3
+		UpdateEww "I-Murphy" "3"
+	fi
+
+elif [[ $interface2_state == $interface2 ]]; then
+
+	nmcli device disconnect $interface2
+	nmcli device connect $interface3
+	UpdateEww "I-Murphy" "3"
+
+elif [[ $interface3_state == $interface3 ]]; then
+
+	nmcli device connect $interface1
+	nmcli device disconnect $interface3
+	UpdateEww "M-Murphy" "1"
+
+# When you disconnect your connected device
+else
+
+	nmcli device connect $interface1
+	nmcli device disconnect $interface3
+	UpdateEww "M-Murphy" "1"
+
+fi

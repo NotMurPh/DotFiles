@@ -1,0 +1,42 @@
+#! /bin/sh
+
+sleeptime=0.1
+
+bspc monitor DP-4 --focus
+alacritty -e asciiquarium &
+sleep $sleeptime
+
+alacritty -e lavat -c blue -s 9 &
+sleep $sleeptime
+
+alacritty -e zsh -c "sleep $sleeptime ; cbonsai -l -i -m DRAKHT" &
+sleep $sleeptime
+
+bspc monitor HDMI-0 --focus
+alacritty -e cava &
+sleep $sleeptime
+bspc node newest --state floating
+bspc node newest --resize bottom 0 -300
+bspc node newest --resize right -100 0
+bspc node newest --move 620 500
+
+alacritty -e genact &
+sleep $sleeptime
+bspc node newest --state floating
+bspc node newest --resize bottom 0 -300
+bspc node newest --resize right 95 0
+bspc node newest --move -526 -5
+
+alacritty --hold -e pfetch &
+sleep $sleeptime
+
+bspc node newest --presel-dir south
+alacritty -e zsh -c "while true ; do cowthink -s -f small :O | lolcat -a -S 60 ; done" &
+sleep $sleeptime
+
+alacritty -e cmatrix -C blue &
+sleep $sleeptime
+
+bspc node north --focus
+alacritty -e pipes.sh -c 3 -c 4 &
+sleep $sleeptime

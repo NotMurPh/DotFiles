@@ -1,0 +1,279 @@
+// section for everything ---------------------------------------------------------------------------------------------------------------------------------------
+
+* {
+    all: unset;
+    font-family: Hurmit Nerd Font;
+}
+
+tooltip {
+    background-color: #1e2030;
+    color: #ffff00;
+}
+
+// Actions bar section ------------------------------------------------------------------------------------------------------------------------------------------
+
+.actions {
+    background-color: #1e2030;
+    color: #ffffff;
+}
+
+// power menu section -------------------------------------------------------
+
+.shutdown_btn {
+    padding: 2px 12.5px 0px 18px;
+}
+
+.reboot_btn {
+    padding: 2px 12.5px 0px 12.5px;
+}
+
+.lock_btn {
+    padding: 2px 12.5px 0px 12.5px;
+}
+
+// network section ----------------------------------------------------------
+
+.cycle_btn_class1 {
+    padding: 2px 12.5px 0px 8px;
+}
+
+.cycle_btn_class2 {
+    padding: 2px 12.5px 0px 8px;
+	color: cyan;
+}
+
+.cycle_btn_class3 {
+    padding: 2px 12.5px 0px 8px;
+	color: yellow;
+}
+
+.cycle_btn_status_class1 {
+    padding: 5px 8px 0px 9px;
+    font-size: 13px;
+}
+
+.cycle_btn_status_class2 {
+    padding: 5px 8px 0px 9px;
+    font-size: 13px;
+	color: cyan;
+}
+
+.cycle_btn_status_class3 {
+    padding: 5px 8px 0px 9px;
+    font-size: 13px;
+    color: yellow;
+}
+
+// vpn section ---------------------------------------------------------------
+
+.vpn_btn_on {
+    padding: 3.5px 18px 0px 10px;
+    color: #ffff00;
+}
+
+.vpn_status_on {
+    padding: 5px 18px 0px 2px;
+    font-size: 13px;
+    color: #ffff00;
+}
+
+.vpn_btn_off {
+    padding: 3.5px 18px 0px 10px;
+    color: #ffff00;
+}
+
+.vpn_status_off {
+    padding: 5px 18px 0px 2px;
+    font-size: 13px;
+    color: #ffff00;
+}
+
+// workspace section ---------------------------------------------------------
+
+.workspaces_box {
+    padding: 0px 12px 0px 0px;
+}
+
+// every workspace
+.0 , .01 , .02 , .03 , .04 , .05 , .06 , .011 , .022 , .033 , .044 , .055 , .066 {
+    padding: 9px 9px 6px 3px;
+    font-size: 20px;
+}
+
+.workspace_spliter {
+    padding: 5px 10px 0px 10px;
+    font-size: 12;
+}
+
+/* Unoccupied */
+.0 {
+    color: #736e7d;
+}
+
+/* Occupied */
+.01, .02, .03, .04, .05, .06 {
+}
+
+/* Focused */
+.011, .022, .033, .044, .055, .066 {
+}
+
+// spotify bar section ------------------------------------------------------------------------------------------------------------------------------------------
+
+.spotify {
+    background-color: #1e2030;
+    color: #ffffff;
+}
+
+.spotify_off_icon {
+    padding: 2px 10px 0px 345px;
+    font-size: 17px;
+    color: #ffff00;
+}
+
+.spotify_on_icon {
+    padding: 2px 10px 0px 18px;
+    font-size: 17px;
+    color: #ffff00;
+}
+
+.spotify_status_off {
+    padding: 4px 0px 0px 10px;
+}
+
+.spotify_status_on {
+    padding: 4px 0px 0px 10px;
+}
+
+.player_time {
+    padding: 2px 12px 0px 0px;
+}
+
+.player_time trough {
+    background-color: #363a4f;
+    border-radius: 16px;
+    min-height: 5px;
+}
+
+.player_time trough highlight {
+    background-image: linear-gradient(to right, #ffff00 20%, #ffff00 100% *50);
+    border-radius: 10px;
+}
+
+.shuffle_btn_off {
+    padding: 2px 8px 0px 8px;
+}
+
+.shuffle_btn_on {
+    padding: 2px 8px 0px 8px;
+    color: #ffff00;
+}
+
+.prev_btn {
+    padding: 2px 8px 0px 8px;
+    font-size: 19px;
+}
+
+.play_btn {
+    padding: 2px 8px 0px 8px;
+    font-size: 16px;
+}
+
+.next_btn {
+    padding: 2px 8px 0px 8px;
+    font-size: 19px;
+}
+
+.loop_btn_off {
+    padding: 2px 8px 0px 7px;
+}
+
+.loop_btn_on {
+    padding: 2px 8px 0px 7px;
+    color: #ffff00;
+}
+
+.volume_icon {
+    padding: 2px 8px 0px 8px;
+}
+
+.volume {
+    padding: 1px 18px 0px 8px;
+}
+
+.volume trough {
+    background-color: #363a4f;
+    border-radius: 16px;
+    min-height: 5px;
+    min-width: 70px;
+}
+
+.volume trough highlight {
+    background-image: linear-gradient(to right, #ffff00 30%, #ffff00 100% *50);
+    border-radius: 10px;
+}
+
+// info bar section --------------------------------------------------------------------------------------------------------------------------------------------
+
+.info {
+    background-color: #1e2030;
+    color: #ffffff;
+}
+
+.disk_icon {
+    padding: 3px 8px 0px 18px;
+}
+
+.disk_space {
+    padding: 4px 8px 0px 8px;
+}
+
+.ram_icon {
+    padding: 3px 8px 0px 8px;
+}
+
+.ram_usage {
+    padding: 4px 8px 0px 8px;
+}
+
+.cpu_icon {
+    padding: 3px 8px 0px 10px;
+    color: #ffff00;
+}
+
+.cpu_usage {
+    padding: 4px 0px 0px 8px;
+    color: #ffff00;
+}
+
+.clock_icon {
+    padding: 3px 8px 0px 8px;
+    font-size: 16px;
+}
+
+.time {
+    padding: 4px 18px 0px 8px;
+}
+
+// dates bar section --------------------------------------------------------------------------------------------------------------------------------------------
+
+.dates {
+    background-color: #1e2030;
+    color: #ffffff;
+}
+
+.gorgian {
+    padding: 4px 0px 0px 18px;
+}
+
+.arrow_left {
+    padding: 4px 300px 0px 0px;
+}
+
+.arrow_right {
+    padding: 4px 0px 0px 300px;
+}
+
+.jalali {
+    padding: 4px 18px 0px 0px;
+}

@@ -1,0 +1,2 @@
+#imwheel -b "45" -k
+notify-send " " "Gamemode Deactivated"

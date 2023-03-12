@@ -40,7 +40,7 @@ keymap( "n" , "<leader>fh" , builtin.highlights	, options )
 
 -- Dashboard
 keymap( "n" , "<leader>ls" , "<cmd>source ~/.config/nvim/LastSession.vim<CR>" , options )
-keymap( "n" , "<leader>ln" , "<cmd>cd ~/.config/nvim<CR><cmd>Telescope find_files hidden=true<CR>" , options )
+keymap( "n" , "<leader>ln" , "<cmd>cd ~/DotFiles/StarryNight/home/murphy/.config/nvim<CR><cmd>Telescope find_files hidden=true<CR>" , options )
 
 -- Lsp related keymaps wont work without an active lsp
 keymap( "n" , "gd" , vim.lsp.buf.definition , options )

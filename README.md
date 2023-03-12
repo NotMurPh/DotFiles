@@ -6,7 +6,7 @@ My personal configuration files
 
 - StarryNight
 
-### Preview
+### Preview of StarryNight
 
 Here is a preview of my dotfiles 
 
@@ -54,7 +54,9 @@ Here is a preview of my dotfiles
 
 ![Lightdm](https://i.imgur.com/SJuXh7d.jpg)
 
-- Grub ( Soon! )
+- Grub ( Captured with phone )
+
+![Grub](https://i.imgur.com/9WC7KPS.jpg)
 
 - Rofi
 
@@ -62,6 +64,6 @@ Here is a preview of my dotfiles
 
 ### Note!
 
-Remember that some programs like lightdm wont work with symlinks
+Some programs like lightdm wont work with symlinks use hardlink or cp instead
 
 Enjoy 🫠

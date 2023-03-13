@@ -1,0 +1,1206 @@
+/* -------------- */
+/* --- Colors --- */
+/* -------------- */
+
+:root
+{
+	/* General */
+	--bg: #1E2030;
+	--fg: #ffffff;
+
+	--accent: #78aeed;
+	--accent_bg: #3584e4;
+	--accent_fg: var(--fg);
+	--accent_disabled: rgba(120, 174, 237, 0.5);
+	--accent_hover_bg: rgba(120, 174, 237, 0.07);
+	--accent_active_bg: rgba(120, 174, 237, 0.16);
+
+	--destructive: #ff7b63;
+	--destructive_bg: #c01c28;
+	--destructive_fg: var(--fg);
+	--destructive_disabled: rgba(255, 123, 99, 0.5);
+	--destructive_hover_bg: rgba(255, 123, 99, 0.07);
+	--destructive_active_bg: rgba(255, 123, 99, 0.16);
+
+	--success: #8ff0a4;
+	--success_bg: #26a269;
+	--success_fg: var(--fg);
+
+	--warning: #f8e45c;
+	--warning_bg: #cd9309;
+	--warning_fg: var(--fg);
+
+	--error: #ff7b63;
+	--error_bg: #c01c28;
+	--error_fg: var(--fg);
+
+	/* Fonts */
+	--basefont: "Cantarell";
+	--basesize: 15px;
+	--baseweight: normal;
+
+	--large_title_size: 24px;
+	--large_title_weight: 300;
+
+	--title_1_size: 20px;
+	--title_1_weight: 800;
+
+	--title_2_size: 15px;
+	--title_2_weight: 800;
+
+	--title_3_size: 14px;
+	--title_3_weight: bold;
+
+	--title_4_size: 13px;
+	--title_4_weight: bold;
+
+	--header_size: var(--title_3_size);
+	--header_weight: var(--title_3_weight);
+
+	--label_size: var(--basesize);
+	--label_weight: normal;
+
+	--link_size: var(--title_3_size);
+	--link_weight: var(--title_3_weight);
+
+	--subtitle_size: smaller;
+	--subtitle_weight: normal;
+
+	/* Widgets */
+	--button_bg: rgba(255, 255, 255, 0.1);
+	--button_fg: rgba(255, 255, 255, 1);
+	--button_radius: 6px;
+	--button_pill_radius: 9999px;
+	--button_font_weight: var(--title_3_weight);
+	--button_font_size: var(--title_3_size);
+	--button_hover_bg: rgba(255, 255, 255, 0.15);
+	--button_active_bg: rgba(255, 255, 255, 0.3);
+	--button_disabled_bg: rgba(255, 255, 255, 0.05);
+	--button_disabled_fg: rgba(255, 255, 255, 0.5);
+	--button_success_bg: linear-gradient(0deg, var(--success_bg), var(--success_bg));
+	--button_suggested_bg: linear-gradient(0deg, var(--accent_bg), var(--accent_bg));
+	--button_suggested_hover_bg: rgba(255, 255, 255, 0.1);
+	--button_suggested_click_bg: rgba(0, 0, 0, 0.2);
+	--button_suggested_blend: overlay;
+
+	--checkbox_checked_bg: var(--button_suggested_bg);
+	--checkbox_checked_sw: 45;
+	--checkbox_radius: 6px;
+	--checkbox_bg: transparent;
+	--checkbox_bs: inset 0px 0px 0px 2px var(--button_hover_bg);
+
+	--card_bg: var(--bg);
+	--card_fg: var(--fg);
+	--card_radius: calc(var(--button_radius) + 6px);
+
+	--focus_ring: rgba(120, 174, 237, 0.5);
+	--focus_ring_bs: inset 0px 0px 0px 2px var(--focus_ring);
+
+	--ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	--focus_transition: box-shadow 200ms var(--ease-out-quad), background 200ms var(--ease-out-quad);
+
+	--entry_bg: var(--button_bg);
+	--entry_hover_bg: var(--button_hover_bg);
+	--entry_radius: var(--card_radius);
+	--entry_min_height: 50px;
+	--entry_min_height_labeled: 34px;
+	--entry_padding: 2px 14px 2px 14px;
+	--entry_padding_labeled: 18px 14px 2px 14px;
+	--entry_font_size: var(--label_size);
+	--entry_font_weight: var(--label_weight);
+	--entry_subtitle_fg: var(--dim_label_fg);
+	--entry_subtitle_font_size: var(--subtitle_size);
+	--entry_subtitle_font_weight: var(--subtitle_weight);
+
+	--dim_label_fg: rgba(255, 255, 255, 0.55);
+
+	--menu_radius: 6px;
+	--menu_margin: 6px;
+	--menu_padding: 12px;
+
+	--window_bg: var(--bg);
+	--window_fg: var(--fg);
+	--window_radius: calc(var(--button_radius) + 6px);
+
+	--view_bg: var(--bg);
+	--view_fg: var(--fg);
+
+	--headerbar_bg: var(--bg);
+	--headerbar_fg: var(--fg);
+	--headerbar_border: var(--fg);
+	--headerbar_backdrop: var(--bg);
+	--headerbar_shade: rgba(0, 0, 0, 0.38);
+
+	--popover_bg: var(--bg);
+	--popover_fg: var(--fg);
+	--popover_radius: var(--window_radius);
+
+	--toast_bg: rgba(0, 0, 0, 0.7);
+	--toast_fg: rgba(255, 255, 255, 0.9);
+	--toast_margin: 12px;
+	--toast_margin_bottom: 24px;
+	--toast_border_radius: 150px;
+	--toast_border_spacing: 6px;
+	--toast_padding: 6px;
+	--toast_padding_left: 12px;
+
+	--border: rgba(255, 255, 255, 0.15);
+
+	--scrollbar: rgba(255, 255, 255, 0.2);
+	--scrollbar_hover: rgba(255, 255, 255, 0.4);
+	--scrollbar_active: rgba(255, 255, 255, 0.6);
+}
+
+/* --------------- */
+/* --- Library --- */
+/* --------------- */
+
+/* Post Login Loading Screen */
+
+[class*="index_Container_"][class*="index_PreloadThrobber_"]
+{
+	background: var(--bg) !important;
+}
+
+/* --- Main Library View --- */
+/* Backgrounds */
+#root > [class*="library_Container_"],
+[class*="libraryhome_LibraryHome_"],
+[class*="library_AppDetailsTransitionGroup_"]
+{
+	background: var(--bg) !important;
+	box-shadow: none !important;
+}
+
+[class*="libraryhome_UpdatesContainer_"]
+{
+	background: var(--view_bg) !important;
+	border-bottom: 1px solid var(--border) !important;
+}
+
+[class*="libraryhome_Container_"]
+{
+	background: none !important;
+}
+
+/* Mouse Over Descriptions */
+[class*="appdetailsgameinfopanel_Description_"]
+{
+	background: var(--popover_bg) !important;
+}
+
+/* Popup Elements */
+[class*="libraryhomeshowcases_CollectionDropDownContainer_"][class*="libraryhomeshowcases_CollectionDropDownContainer_"] ._DialogInputContainer[class*="dropdown_DialogDropDownMenu_"],
+.DialogMenuPosition[class*="appgrid_SortingDropDownContainer_"] > div,
+[class*="tooltip_TextToolTip_"],
+[class*="contextmenu_contextMenu_"]
+{
+	background: var(--popover_bg) !important;
+	border: none !important;
+	border-radius: var(--menu_radius) !important;
+	color: var(--fg) !important;
+}
+
+[class*="contextmenu_ContextMenuFocusContainer_"] [class*="dropdown_DialogDropDownMenu_Item_"]:hover,
+[class*="contextmenu_contextMenuItem_"]:hover,
+[class*="contextmenu_contextMenuItem_"][class*="contextmenu_active_"],
+[class*="library_ContextMenuAction_"]:hover
+{
+	background: var(--button_hover_bg) !important;
+	border-radius: var(--menu_radius) !important;
+}
+
+[class*="library_ContextMenuAction_"]
+{
+	background: none !important;
+	border-radius: var(--menu_radius) !important;
+}
+
+/* Play Button */
+[class*="appportrait_Play_1"]
+{
+	background: var(--success_bg) !important;
+}
+
+[class*="appportrait_Download_"]
+{
+	background: var(--accent_bg) !important;
+}
+
+/* Update Summary */
+[class*="libraryhomenewupdates_HoversEnabled_"]:hover [class*="libraryhomenewupdates_EventSummaryContainer_"]
+{
+	background: var(--toast_bg) !important;
+}
+
+[class*="libraryhomenewupdates_EventOptions_"] > div
+{
+	background-color: var(--button_bg) !important;
+}
+
+[class*="libraryhomenewupdates_EventOptions_"]:hover > div
+{
+	background-color: var(--button_hover_bg) !important;
+}
+
+/* --- Left Panel --- */
+/* Backgrounds */
+[class*="gamelistbar_Container_"],
+[class*="gamelistbar_GameListHomeAndSearch_"],
+[class*="gamelistsectionheader_Container_"],
+[class*="gamelisthome_Bar_"]
+{
+	background: var(--bg) !important;
+	box-shadow: none !important;
+}
+
+/* Separator */
+[class*="library_LibraryWindowDivider_"]
+{
+	background: rgba(255, 255, 255, 0.2) !important;
+	min-width: 1px !important;
+	width: 1px !important;
+}
+
+/* Home and Collections */
+[class*="gamelisthome_Bar_"]
+{
+	background: var(--button_bg) !important;
+	border-radius: var(--button_radius) !important;
+}
+
+[class*="gamelisthome_Bar_"]:hover
+{
+	background: var(--button_hover_bg) !important;
+	border-radius: var(--button_radius) !important;
+}
+
+[class*="gamelisthome_CollectionIconBox_"]
+{
+	background: var(--button_fg) !important;
+	opacity: 0.2 !important;
+}
+
+[class*="gamelisthome_CollectionButton_"]:hover [class*="gamelisthome_CollectionIconBox_"]
+{
+	opacity: 0.8 !important;
+}
+
+/* Filters and Buttons */
+[class*="gamelistdropdown_Bar_"]
+{
+	padding: 0px 6px !important;
+}
+
+[class*="gamelistdropdown_MenuHeader_"],
+[class*="gamelistdropdown_ScrollToTop_"] .SVGIcon_Arrow,
+[class*="appfilterpane_SaveButton_"],
+[class*="gamelistsearchbar_FilterTag_"]
+{
+	background: var(--button_bg) !important;
+	border: none !important;
+	border-radius: var(--button_radius) !important;
+}
+
+[class*="gamelistdropdown_MenuHeader_"]:hover,
+[class*="gamelistdropdown_ScrollToTop_"]:hover .SVGIcon_Arrow
+{
+	background: var(--button_hover_bg) !important;
+	border: none !important;
+	border-radius: var(--button_radius) !important;
+}
+
+[class*="gamelistdropdown_Active_"] svg
+{
+	fill: var(--accent_bg) !important;
+}
+
+[class*="gamelistdropdown_Active_"] svg circle
+{
+	stroke: var(--accent_bg) !important;
+}
+
+[class*="gamelistdropdown_DropDown_"],
+[class*="appfilterpane_Container_"],
+[class*="appfilterpane_Description_"]
+{
+	background: var(--popover_bg) !important;
+}
+
+[class*="appfilterpane_FilterBucketLabel_"]
+{
+	color: var(--fg) !important;
+}
+
+[class*="appfilterpane_SaveButton_"].Disabled
+{
+	background: var(--button_disabled_bg) !important;
+	color: var(--button_disabled_fg) !important;
+}
+
+[class*="gamelistsearchbar_AdvancedSearchPane_Woh0k"]::before
+{
+	background: none !important;
+}
+
+/* Game Search */
+[class*="gamelistsearchbar_SearchInput_"] input
+{
+	background-color: transparent !important;
+}
+
+[class*="gamelistsearchbar_SearchInput_"]
+{
+	background-color: var(--button_bg) !important;
+	border-radius: var(--button_radius) !important;
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+	color: var(--fg) !important;
+}
+
+[class*="gamelistsearchbar_SearchInput_"]:hover
+{
+	background-color: var(--button_hover_bg) !important;
+	border-radius: var(--button_radius) !important;
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+}
+
+[class*="gamelistsearchbar_SearchInput_"] input:focus
+{
+	box-shadow: none !important;
+}
+
+[class*="gamelistsearchbar_AdvancedSearchButton_"]
+{
+	background: var(--button_bg) !important;
+	border-radius: var(--button_radius) !important;
+	border-top-left-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+}
+
+[class*="gamelistsearchbar_AdvancedSearchContainer_"]
+{
+	background: none !important;
+}
+
+[class*="gamelistsearchbar_AdvancedSearchContainer_"]:hover,
+[class*="gamelistsearchbar_AdvancedSearchContainer_"][class*="gamelistsearchbar_Extended_"]
+{
+	background: var(--button_hover_bg) !important;
+	border-radius: var(--button_radius) !important;
+	border-top-left-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+}
+
+/* Game Headers and Rows */
+[class*="gamelistsectionheader_SectionName"]
+{
+	color: var(--fg) !important;
+	font-weight: 500 !important;
+}
+
+[class*="gamelistsectionheader_Container_"],
+[class*="gamelistentry_Container_"]
+{
+	border: none !important;
+	margin-left: 6px !important;
+}
+
+[class*="gamelistentry_GameListEntryContainer_"]
+{
+	border: none !important;
+	padding-left: 6px !important;
+}
+
+[class*="gamelist_Container_"] .ReactVirtualized__Grid[style*="overflow: hidden;"]
+{
+	/* Only try to pad if the list doesnt overflow */
+	padding-right: 6px !important;
+}
+
+[class*="gamelistentry_GameIcon_"]
+{
+	margin: 0px 6px 0px 0px !important;
+}
+
+[class*="gamelistentry_Container_"]:hover,
+[class*="gamelistsectionheader_Container_"]:hover
+{
+	background: var(--button_hover_bg) !important;
+	border-radius: var(--menu_radius) !important;
+}
+
+[class*="gamelistentry_Selected_"][class*="gamelistentry_Container_"],
+[class*="gamelistentry_Selected_"][class*="gamelistentry_Container_"] :hover,
+[class*="gamelistentry_Selected_"] > [class*="gamelistentry_Container_"],
+[class*="gamelistentry_Selected_"] > [class*="gamelistentry_Container_"]:hover,
+[class*="gamelistentry_Selected_"] > [class*="gamelistentry_Container_"] :hover
+{
+	background: none !important;
+	box-shadow: none !important;
+}
+
+[class*="gamelistsectionheader_Selected_"],
+[class*="gamelistentry_HasContextMenuOpen_"],
+[class*="gamelistentry_Selected_"] [class*="gamelistentry_GameListEntryContainer_"],
+[class*="gamelistentry_Selected_"] [class*="gamelistentry_GameListEntryContainer_"][class*="gamelistentry_CloudError_"]
+{
+	background: var(--button_bg) !important;
+	border-radius: var(--button_radius) !important;
+}
+
+[class*="gamelistentry_HasContextMenuOpen_"]
+{
+	border: 1px var(--focus_ring) solid !important;
+}
+
+[class*="gamelistentry_HasContextMenuOpen_"] [class*="gamelistentry_GameListEntryContainer_"]
+{
+	margin-left: -1px !important;
+}
+
+[class*="gamelistsectionheader_Selected_"]:hover,
+[class*="gamelistentry_Selected_"] [class*="gamelistentry_GameListEntryContainer_"]:hover,
+[class*="gamelistentry_Selected_"] [class*="gamelistentry_GameListEntryContainer_"][class*="gamelistentry_CloudError_"]:hover
+{
+	background: var(--button_hover_bg) !important;
+	border-radius: var(--button_radius) !important;
+}
+
+[class*="gamelistentry_Updating_"],
+[class*="gamelistentry_DownloadProgress_"],
+[class*="gamelistentry_Synchronizing_"],
+[class*="gamelistentry_CloudError_"],
+[class*="gamelistentry_CloudOutOfDate_"]
+{
+	color: var(--accent) !important;
+}
+
+[class*="gamelistentry_HoverOverlay_"],
+[class*="gamelistentry_HoverOverlay_"][class*="gamelistentry_Selected_"],
+[class*="gamelistentry_Selected_"] [class*="gamelistentry_Container_"][class*="gamelistentry_HoverOverlay_"]
+{
+	background: var(--bg) !important;
+	border-radius: var(--menu_radius) !important;
+}
+
+[class*="gamelistentry_HoverOverlay_"] [class*="gamelistentry_GameListEntryContainer_"]
+{
+	background: var(--button_hover_bg) !important;
+}
+
+/* Drag & Drop */
+[class*="gamelistentry_Container_"][class*="gamelistentry_DropTarget_"] {
+	background-color: var(--button_bg) !important;
+	border-left: 1px solid var(--accent_bg) !important;
+	border-right: 1px solid var(--accent_bg) !important;
+}
+
+[class*="gamelistsectionheader_Container_"][class*="gamelistsectionheader_DropOption_"] {
+	background-color: var(--button_bg) !important;
+}
+
+[class*="gamelistsectionheader_Container_"][class*="gamelistsectionheader_DropTarget_"] {
+	border-left: 1px solid var(--accent_bg) !important;
+	border-right: 1px solid var(--accent_bg) !important;
+	border-top: 1px solid var(--accent_bg) !important;
+}
+
+[class*="gamelistentry_Container_"][class*="gamelistentry_DropTarget_"][class*="gamelistentry_LastInCollection_"],
+[class*="gamelistsectionheader_Container_"][class*="gamelistsectionheader_DropTarget_"][class*="gamelistsectionheader_SingleLine_"] {
+	border-bottom: 1px solid var(--accent_bg) !important;
+}
+/*  --- Collection View --- */
+/* Background */
+[class*="allcollections_ScrollContainer_"],
+[class*="collectionview_OuterContainer_"]
+{
+	background: var(--bg) !important;
+}
+
+[class*="allcollections_Collection_"]
+{
+	background: var(--button_bg) !important;
+}
+
+[class*="allcollections_Collection_"]:hover
+{
+	background: var(--button_hover_bg) !important;
+}
+
+/* --- Game Details View --- */
+/* Background */
+[class*="appdetails_Glassy_"]
+{
+	background: var(--bg) !important;
+}
+
+/*  Disable Blurred Background */
+[class*="sharedappdetailsheader_ImgBlurBackdrop_"]
+{
+	display: none !important;
+}
+
+/* `Scroll to Top` Button */
+[class*="smartscrollcontainer_ScrollToTopButton_"]
+{
+	color: var(--toast_fg) !important;
+	height: 50px !important;
+}
+
+[class*="smartscrollcontainer_ScrollToTopButton_"] div
+{
+	background: var(--toast_bg) !important;
+	border-radius: var(--toast_border_radius) !important;
+	border-spacing: var(--toast_border_spacing) !important;
+	box-shadow: none !important;
+	margin-bottom: var(--toast_margin_bottom) !important;
+	margin: var(--toast_margin) !important;
+	padding: var(--toast_padding) !important;
+}
+
+/* Play Button Color */
+[class*="appactionbutton_ButtonChild"]
+{
+	background: var(--accent_bg) !important;
+}
+
+[class*="appactionbutton_Green"] > [class*="appactionbutton_ButtonChild"]
+{
+	background: var(--success_bg) !important;
+}
+
+/* Progress Bar Color */
+[class*="appdetailsplaysection_DetailsProgressBar_"],
+[class*="appdetailsachievementssection_AchievementProgress_"]
+{
+	background: var(--accent_bg) !important;
+}
+
+/* --- Downloads View --- */
+/* BG */
+[class*="downloads_DownloadsPage_"]
+{
+	background: var(--bg) !important;
+}
+
+/* - Header - */
+[class*="downloadgraph_GraphAndStats_"]
+{
+	background: var(--view_bg) !important;
+	border-bottom: 1px solid var(--border) !important;
+}
+
+/* Remove Gradient when Downloads are Empty */
+[class*="downloadgraph_HeroAndLogo_"],
+[class*="downloadgraph_HeroAndLogo_"] img[class*="libraryassetimage_Visible_"]
+{
+	background: none !important;
+}
+
+/* Blue Separator Line */
+[class*="downloads_TopBar_SEmVp"]
+{
+	background: none !important;
+}
+
+/* Top Right Settings Button */
+[class*="downloadgraph_SettingsButton_"] button
+{
+	background: var(--button_bg) !important;
+}
+
+[class*="downloadgraph_SettingsButton_"] button:hover
+{
+	background: var(--button_hover_bg) !important;
+}
+
+/* - Downloads - */
+/* Download Items */
+[class*="downloads_SectionItem_"]
+{
+	background: var(--card_bg) !important;
+}
+
+[class*="downloads_SectionItem_"]:hover
+{
+	background: var(--button_hover_bg) !important;
+}
+
+[class*="downloads_Active_"] [class*="downloads_SectionList_"]
+{
+	border: none !important;
+}
+
+[class*="downloads_SectionList_"] [class*="downloads_SectionItemWrapper_"]
+{
+	padding: var(--menu_margin) 0px !important;
+}
+
+/* Buttons */
+[class*="downloads_Button_"]
+{
+	background: none !important;
+}
+
+[class*="downloads_RemoveAllButton_"]
+{
+	background: var(--button_bg) !important;
+}
+
+[class*="downloads_Button_"]:hover,
+[class*="downloads_RemoveAllButton_"]:hover
+{
+	background: var(--button_hover_bg) !important;
+	border: none !important;
+}
+
+/* ------------------ */
+/* --- Scrollbars --- */
+/* ------------------ */
+
+body
+{
+	overflow: overlay !important;
+}
+
+::-webkit-scrollbar
+{
+	background: none !important;
+	min-width: 8px !important;
+	width: 8px !important;
+}
+
+::-webkit-scrollbar-corner
+{
+	background: #202020;
+}
+
+::-webkit-scrollbar-track
+{
+	background: none !important;
+	margin: 7px !important;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-clip: padding-box !important;
+	background: var(--scrollbar) !important;
+	border-radius: 10px !important;
+	border: 2px solid transparent !important;
+	min-height: 40px !important;
+	min-width: 3px !important;
+	z-index: 12 !important;
+}
+
+html ::-webkit-scrollbar-thumb
+{
+	background-clip: padding-box !important;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+	background-color: var(--scrollbar_hover) !important;
+	border: none !important;
+}
+
+::-webkit-scrollbar-thumb:active
+{
+	background-color: var(--scrollbar_active) !important;
+	border: none !important;
+}
+
+/* --- New Login View --- */
+/* BG */
+#root [class*="login_Login_"],
+#root [class*="login_Login_"] [class*="newlogindialog_EmbeddedRoot_"],
+#root [class*="login_Login_"] [class*="newlogindialog_StandardLayout_"][class*="newlogindialog_Embedded_"]
+{
+	background: var(--bg) !important;
+	overflow: hidden !important;
+	user-select: none !important;
+}
+
+#root [class*="login_Login_"] [class*="login_TitleBar_"]
+{
+	height: 100px !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_EmbeddedRoot_"]
+{
+	padding: 40px 24px 16px 24px !important;
+}
+
+/* Text */
+#root [class*="login_Login_"] [class*="newlogindialog_Highlight_"]
+{
+	color: var(--fg) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_FormError_"]
+{
+	color: var(--error) !important;
+}
+
+/* Labels */
+#root [class*="login_Login_"] [class*="newlogindialog_FieldLabel_"]
+{
+	color: var(--dim_label_fg) !important;
+	left: 14px !important;
+	margin-bottom: -3px !important;
+	pointer-events: none !important;
+	position: relative !important;
+	top: 22px !important;
+	text-transform: none !important;
+	font-family: var(--basefont) !important;
+	font-size: 12px !important;
+	font-weight: 400 !important;
+}
+
+/* Entry */
+#root [class*="login_Login_"] [class*="newlogindialog_TextInput_"]
+{
+	background: var(--card_bg) !important;
+	border-radius: var(--card_radius) !important;
+	border: none !important;
+	min-height: var(--entry_min_height_labeled) !important;
+	padding: var(--entry_padding_labeled) !important;
+	transition: var(--focus_transition) !important;
+	font-family: var(--basefont) !important;
+	font-size: var(--entry_font_size) !important;
+	font-weight: var(--entry_font_weight) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_TextInput_"]:hover
+{
+	background: var(--button_hover_bg) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_TextInput_"]:focus
+{
+	box-shadow: var(--focus_ring_bs) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_LoginForm_"]
+{
+	max-width: 480px !important;
+	margin: auto !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_LoginForm_"] [class*="newlogindialog_TextInput_"][type="text"]
+{
+	border-bottom-left-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+	margin-bottom: -25px !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_LoginForm_"] [class*="newlogindialog_TextInput_"][type="password"]
+{
+	border-top-right-radius: 0px !important;
+	border-top-left-radius: 0px !important;
+}
+
+/* Remember Me */
+#root [class*="login_Login_"] [class*="newlogindialog_Checkbox_"]:empty
+{
+	background: var(--checkbox_bg) !important;
+	border-radius: var(--checkbox_radius) !important;
+	box-shadow: var(--checkbox_bs) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_Checkbox_"]
+{
+	background: var(--checkbox_checked_bg) !important;
+	background-blend-mode: var(--button_suggested_blend) !important;
+	border-radius: var(--checkbox_radius) !important;
+	box-shadow: none !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_Checkbox_"]:hover
+{
+	background-color: var(--button_suggested_hover_bg) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_Checkbox_"]:empty:active
+{
+	background: var(--button_hover_bg) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_Checkbox_"]:active
+{
+	background-color: var(--button_suggested_click_bg) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_Checkbox_"] [class*="newlogindialog_Check_"] svg
+{
+	stroke-width: var(--checkbox_checked_sw) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_Checkbox_"]:focus
+{
+	outline: none !important;
+}
+
+/* Submit Button */
+#root [class*="login_Login_"] [class*="newlogindialog_SubmitButton_"]
+{
+	background-blend-mode: var(--button_suggested_blend) !important;
+	background: var(--button_suggested_bg) !important;
+	border-radius: var(--button_pill_radius) !important;
+	margin-bottom: 16px !important;
+	transition: var(--focus_transition) !important;
+	padding: 12px 24px !important;
+	width: auto !important;
+	min-width: 150px !important;
+	font-family: var(--basefont) !important;
+	font-size: 15px !important;
+	font-weight: 700 !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_SubmitButton_"]:hover
+{
+	background-color: var(--button_suggested_hover_bg) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_SubmitButton_"]:active
+{
+	background-color: var(--button_suggested_click_bg) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_SubmitButton_"]:focus
+{
+	outline: none !important;
+}
+
+#root [class*="login_Login_"]
+{
+	height: 100% !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_Login_"]
+{
+	display: flex !important;
+	height: 100% !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_BetaContainer_"],
+#root [class*="login_Login_"] [class*="newlogindialog_LoginForm_"]
+{
+	align-items: stretch !important;
+	align-content: center !important;
+	align-self: center !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_EmbeddedRoot_"]
+{
+	column-gap: 16px !important;
+	row-gap: 0 !important;
+	flex-grow: 1 !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_JoinBetaButton_"]
+{
+	text-decoration: none !important;
+	border-radius: var(--button_pill_radius) !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_HeaderLogo_"]
+{
+	margin: auto !important;
+}
+
+/* Steam Guard dialog */
+#root [class*="login_Login_"] [class*="newlogindialog_Compact_"]
+{
+	width: 100% !important;
+	padding: 24px !important;
+	gap: 0 !important;
+	color: var(--popover_fg) !important;
+	font-family: var(--basefont) !important;
+	font-size: 15px !important;
+	line-height: normal !important;
+	font-weight: 400 !important;
+	letter-spacing: normal !important;
+	text-transform: none !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_Compact_"] [class*="newlogindialog_PrimaryHeader_"],
+#root [class*="login_Login_"] [class*="newlogindialog_Compact_"] [class*="newlogindialog_FailureTitle_"]
+{
+	color: var(--popover_fg) !important;
+	font-family: var(--basefont) !important;
+	font-size: 20px !important;
+	line-height: normal !important;
+	font-weight: 800 !important;
+	letter-spacing: normal !important;
+	text-transform: none !important;
+	text-align: center;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_Compact_"] [class*="newlogindialog_FormContainer_"]
+{
+	padding: 0 !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_CheckboxField_"] [class*="newlogindialog_CheckboxFieldLabel_"],
+#root [class*="login_Login_"] [class*="newlogindialog_TextLink_"],
+#root [class*="login_Login_"] [class*="newlogindialog_UseMobileAppForQR_"],
+#root [class*="login_Login_"] [class*="newlogindialog_EmbeddedRootFooter_"]
+{
+	color: var(--fg) !important;
+	font-family: var(--basefont) !important;
+	font-size: 13px !important;
+	font-weight: 400 !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_TextLink_"]
+{
+	font-weight: 700 !important;
+	text-decoration: none !important;
+}
+
+#root [class*="login_Login_"] [class*="newlogindialog_TextLink_"]:hover
+{
+	text-decoration: underline !important;
+}
+[class*="launchoptionsdialog_LaunchOptionDialog_"]
+{
+	background: var(--popover_bg) !important;
+	color: var(--popover_fg) !important;
+	padding: 0 !important;
+}
+
+[class*="launchoptionsdialog_AppNameHeader_"]
+{
+	box-sizing: border-box !important;
+	height: 48px !important;
+	display: grid !important;
+	grid-template-columns: 1fr !important;
+	align-items: center !important;
+	padding: 12px !important;
+	margin: 0 !important;
+	color: var(--headerbar_fg) !important;
+	font-family: var(--basefont) !important;
+	font-size: 14px !important;
+	line-height: normal !important;
+	font-weight: 700 !important;
+	letter-spacing: normal !important;
+	text-align: center !important;
+	text-transform: none !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+}
+
+[class*="launchoptionsdialog_OptionList_"]
+{
+	padding: 0 16px 16px 16px !important;
+}
+
+[class*="launchoptionsdialog_ListHeader_"]
+{
+	font-family: var(--basefont) !important;
+	font-size: 14px !important;
+	line-height: normal !important;
+	font-weight: 700 !important;
+	letter-spacing: normal !important;
+	text-transform: none !important;
+	margin: 0 !important;
+	margin-bottom: 8px !important;
+}
+
+[class*="launchoptionsdialog_ListContainer_"]
+{
+	padding: 0 !important;
+	margin: 0 !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	border: none !important;
+	border-radius: 0 !important;
+}
+
+[class*="launchoptionsdialog_ListItem_"]
+{
+	background: var(--button_bg) !important;
+	box-sizing: border-box !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: none !important;
+	height: 50px !important;
+	border-bottom: 1px var(--headerbar_shade) solid !important;
+	user-select: none !important;
+	display: flex !important;
+}
+
+[class*="launchoptionsdialog_ListItem_"]:first-child
+{
+	border-top-left-radius: var(--card_radius) !important;
+	border-top-right-radius: var(--card_radius) !important;
+}
+
+[class*="launchoptionsdialog_ListItem_"]:last-child
+{
+	border-bottom-left-radius: var(--card_radius) !important;
+	border-bottom-right-radius: var(--card_radius) !important;
+	border-bottom: none !important;
+}
+
+[class*="launchoptionsdialog_ListItem_"]:hover
+{
+	background: var(--button_hover_bg) !important;
+}
+
+[class*="launchoptionsdialog_ListItem_"]:active
+{
+	background: var(--button_active_bg) !important;
+}
+
+[class*="launchoptionsdialog_ListItem_"] > input
+{
+	width: 16px !important;
+	height: 16px !important;
+	margin: 16px !important;
+}
+
+[class*="launchoptionsdialog_ListItem_"] > label
+{
+	box-sizing: border-box !important;
+	flex-grow: 1 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	margin-left: -50px !important;
+	padding-left: 50px !important;
+	height: 50px !important;
+	line-height: 50px !important;
+	user-select: none !important;
+	font-family: var(--basefont) !important;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	letter-spacing: normal !important;
+}
+
+[class*="launchoptionsdialog_LaunchOptionDialog_"] .DialogCheckbox
+{
+	background: var(--checkbox_bg) !important;
+	border-radius: var(--checkbox_radius) !important;
+	box-shadow: var(--checkbox_bs) !important;
+}
+
+[class*="launchoptionsdialog_LaunchOptionDialog_"] .DialogCheckbox:active
+{
+	background: var(--button_hover_bg) !important;
+}
+
+[class*="launchoptionsdialog_LaunchOptionDialog_"] .DialogCheckbox:focus
+{
+	outline: none !important;
+}
+
+[class*="launchoptionsdialog_LaunchOptionDialog_"] .DialogCheckbox.Active
+{
+	background: var(--checkbox_checked_bg) !important;
+	background-blend-mode: var(--button_suggested_blend) !important;
+	border-radius: var(--checkbox_radius) !important;
+	box-shadow: none !important;
+}
+
+[class*="launchoptionsdialog_LaunchOptionDialog_"] .DialogCheckbox.Active:hover
+{
+	background: var(--button_suggested_hover_bg) !important;
+}
+
+[class*="launchoptionsdialog_LaunchOptionDialog_"] .DialogCheckbox.Active:active
+{
+	background: var(--button_suggested_click_bg) !important;
+}
+
+[class*="launchoptionsdialog_LaunchOptionDialog_"] .DialogCheckbox > svg
+{
+	stroke-width: var(--checkbox_checked_sw) !important;
+}
+
+[class*="launchoptionsdialog_LaunchOptionDialog_"] .DialogCheckbox > svg > path
+{
+	stroke: var(--button_fg) !important;
+}
+
+[class*="launchoptionsdialog_LaunchOptionDialog_"] .DialogToggle_Label
+{
+	padding-top: 2px !important;
+	color: var(--button_fg) !important;
+	font-family: var(--basefont) !important;
+	font-size: 14px !important;
+	line-height: normal !important;
+	font-weight: 400 !important;
+	letter-spacing: normal !important;
+}
+
+[class*="launchoptionsdialog_SeeProperties_"]
+{
+	color: var(--dim_label_fg) !important;
+	font-family: var(--basefont) !important;
+	font-size: 14px !important;
+	line-height: normal !important;
+	font-weight: 400 !important;
+	letter-spacing: normal !important;
+}
+
+/* Swap buttons to make the Cancel button first */
+[class*="launchoptionsdialog_ButtonContainer_"]
+{
+	flex-direction: row-reverse !important;
+	overflow: hidden !important;
+	margin: 0 !important;
+}
+
+[class*="launchoptionsdialog_ButtonContainer_"] > *
+{
+	height: 42px !important;
+	line-height: 42px !important;
+	color: var(--button_fg) !important;
+	font-family: var(--basefont) !important;
+	font-size: 15px !important;
+	font-weight: 700 !important;
+	letter-spacing: normal !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	border-radius: 0 !important;
+	border-top: 1px var(--border) solid !important;
+	border-left: 1px var(--border) solid !important;
+	margin: 0 !important;
+	margin-left: -1px !important;
+	max-width: none !important;
+	padding: 0 !important;
+	flex-grow: 1 !important;
+	transition: var(--focus_transition) !important;
+}
+
+
+[class*="launchoptionsdialog_ButtonContainer_"] > *:hover
+{
+	background: rgba(255, 255, 255, 0.07) !important;
+	box-shadow: none !important;
+}
+
+[class*="launchoptionsdialog_ButtonContainer_"] > *:active
+{
+	background: rgba(255, 255, 255, 0.16) !important;
+	box-shadow: none !important;
+}
+
+[class*="launchoptionsdialog_ButtonContainer_"] > [class*="launchoptionsdialog_PlayButton_"]
+{
+	color: var(--accent) !important;
+}
+
+[class*="launchoptionsdialog_ButtonContainer_"] > [class*="launchoptionsdialog_PlayButton_"]:hover
+{
+	background: rgba(120, 174, 237, 0.07) !important;
+}
+
+[class*="launchoptionsdialog_ButtonContainer_"] > [class*="launchoptionsdialog_PlayButton_"]:active
+{
+	background: rgba(120, 174, 237, 0.16) !important;
+}
+

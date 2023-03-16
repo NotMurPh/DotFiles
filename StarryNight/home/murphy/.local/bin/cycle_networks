@@ -28,8 +28,8 @@ UpdateEww() {
 }
 
 # Get the current network interfaces and their states
-interface1="eno1"
-interface2="enp0s20f0u14"
+interface1="enp4s0"
+interface2="enp0s20f0u9u1"
 interface3="wlp0s20f0u10"
 interface1_state=$( nmcli connection | grep -o $interface1 )
 interface2_state=$( nmcli connection | grep -o $interface2 )

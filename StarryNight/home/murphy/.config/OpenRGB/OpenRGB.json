@@ -1104,10 +1104,76 @@
             "Z370 AORUS Ultra Gaming-CF"
         ]
     },
+    "Gigabyte RGB Fusion 2 USB": {
+        "Calibration": {
+            "Data": {
+                "D_LED1": "GRB",
+                "D_LED2": "GRB",
+                "Mainboard": "BGR",
+                "Spare": "BGR"
+            },
+            "Enabled": false
+        },
+        "CustomLayout": {
+            "Data": {
+                "D_LED1 Bottom": [
+                    {
+                        "header": "LED6",
+                        "name": "Name for LED Strip 1"
+                    }
+                ],
+                "D_LED2 Top": [
+                    {
+                        "header": "LED7",
+                        "name": "Name for LED Strip 2"
+                    }
+                ],
+                "Motherboard": [
+                    {
+                        "header": "LED1",
+                        "name": "Name for Led 1"
+                    },
+                    {
+                        "header": "LED2",
+                        "name": "Name for Led 2"
+                    },
+                    {
+                        "header": "LED3",
+                        "name": "Name for Led 3"
+                    },
+                    {
+                        "header": "LED4",
+                        "name": "Name for Led 4"
+                    },
+                    {
+                        "header": "LED5",
+                        "name": "Name for Led 5"
+                    },
+                    {
+                        "header": "LED8",
+                        "name": "Name for Led 8"
+                    }
+                ]
+            },
+            "Enabled": false
+        },
+        "MotherboardLayouts": {
+            "B550 AORUS ELITE": "STD_ATX",
+            "B550 AORUS PRO": "STD_ATX",
+            "B550I AORUS PRO AX": "ITX",
+            "X570 AORUS ELITE": "STD_ATX",
+            "X570 AORUS ELITE WIFI": "STD_ATX",
+            "X570 AORUS PRO WIFI": "STD_ATX",
+            "X570 AORUS ULTRA": "STD_ATX",
+            "X570 I AORUS PRO WIFI": "ITX",
+            "Z390 AORUS MASTER-CF": "MSTR_ATX"
+        }
+    },
     "Theme": {
         "theme": "dark"
     },
     "UserInterface": {
+        "RunZoneChecks": true,
         "exit_profile": {
             "profile_name": "",
             "set_on_exit": false

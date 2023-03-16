@@ -11,7 +11,7 @@ do
 		pkill imwheel
 		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> ~/.config/dunst/dunstrc
 		pkill dunst
-		pkill -USR1 ChatterBlocker
+		sudo pkill -USR1 ChatterBlocker
 
 	elif [[ "$(bspc query -T -n focused | jq ".client .tiledRectangle .width")" != "1920" && $done == true ]]; then
 		done=false
@@ -22,8 +22,8 @@ do
 		imwheel -b "45" -k
 		sed -i "$(( $(wc -l <~/.config/dunst/dunstrc)-3+1 )),$ d" ~/.config/dunst/dunstrc
 		pkill dunst
-		pkill -USR1 ChatterBlocker
+		sudo pkill -USR1 ChatterBlocker
 
 	fi
-	sleep 0.5
+	sleep 0.2
 done

@@ -126,7 +126,7 @@ entry {
     background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "type...";
+    placeholder:                 "Equation...";
     placeholder-color:           inherit;
 }
 num-filtered-rows {

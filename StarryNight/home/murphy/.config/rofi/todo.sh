@@ -1,8 +1,10 @@
 #!/bin/sh
 
 TODO_FILE=/home/murphy/.config/rofi/todos
+FIRST_SLICE=1
 if [[ "$1" == "--movie" ]]; then
     TODO_FILE=/home/murphy/.config/rofi/movies
+	FIRST_SLICE=2
 fi
 
 if [[ ! -a "${TODO_FILE}" ]]; then
@@ -24,13 +26,13 @@ function get_todos() {
     echo "$(cat "${TODO_FILE}")"
 }
 
-if [ -z "$@" ]; then
+if [[ -z "$@" || $@ == "--movie" ]]; then
     get_todos
 else
-    LINE=$(echo "${@}" | sed "s/\([^a-zA-Z0-9]\)/\\\\\\1/g")
-    LINE_UNESCAPED=${@}
-    if [[ $LINE_UNESCAPED == .* ]]; then
-        LINE_UNESCAPED=$(echo $LINE_UNESCAPED | sed s/^.//g |sed s/^\s.//g )
+    LINE=$(echo "${@:FIRST_SLICE}" | sed "s/\([^a-zA-Z0-9]\)/\\\\\\1/g")
+    LINE_UNESCAPED=${@:FIRST_SLICE}
+    if [[ $LINE_UNESCAPED == "."* ]]; then
+        LINE_UNESCAPED=$(echo $LINE_UNESCAPED | sed s/^.//g | sed s/^\s.//g )
         add_todo ${LINE_UNESCAPED}
     else
         MATCHING=$(grep "^${LINE_UNESCAPED}$" "${TODO_FILE}")

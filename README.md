@@ -10,7 +10,7 @@ My personal configuration files
 
 Here is a preview of my dotfiles 
 
-- Destkop & [Eww](StarryNight/home/murphy/.config/eww)
+- Destkop & [Eww](StarryNight/home/murphy/.config/eww) & [Feh](StarryNight/home/murphy/.local/bin/fehbg)
 
 ![Desktop](https://i.imgur.com/VndlPMT.png)
 

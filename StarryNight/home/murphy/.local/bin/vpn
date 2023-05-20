@@ -1,7 +1,7 @@
 #!/bin/bash
 
 open_udp2raw() {
-    sudo udp2raw -c -l 0.0.0.0:4444 -r 167.235.254.236:10851 --cipher-mode none --auth-mode none --raw-mode icmp -a > /dev/null 2>&1 &
+    sudo udp2raw -c -l 0.0.0.0:4444 -r 49.13.5.143:2005 --cipher-mode xor --auth-mode simple --raw-mode icmp > /dev/null 2>&1 &
 }
 
 close_udp2raw() {
@@ -11,14 +11,14 @@ close_udp2raw() {
 case $1 in
     on)
         operation=up
-		sudo wg-quick $operation germany5-local &> /dev/null
+		sudo wg-quick $operation l-hetzner1-1 &> /dev/null
         open_udp2raw
 		eww update vpn_status="connected"
         echo -e '\033[0;32mVpn Connected'
         ;;
     off)
         operation=down
-		sudo wg-quick $operation germany5-local &> /dev/null
+		sudo wg-quick $operation l-hetzner1-1 &> /dev/null
 		eww update vpn_status="disconnected"
         echo -e '\033[0;31mVpn Disconnected'
         ;;

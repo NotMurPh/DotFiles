@@ -565,6 +565,7 @@ img:not([src]), img[src=""], img[src="null"] {
 [REPLACE_CLASS_selectwrapper] [REPLACE_CLASS_select] {
 	flex: 1 1 auto;
 }
+[REPLACE_CLASS_selectwrapper] [REPLACE_CLASS_selectouter],
 [REPLACE_CLASS_selectwrapper] [REPLACE_CLASS_selectsearchinput] {
 	width: 100%;
 }
@@ -604,7 +605,7 @@ img:not([src]), img[src=""], img[src="null"] {
 	filter: grayscale(0.2);
 }
 [REPLACE_CLASS_settingspanel] [REPLACE_CLASS_hovercardwrapper] {
-	width: calc(100% - 22px);
+	width: calc(100% - 32px);
 }
 [REPLACE_CLASS_hovercardwrapper][REPLACE_CLASS_hovercard] {
 	padding: 10px 0;
@@ -744,7 +745,7 @@ img:not([src]), img[src=""], img[src="null"] {
 	display: flex;
 	align-items: center;
 	flex: 1 0 auto;
-	margin-right: 10px;
+	margin-right: 20px;
 	margin-left: 10px;
 }
 [REPLACE_CLASS_settingstableheaderoptions] {
@@ -778,11 +779,8 @@ img:not([src]), img[src=""], img[src="null"] {
 	padding: 0 10px;
 	margin-bottom: 10px;
 }
-[REPLACE_CLASS_themedark] [REPLACE_CLASS_settingstablecard][REPLACE_CLASS_cardprimaryoutline] {
-	border: 1px solid var(--primary-400, --background-tertiary);
-}
-[REPLACE_CLASS_themelight] [REPLACE_CLASS_settingstablecard][REPLACE_CLASS_cardprimaryoutline] {
-	border: 1px solid var(--primary-300, --background-tertiary);
+[REPLACE_CLASS_settingstablecard][REPLACE_CLASS_cardprimaryoutline] {
+	border: 1px solid var(--background-tertiary);
 }
 [REPLACE_CLASS_settingstablecardlabel] {
 	display: flex;
@@ -1160,6 +1158,13 @@ input[REPLACE_CLASS_input][REPLACE_CLASS_inputerror] {
 }
 [REPLACE_CLASS__repolistscroller] {
 	padding-top: 0;
+}
+[REPLACE_CLASS__repolistheader] [REPLACE_CLASS_tabbarcontainer] {
+	display: flex;
+	align-items: flex-start;
+}
+[REPLACE_CLASS__repolistheader] [REPLACE_CLASS_quickselectwrapper] {
+	line-height: 20px;
 }
 [REPLACE_CLASS__repoentry] [REPLACE_CLASS__repofooter] {
 	display: flex;

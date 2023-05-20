@@ -44,7 +44,7 @@ Here is a preview of my dotfiles
 
 - Spotify & [Spicetify](StarryNight/home/murphy/.config/spicetify) 
 
-![Spotify](https://i.imgur.com/panlpFm.png)
+![Spotify](https://i.imgur.com/RemWpjA.png)
 
 - [Telegram](StarryNight/usr/share/TelegramDesktop)
 

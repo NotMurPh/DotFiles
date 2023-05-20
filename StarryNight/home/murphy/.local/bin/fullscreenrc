@@ -9,7 +9,7 @@ do
 		pkill picom
 		eww close actions spotify info
 		pkill imwheel
-		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> ~/.config/dunst/dunstrc
+		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> ~/DotFiles/StarryNight/home/murphy/.config/dunst/dunstrc
 		pkill dunst
 		sudo pkill -USR1 ChatterBlocker
 
@@ -20,7 +20,7 @@ do
 		picom -b
 		eww open-many actions spotify info dates > /dev/null 2>&1 && eww reload && init_eww &
 		imwheel -b "45" -k
-		sed -i "$(( $(wc -l <~/.config/dunst/dunstrc)-3+1 )),$ d" ~/.config/dunst/dunstrc
+		sed -i "$(( $(wc -l <~/.config/dunst/dunstrc)-3+1 )),$ d" ~/DotFiles/StarryNight/home/murphy/.config/dunst/dunstrc
 		pkill dunst
 		sudo pkill -USR1 ChatterBlocker
 

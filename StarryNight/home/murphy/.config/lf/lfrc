@@ -6,6 +6,7 @@ set previewer lf-ueberzug-previewer
 set cleaner lf-ueberzug-cleaner
 set sortby ext 
 set info size
+set cursorpreviewfmt "\033[7m"
 
 #Key mapping
 map t shell

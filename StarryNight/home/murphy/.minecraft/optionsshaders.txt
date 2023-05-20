@@ -1,4 +1,4 @@
-#Fri Jan 27 20:23:14 IRST 2023
+#Sun May 14 01:06:51 IRDT 2023
 handDepthMul=0.125
 TexMinFilB=0
 oldLighting=default
@@ -6,7 +6,7 @@ TexMagFilN=0
 tweakBlockDamage=false
 cloudShadow=false
 TexMagFilS=0
-shaderPack=
+shaderPack=OFF
 TexMinFilN=0
 specularMapEnabled=true
 normalMapEnabled=true

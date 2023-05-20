@@ -25,7 +25,7 @@ fov:0.5
 screenEffectScale:1.0
 fovEffectScale:1.0
 darknessEffectScale:1.0
-gamma:0.5
+gamma:0.5070422291755676
 renderDistance:12
 simulationDistance:12
 entityDistanceScaling:1.0
@@ -34,18 +34,18 @@ particles:0
 maxFps:260
 graphicsMode:1
 ao:2
-prioritizeChunkUpdates:1
+prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"true"
-resourcePacks:[]
-incompatibleResourcePacks:[]
+resourcePacks:["vanilla","Fabric Mods","minecraft/supporteatinganimation","illuminations/pixelaccurate","illuminations/lowerres","file/Default-Dark-Mode-1.19.4-v1.4.0.zip","file/multicolor-fade-outlines"]
+incompatibleResourcePacks:["file/Default-Dark-Mode-1.19.4-v1.4.0.zip","file/multicolor-fade-outlines"]
 lastServer:
 lang:en_us
 soundDevice:""
 chatVisibility:0
 chatOpacity:1.0
-chatLineSpacing:0.0
-textBackgroundOpacity:0.5
+chatLineSpacing:0.40492957830429077
+textBackgroundOpacity:0.0
 backgroundForChatOnly:true
 hideServerAddress:false
 advancedItemTooltips:true
@@ -55,7 +55,7 @@ overrideHeight:0
 heldItemTooltips:true
 chatHeightFocused:1.0
 chatDelay:0.0
-chatHeightUnfocused:0.4375
+chatHeightUnfocused:0.31690141558647156
 chatScale:1.0
 chatWidth:1.0
 mipmapLevels:1
@@ -67,7 +67,7 @@ tutorialStep:none
 mouseWheelSensitivity:1.0
 rawMouseInput:true
 glDebugVerbosity:1
-skipMultiplayerWarning:false
+skipMultiplayerWarning:true
 skipRealms32bitWarning:false
 hideMatchedNames:true
 joinedFirstServer:true
@@ -111,14 +111,27 @@ key_key.hotbar.6:key.keyboard.left.alt
 key_key.hotbar.7:key.keyboard.caps.lock
 key_key.hotbar.8:key.keyboard.z
 key_key.hotbar.9:key.keyboard.x
-key_of.key.zoom:key.keyboard.c
-key_Create Waypoint:scancode.0
-key_Freelook:scancode.0
-key_Snaplook:scancode.0
-key_Mod Menu:scancode.0
-key_Waypoint Menu:scancode.0
-key_Emote Wheel:key.keyboard.b
-soundCategory_master:0.20364238
+key_of.key.zoom:key.keyboard.unknown
+key_key.custom-crosshair-mod.edit_crosshair:key.keyboard.grave.accent
+key_key.coordinatesdisplay.visible:key.keyboard.unknown
+key_key.coordinatesdisplay.coordinatesgui:key.keyboard.unknown
+key_key.coordinatesdisplay.configreload:key.keyboard.unknown
+key_key.coordinatesdisplay.openfile:key.keyboard.unknown
+key_key.coordinatesdisplay.copypos:key.keyboard.unknown
+key_key.coordinatesdisplay.sendpos:key.keyboard.n
+key_key.coordinatesdisplay.copypostp:key.keyboard.unknown
+key_key.fabrizoom.zoom:key.keyboard.c
+key_key.fabrizoom.increase:key.keyboard.unknown
+key_key.fabrizoom.decrease:key.keyboard.unknown
+key_key.fabrizoom.reset:key.keyboard.unknown
+key_key.fpsdisplay.toggleFpsOverlay:key.keyboard.unknown
+key_key.inventoryhud.toggle:key.keyboard.unknown
+key_key.inventoryhud.openconfig:key.keyboard.unknown
+key_key.inventoryhud.togglepot:key.keyboard.unknown
+key_key.inventoryhud.togglearm:key.keyboard.unknown
+key_key.inventoryhud.toggleall:key.keyboard.unknown
+key_key.modmenu.open_menu:key.keyboard.right.shift
+soundCategory_master:0.10927153
 soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0

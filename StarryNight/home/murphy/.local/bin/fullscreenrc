@@ -1,26 +1,27 @@
 #!/bin/bash
-done=false
+test -f /tmp/done || echo false > /tmp/done
+dunst_config_path=~/DotFiles/StarryNight/home/murphy/.config/dunst/dunstrc
 while [ true ]
 do
-	if [[ "$(bspc query -T -n focused | jq ".client .tiledRectangle .width")" == "1920" && $done == false ]]; then
-		done=true
-		# kill apps on fullscreen
+	# On fullscreen
+	if [[ "$(bspc query -T -n focused | jq ".client .tiledRectangle .width")" == "1920" && $(cat /tmp/done) == false ]]; then
+		echo true > /tmp/done
 		echo "enterd fullscreen"
 		pkill picom
 		eww close actions spotify info
 		pkill imwheel
-		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> ~/DotFiles/StarryNight/home/murphy/.config/dunst/dunstrc
+		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> $dunst_config_path
 		pkill dunst
 		sudo pkill -USR1 ChatterBlocker
 
-	elif [[ "$(bspc query -T -n focused | jq ".client .tiledRectangle .width")" != "1920" && $done == true ]]; then
-		done=false
-		# open apps on fullscreen leave
+	# On fullscreen leave
+elif [[ "$(bspc query -T -n focused | jq ".client .tiledRectangle .width")" != "1920" && $(cat /tmp/done) == true ]]; then
+		echo false > /tmp/done
 		echo "left fullscreen"
 		picom -b
 		eww open-many actions spotify info dates > /dev/null 2>&1 && eww reload && init_eww &
 		imwheel -b "45" -k
-		sed -i "$(( $(wc -l <~/.config/dunst/dunstrc)-3+1 )),$ d" ~/DotFiles/StarryNight/home/murphy/.config/dunst/dunstrc
+		sed -i "$(( $(wc -l <$dunst_config_path)-3+1 )),$ d" $dunst_config_path
 		pkill dunst
 		sudo pkill -USR1 ChatterBlocker
 

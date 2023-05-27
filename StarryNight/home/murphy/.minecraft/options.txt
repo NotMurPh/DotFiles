@@ -41,7 +41,7 @@ resourcePacks:["vanilla","Fabric Mods","minecraft/supporteatinganimation","illum
 incompatibleResourcePacks:["file/Default-Dark-Mode-1.19.4-v1.4.0.zip","file/multicolor-fade-outlines"]
 lastServer:
 lang:en_us
-soundDevice:""
+soundDevice:"JACK Default"
 chatVisibility:0
 chatOpacity:1.0
 chatLineSpacing:0.40492957830429077
@@ -131,7 +131,7 @@ key_key.inventoryhud.togglepot:key.keyboard.unknown
 key_key.inventoryhud.togglearm:key.keyboard.unknown
 key_key.inventoryhud.toggleall:key.keyboard.unknown
 key_key.modmenu.open_menu:key.keyboard.right.shift
-soundCategory_master:0.10927153
+soundCategory_master:0.104304634
 soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0

@@ -26,15 +26,15 @@ super + t
 super + r
 	bspc wm -r
 
-# reload picom
+# toggles picom
 super + alt + r
-	pkill picom ; picom -b
+	picom -b || pkill picom
 
-# make sxhkd reload its configuration files:
+# reload sxhkd
 super + ctrl + r
-	pkill -USR1 -x sxhkd
+	pkill -USR1 sxhkd
 
-# close
+# quit programs
 super + q
 	bspc node -c
 
@@ -43,10 +43,10 @@ super + alt + q
 	bspc quit
 
 # focus or send to the given desktop
-super + {_,alt + }{1-9,0}
+super + {_,alt+} {1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
-# move the window to other monitor
+# send the window to the next monitor
 super + s
 	bspc node --to-monitor next --follow
 
@@ -63,10 +63,10 @@ super + a
 	bspc node --focus last
 
 # set the window state
-super + { alt + t , f , alt + f }
-	bspc node -t { tiled , floating , fullscreen }
+super + {alt+t,f,alt+f}
+	bspc node -t {tiled,floating,fullscreen}
 
-# preselect the direction
+# preselect a direction for opening a window
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
@@ -85,19 +85,19 @@ super + alt + ctrl + {h,j,k,l}
 XF86AudioPlay
 	playerctl -p spotify play-pause
 
-# next track spotify
+# go to next spotify track
 XF86AudioNext
 	playerctl -p spotify next
 
-# prev track spotify
+# go to preivous spotify track 
 XF86AudioPrev
 	playerctl -p spotify previous
 
-# volume up spotify
+# raise spotify volume
 XF86AudioRaiseVolume
 	playerctl -p spotify volume 0.05+
 
-# volume down spotify
+# lower down spotify volume
 XF86AudioLowerVolume
 	playerctl -p spotify volume 0.05-
 
@@ -107,12 +107,12 @@ super + c
 
 # screenshot with selection (grab)
 super + g
-	addr="/mnt/Murphy/Media/Screenshots/$(date +%F_%H-%M-%S).png" && sel="$(slop -b 2 -c "1,1,0,0.5" -l)" && shotgun -g $sel $addr && xclip -t 'image/png' -selection clipboard $addr && notify-send "Screenshot" "Screen Captured"
+	addr="/mnt/Murphy/Media/Screenshots/$(date +%F_%H-%M-%S).png" && sel="$(slop -b 2 -c '1,1,0,0.5' -l)" && shotgun -g $sel $addr && xclip -t 'image/png' -selection clipboard $addr && notify-send "Screenshot" "Screen Captured"
 
-# record
+# record the last minute or so (instant replay)
 super + alt + c
 	killall -SIGUSR1 gpu-screen-recorder && notify-send "GpuScreenRecorder" "Last Minute Captured"
 
 # fix clipboard
-ctrl + { _ , shift } + c
-	sleep 0.3s ; xclip -o | xclip -sel clip
+ctrl + c
+	xclip -o | xclip -sel clip 

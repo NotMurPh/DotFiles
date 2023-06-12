@@ -24,6 +24,9 @@ setopt SHARE_HISTORY
 
 PS1="%B%F{yellow}%n %(?.%F{green}.%F{red})➜ %F{blue}%1~ %b%F{white}"
 
+# zsh-autosuggestions plugin
+source /home/$USER/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # vim plugin (https://github.com/softmoth/zsh-vim-mode)
 source /home/$USER/.config/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 bindkey -M viins ',c' vi-cmd-mode

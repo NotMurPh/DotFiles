@@ -1,0 +1,3 @@
+[submodule "StarryNight/home/murphy/.config/zsh/plugins/zsh-autosuggestions"]
+	path = StarryNight/home/murphy/.config/zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions

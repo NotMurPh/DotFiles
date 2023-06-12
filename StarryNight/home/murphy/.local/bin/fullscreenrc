@@ -1,30 +1,40 @@
 #!/bin/bash
-test -f /tmp/done || echo false > /tmp/done
-dunst_config_path=~/DotFiles/StarryNight/home/murphy/.config/dunst/dunstrc
-while [ true ]
-do
-	# On fullscreen
-	if [[ "$(bspc query -T -n focused | jq ".client .tiledRectangle .width")" == "1920" && $(cat /tmp/done) == false ]]; then
-		echo true > /tmp/done
-		echo "enterd fullscreen"
-		pkill picom
-		eww close actions spotify info
-		pkill imwheel
-		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> $dunst_config_path
-		pkill dunst
-		sudo pkill -USR1 ChatterBlocker
 
-	# On fullscreen leave
-elif [[ "$(bspc query -T -n focused | jq ".client .tiledRectangle .width")" != "1920" && $(cat /tmp/done) == true ]]; then
-		echo false > /tmp/done
-		echo "left fullscreen"
-		picom -b
-		eww open-many actions spotify info dates > /dev/null 2>&1 && eww reload && init_eww &
-		imwheel -b "45" -k
-		sed -i "$(( $(wc -l <$dunst_config_path)-3+1 )),$ d" $dunst_config_path
-		pkill dunst
-		sudo pkill -USR1 ChatterBlocker
+dunst_config_path=~/DotFiles/StarryNight/home/murphy/.config/dunst/dunstrc
+sxhkd_config_path=~/DotFiles/StarryNight/home/murphy/.config/sxhkd/sxhkdrc
+
+while true ; do
+
+	foucused_window_width=$(bspc query -T -n focused | jq ".client .tiledRectangle .width")
+
+	# On fullscreen (Activate)
+	if [[ $foucused_window_width == "1920" && ! -f /tmp/toggle ]]; then
+		echo "Enterd fullscreen" >> /home/murphy/test &
+		touch /tmp/toggle &
+		pkill picom &
+		eww close actions spotify info &
+		pkill imwheel &
+		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> $dunst_config_path &
+		pkill dunst &
+		sudo pkill -USR1 ChatterBlocker &
+		sed -i -e "s/'1,1,0,0.5' -l/'1,1,0'/g" $sxhkd_config_path &
+		pkill -USR1 sxhkd &
+
+	# On fullscreen leave (Deactivate)
+	elif [[ $foucused_window_width != "1920" && -f /tmp/toggle ]]; then
+		echo "Left fullscreen" >> /home/murphy/test &
+		rm /tmp/toggle &
+		picom -b &
+		eww open-many actions spotify info dates &> /dev/null && eww reload && init_eww &
+		imwheel -b "45" -k &
+		sed -i "$(( $(wc -l <$dunst_config_path)-3+1 )),$ d" $dunst_config_path &
+		pkill dunst &
+		sudo pkill -USR1 ChatterBlocker &
+		sed -i -e "s/'1,1,0'/'1,1,0,0.5' -l/g" $sxhkd_config_path &
+		pkill -USR1 sxhkd &
 
 	fi
+
 	sleep 0.2
+
 done

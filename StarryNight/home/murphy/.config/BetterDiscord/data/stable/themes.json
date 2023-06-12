@@ -1,15 +1,20 @@
 {
     "Comfy": false,
-    "Couve": true,
+    "Couve": false,
     "ComfyGray": false,
     "dracula": false,
     "Essence": false,
     "Zelk": false,
-    "Tokyo Night": false,
+    "Tokyo Night": true,
     "Dark+": false,
     "Eclipse": false,
     "Moon Rabbits Dream About Virtual": false,
     "Vibrant Glass": false,
     "midnight": false,
-    "Rounded Dark": false
+    "Rounded Dark": false,
+    "Alexis Modern Discord Theme": false,
+    "Discolored": false,
+    "IEYTD": false,
+    "Exponent": false,
+    "Catppuccin Mocha": false
 }

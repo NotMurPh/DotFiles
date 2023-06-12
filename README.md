@@ -52,7 +52,7 @@ Here is a preview of my dotfiles
 
 - [Discord](StarryNight/home/murphy/.config/discord) & [BetterDiscord](StarryNight/home/murphy/.config/BetterDiscord)
 
-![Discord](https://i.imgur.com/gIjrVvF.png)
+![Discord](https://i.imgur.com/1I785LJ.png)
 
 - [Lightdm](StarryNight/etc/lightdm) ( Captured with phone )
 

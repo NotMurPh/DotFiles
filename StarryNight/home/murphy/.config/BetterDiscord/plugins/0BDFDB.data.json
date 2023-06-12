@@ -2,6 +2,7 @@
 	"PluginNameMap": {},
 	"PluginUrlMap": {
 		"BDFDB": "https://mwittrien.github.io/BetterDiscordAddons/Library/0BDFDB.plugin.js",
+		"CopyRawMessage": "https://mwittrien.github.io/BetterDiscordAddons/_DEAD/CopyRawMessage.plugin.js",
 		"CreationDate": "https://mwittrien.github.io/BetterDiscordAddons/_DEAD/CreationDate.plugin.js",
 		"ForceImagePreviews": "https://mwittrien.github.io/BetterDiscordAddons/_DEAD/ForceImagePreviews.plugin.js",
 		"JoinedAtDate": "https://mwittrien.github.io/BetterDiscordAddons/_DEAD/JoinedAtDate.plugin.js",
@@ -241,7 +242,6 @@
 			"createSoundpackSound": [");return"],
 			"playSound": ["getSoundpack"]
 		}},
-		"SortedGuildUtils": {"props": ["getSortedGuilds", "getFlattenedGuildIds"]},
 		"SpotifyUtils": {"strings": ["\"SPOTIFY_SET_ACTIVE_DEVICE\"", "deviceId", "accountId"], "exported": false, "value": "exports", "map": {
 			"getAccessToken": ["SPOTIFY_ACCOUNT_ACCESS_TOKEN_REVOKE", "CONNECTION_ACCESS_TOKEN"],
 			"pause": ["SPOTIFY_PLAYER_PAUSE"],
@@ -468,6 +468,7 @@
 		"HeaderBar": {"strings": [".hamburger", "scrollable", "themed"]},
 		"HeaderBarChannelName": {"strings": ["onDoubleClick", ".setName", "maxLen:"]},
 		"HeaderBarContainer": {"strings": ["isAuthenticated", ".HEADER_BAR"]},
+		"HeaderBarRecipient": {"strings": [".Messages.DIRECT_MESSAGE", "getRecipientId", "().avatar", "getName"]},
 		"HeaderBarTitle": {"strings": [".titleWrapper", ",onContextMenu", "forceLevel:"]},
 		"HeaderBarTitleIcon": {"strings": ["HEADER_BAR_BADGE", ".iconBadge", ".iconClassName"]},
 		"HomeButton": {"strings": ["isOnOtherSidebarRoute", "showProgressBadge", "maybeTrackExposure"]},
@@ -2082,6 +2083,7 @@
 		"channelcontainerdefault": ["ChannelContainer", "containerDefault"],
 		"channelcontent": ["Channel", "content"],
 		"channeldisabled": ["ChannelContainer", "disabled"],
+		"channelheaderavatar": ["ChatWindow", "avatar"],
 		"channelheaderchannelname": ["ChatWindow", "channelName"],
 		"channelheaderchildren": ["HeaderBar", "children"],
 		"channelheadercursorpointer": ["ChatWindow", "cursorPointer"],
@@ -3221,7 +3223,7 @@
 		"spoilerembedhidden": ["MessageAttachment", "hiddenSpoilers"],
 		"spoilerembedinline": ["MessageAttachment", "inline"],
 		"spoilerhidden": ["Spoiler", "hidden"],
-		"spoilertext": ["Spoiler", "spoilerText"],
+		"spoilertext": ["Spoiler", "spoilerContent"],
 		"spoilerwarning": ["Spoiler", "spoilerWarning"],
 		"splashbackground": ["NotFound", "splashBackground"],
 		"strikethrough": ["TextStyle", "strikethrough"],

@@ -2,7 +2,7 @@
  * @name ThemeRepo
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 2.4.9
+ * @version 2.5.0
  * @description Allows you to download all Themes from BD's Website within Discord
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -234,7 +234,7 @@ module.exports = (_ => {
 											onClick: _ => {
 												if (loading.is) return;
 												loading = {is: false, timeout: null, amount: 0};
-												_this.loadThemes();
+												_this.loadThemes(true);
 											}
 										})
 									]
@@ -632,7 +632,7 @@ module.exports = (_ => {
 														this.props.downloading = true;
 														let loadingToast = BDFDB.NotificationUtils.toast(`${BDFDB.LanguageUtils.LibraryStringsFormat("loading", this.props.data.name)} - ${BDFDB.LanguageUtils.LibraryStrings.please_wait}`, {timeout: 0, ellipsis: true});
 														let autoloadKey = this.props.data.state == themeStates ? "startUpdated" : "startDownloaded";
-														BDFDB.DiscordUtils.requestFileData(this.props.data.rawSourceUrl, {timeout: 10000}, (error, buffer) => {
+														BDFDB.DiscordUtils.requestFileData(this.props.data.rawSourceUrl, (error, buffer) => {
 															if (error || !buffer) {
 																delete this.props.downloading;
 																loadingToast.close();
@@ -779,9 +779,7 @@ module.exports = (_ => {
 					if (index > -1 && BDFDB.ArrayUtils.is(children[index].props.children)) children[index].props.children.push(BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 						label: "Theme Repo",
 						id: BDFDB.ContextMenuUtils.createItemId(this.name, "repo"),
-						action: _ => {
-							BDFDB.LibraryModules.UserSettingsUtils.open("themerepo");
-						}
+						action: _ => BDFDB.LibraryModules.UserSettingsUtils.open("themerepo")
 					}));
 				});
 			}
@@ -829,7 +827,7 @@ module.exports = (_ => {
 				return fullCSS;
 			}
 
-			loadThemes () {
+			loadThemes (forceBanner) {
 				BDFDB.DOMUtils.remove(BDFDB.dotCN._themerepoloadingicon);
 				cachedThemes = BDFDB.DataUtils.load(this, "cached");
 				cachedThemes = (typeof cachedThemes == "string" ? cachedThemes.split(" ") : []).map(n => parseInt(n)).filter(n => !isNaN(n));
@@ -850,7 +848,7 @@ module.exports = (_ => {
 							BDFDB.LogUtils.log("Finished fetching Themes", this);
 							BDFDB.ReactUtils.forceUpdate(list);
 							
-							if (this.settings.general.notifyOutdated && outdatedEntries > 0) {
+							if ((this.settings.general.notifyOutdated || forceBanner) && outdatedEntries > 0) {
 								let notice = document.querySelector(BDFDB.dotCN._themerepooutdatednotice);
 								if (notice) notice.close();
 								BDFDB.NotificationUtils.notice(this.labels.notice_outdated_themes.replace("{{var0}}", outdatedEntries), {
@@ -887,7 +885,7 @@ module.exports = (_ => {
 								});
 							}
 							
-							BDFDB.DiscordUtils.requestFileData("https://mwittrien.github.io/BetterDiscordAddons/Plugins/ThemeRepo/_res/GeneratorList.txt", {timeout: 10000}, (error, buffer) => {
+							BDFDB.DiscordUtils.requestFileData("https://mwittrien.github.io/BetterDiscordAddons/Plugins/ThemeRepo/_res/GeneratorList.txt", (error, buffer) => {
 								let body = !error && buffer && Buffer.from(buffer).toString();
 								if (body) for (let id of body.replace(/[\r\t]/g, "").split(" ").map(n => parseInt(n)).filter(n => n != null)) {
 									let theme = grabbedThemes.find(t => t.id == id);
@@ -895,7 +893,7 @@ module.exports = (_ => {
 								}
 							});
 							
-							BDFDB.DiscordUtils.requestFileData(document.querySelector("head link[rel='stylesheet'][integrity]").href, {timeout: 10000}, (error, buffer) => {
+							BDFDB.DiscordUtils.requestFileData(document.querySelector("head link[rel='stylesheet'][integrity]").href, (error, buffer) => {
 								let nativeCSS = !error && buffer && Buffer.from(buffer).toString();
 								if (nativeCSS) {
 									let theme = BDFDB.DiscordUtils.getTheme();
@@ -921,7 +919,7 @@ module.exports = (_ => {
 						delete theme.release_date;
 						delete theme.latest_source_url;
 						delete theme.thumbnail_url;
-						BDFDB.DiscordUtils.requestFileData(theme.rawSourceUrl, {timeout: 10000}, (error, buffer) => {
+						BDFDB.DiscordUtils.requestFileData(theme.rawSourceUrl, (error, buffer) => {
 							if (error || !buffer) theme.failed = true;
 							else {
 								let body = Buffer.from(buffer).toString();
@@ -1027,10 +1025,10 @@ module.exports = (_ => {
 			getInstalledTheme (theme) {
 				if (!theme || typeof theme.authorname != "string") return;
 				const iTheme = BDFDB.BDUtils.getTheme(theme.name, false, true);
-				if (iTheme && theme.authorname.toUpperCase() == this.getString(iTheme.author).toUpperCase()) return iTheme;
+				if (iTheme && (theme.authorname.toUpperCase().indexOf(this.getString(iTheme.author).toUpperCase()) > -1 || this.getString(iTheme.author).toUpperCase().indexOf(theme.authorname.toUpperCase()) > -1)) return iTheme;
 				else if (theme.rawSourceUrl && window.BdApi && BdApi.Themes && typeof BdApi.Themes.getAll == "function") {
 					const filename = theme.rawSourceUrl.split("/").pop();
-					for (let t of BdApi.Themes.getAll()) if (t.filename == filename && theme.authorname.toUpperCase() == this.getString(t.author).toUpperCase()) return t;
+					for (let t of BdApi.Themes.getAll()) if (t.filename == filename && (theme.authorname.toUpperCase().indexOf(this.getString(t.author).toUpperCase()) > -1 || this.getString(t.author).toUpperCase().indexOf(theme.authorname.toUpperCase()) > -1)) return t;
 				}
 			}
 
@@ -1072,9 +1070,9 @@ module.exports = (_ => {
 					case "el":		// Greek
 						return {
 							list:								"Λίστα",
-							notice_failed_themes:				"Δεν ήταν δυνατή η φόρτωση ορισμένων Themes [{{var0}}] ",
-							notice_new_themes:					"Προστέθηκαν νέα Themes [{{var0}}] στο Theme Repo",
-							notice_outdated_themes:				"Ορισμένα Themes [{{var0}}] είναι παλιά"
+							notice_failed_themes:				"Ορισμένα Θέματα [{{var0}}] δεν μπορούν να φορτωθούν",
+							notice_new_themes:					"Νέα Θέματα [{{var0}}] προστέθηκαν στο Απωθετήριο Θεμάτων",
+							notice_outdated_themes:				"Ορισμένα Θέματα [{{var0}}] είναι παλαιά"
 						};
 					case "es":		// Spanish
 						return {

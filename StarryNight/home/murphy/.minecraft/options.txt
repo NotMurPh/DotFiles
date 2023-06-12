@@ -37,8 +37,8 @@ ao:2
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"true"
-resourcePacks:["vanilla","Fabric Mods","minecraft/supporteatinganimation","illuminations/pixelaccurate","illuminations/lowerres","file/Default-Dark-Mode-1.19.4-v1.4.0.zip","file/multicolor-fade-outlines"]
-incompatibleResourcePacks:["file/Default-Dark-Mode-1.19.4-v1.4.0.zip","file/multicolor-fade-outlines"]
+resourcePacks:["vanilla","Fabric Mods","minecraft/supporteatinganimation","illuminations/pixelaccurate","illuminations/lowerres","file/multicolor-fade-outlines","file/Default-Dark-Mode-1.19.2-v1.4.0.zip"]
+incompatibleResourcePacks:["file/multicolor-fade-outlines"]
 lastServer:
 lang:en_us
 soundDevice:"JACK Default"
@@ -131,7 +131,7 @@ key_key.inventoryhud.togglepot:key.keyboard.unknown
 key_key.inventoryhud.togglearm:key.keyboard.unknown
 key_key.inventoryhud.toggleall:key.keyboard.unknown
 key_key.modmenu.open_menu:key.keyboard.right.shift
-soundCategory_master:0.104304634
+soundCategory_master:0.10927153
 soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0

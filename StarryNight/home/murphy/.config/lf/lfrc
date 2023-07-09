@@ -1,4 +1,5 @@
-#Basic settings
+# Basic settings
+
 set hidden
 set ignorecase
 set icons
@@ -8,7 +9,8 @@ set sortby ext
 set info size
 set cursorpreviewfmt "\033[7m"
 
-#Key mapping
+# Key mapping
+
 map t shell
 map u push :unselect<enter>:clear<enter>
 map <enter> open
@@ -19,7 +21,8 @@ map a zip
 map x extract
 map c compress
 
-#Custom functions
+# Custom functions
+
 cmd mkdir %{{
     echo " mkdir: "
     read name
@@ -52,3 +55,10 @@ cmd compress %{{
         ffmpeg -i $name -vf "scale=trunc(iw/4)*2:trunc(ih/4)*2" -c:v libx265 -crf 28 Compressed_$(basename $name) &
     done
 }}
+
+# Integrations
+
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id

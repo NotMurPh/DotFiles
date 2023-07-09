@@ -1,0 +1,11 @@
+set nosymlinkinfo
+
+preview audio audio/* {{
+
+	audio() {
+		ffmpegthumbnailer -i "$f" -s 0 -t 0 -a -o "$cache_f" 2>/dev/null
+	}
+
+	convert_and_show_image audio
+
+}}

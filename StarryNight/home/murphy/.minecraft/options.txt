@@ -131,7 +131,7 @@ key_key.inventoryhud.togglepot:key.keyboard.unknown
 key_key.inventoryhud.togglearm:key.keyboard.unknown
 key_key.inventoryhud.toggleall:key.keyboard.unknown
 key_key.modmenu.open_menu:key.keyboard.right.shift
-soundCategory_master:0.10927153
+soundCategory_master:0.102649
 soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0

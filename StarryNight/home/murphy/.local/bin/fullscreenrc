@@ -2,34 +2,30 @@
 
 dunst_config_path=~/DotFiles/StarryNight/home/murphy/.config/dunst/dunstrc
 
-while true ; do
+bspc subscribe node_geometry node_focus desktop_focus node_remove | while read ; do
 
 	foucused_window_width=$(bspc query -T -n focused | jq ".client .tiledRectangle .width")
 
 	# On fullscreen (Activate)
 	if [[ $foucused_window_width == "1920" && ! -f /tmp/fullscreen ]]; then
-		echo "Enterd fullscreen" >> /home/murphy/test &
-		touch /tmp/fullscreen &
-		pkill picom &
-		eww close actions spotify info &
-		pkill imwheel &
-		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> $dunst_config_path &
-		pkill dunst &
-		sudo pkill -USR1 ChatterBlocker &
+		echo "Enterd fullscreen"
+		touch /tmp/fullscreen
+		eww close actions spotify info && eww reload
+		pkill imwheel
+		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> $dunst_config_path
+		pkill dunst
+		sudo pkill -USR1 ChatterBlocker
 
 	# On fullscreen leave (Deactivate)
 	elif [[ $foucused_window_width != "1920" && -f /tmp/fullscreen ]]; then
-		echo "Left fullscreen" >> /home/murphy/test &
-		rm /tmp/fullscreen &
-		picom -b &
-		eww open-many actions spotify info dates &> /dev/null && eww reload && init_eww &
-		imwheel -b "45" -k &
-		sed -i "$(( $(wc -l <$dunst_config_path)-3+1 )),$ d" $dunst_config_path &
-		pkill dunst &
-		sudo pkill -USR1 ChatterBlocker &
+		echo "Left fullscreen"
+		rm /tmp/fullscreen
+		eww open-many actions spotify info dates &> /dev/null && init_eww
+		imwheel -b "45" -k
+		sed -i "$(( $(wc -l <$dunst_config_path)-3+1 )),$ d" $dunst_config_path
+		pkill dunst
+		sudo pkill -USR1 ChatterBlocker
 
 	fi
-
-	sleep 0.2
 
 done

@@ -12,8 +12,7 @@ super + alt + s
 
 # todo list
 super + ctrl + t
-	addr="/home/murphy/.config/rofi/todo.sh" && rofi -show todo -modi "todo:$addr,movie:$addr --movie"
-
+	addr="/home/murphy/.config/rofi/todolist" && rofi -modi "general-todo:$addr general,movie-todo:$addr movie" -show general-todo
 # emoji list
 super + e
 	rofi -modi emoji -show emoji
@@ -36,7 +35,7 @@ super + ctrl + r
 
 # quit programs
 super + q
-	bspc node -c
+	terminator
 
 # quit bspwm
 super + alt + q

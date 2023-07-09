@@ -1,0 +1,3 @@
+Go to spicetify and the marketplace click on the settings icon and then go down
+where it says backup/restore click open and then click import from file
+then choose the spicetify-backup file thats it :)

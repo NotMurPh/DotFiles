@@ -1,0 +1,15 @@
+#!/bin/bash
+
+window_name=$(xprop -id $1 WM_NAME | cut -d\" -f2)
+
+# Resize steam friend list
+if [[ $window_name == "Friends List" ]] ; then
+
+	echo "split_ratio=0.798"
+
+# Make every steam window except steam it self and friend list float and centered
+elif [[ $2 == "steam" && $window_name != "Steam" ]] ; then
+
+	echo "state=floating center=true"
+
+fi

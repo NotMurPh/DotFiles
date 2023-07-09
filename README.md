@@ -40,7 +40,7 @@ Here is a preview of my dotfiles
 
 - [Steam](StarryNight/home/murphy/.local/share/Steam)
 
-![Steam](https://i.imgur.com/OAXdC5V.png)
+![Steam](https://i.imgur.com/hdcc7WC.png)
 
 - Spotify & [Spicetify](StarryNight/home/murphy/.config/spicetify) 
 

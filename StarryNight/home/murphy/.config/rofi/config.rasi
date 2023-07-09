@@ -16,8 +16,8 @@ configuration {
     display-filebrowser:        "";
     display-window:             "";
     display-calc:               "";
-    display-todo:	 			"";
-    display-movie: 				"ﳜ";
+    display-general-todo:		"";
+    display-movie-todo:			"ﳜ";
 	display-emoji: 				"ﲃ";
     display-ssh:                "力";
 	drun-display-format:        "{name}";

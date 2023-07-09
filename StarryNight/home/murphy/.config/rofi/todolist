@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# If this character is present at the first letter, the argument counts as a new task
+special_char="."
+
+list_name="$1"
+list=~/.config/rofi/"$list_name".todo
+
+# Removing special_char from argument until the first non special_char letter
+task=$(echo "$2" | sed "s/^\\${special_char}*//")
+task_added=false
+
+# Add the task to todolist if argument starts with special_char
+if [[ "$2" == "$special_char"* ]] ; then
+	echo " $task" >> "$list"
+	task_added=true
+fi
+
+# If task addition failed try removing it :)
+if [[ "$task_added" == false ]] ; then 
+	sed -i "0,/^${2}$/s///" "$list"
+fi
+
+# Show the contents of the specifed todolist
+cat "$list"

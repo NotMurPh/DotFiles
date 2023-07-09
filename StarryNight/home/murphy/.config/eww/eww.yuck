@@ -13,7 +13,7 @@
                 :anchor "top center"
         )
         :stacking "fg"
-        :windowtype "dock"
+        :windowtype "desktop"
         :reserve ( struts :distance "50px" :side "top" )
         :wm-ignore false
         ( actions :class "actions" )
@@ -194,7 +194,7 @@
                 :anchor "center top"
         )
         :stacking "fg"
-        :windowtype "dock"
+        :windowtype "desktop"
         :reserve ( struts :distance "40px" :side "top" )
         :wm-ignore false
         ( spotify :class "spotify" )
@@ -299,7 +299,7 @@
                 :anchor "center top"
         )
         :stacking "fg"
-        :windowtype "dock"
+        :windowtype "desktop"
         :reserve ( struts :distance "40px" :side "top" )
         :wm-ignore false
         ( info :class "info" )
@@ -331,7 +331,7 @@
                         
                         ( label :class "cpu_icon" :text "" )
 
-                        ( label :class "cpu_usage" :text "${round(EWW_CPU.avg,0)}%" )
+                        ( label :class "cpu_usage" :text "${round(cpu_usage,0)}%" )
                 )
 
                 (       
@@ -346,6 +346,14 @@
 	)
 )
 
+; ram_usage variable gets the free ram size every one second
+
+( defpoll ram_usage :initial "0" :interval "1s" "free -h | awk '/^Mem/ { print $3 }' | sed s/i//g" )
+
+; cpu_usage variable gets the last second average cpu usage every second
+
+( defpoll cpu_usage :initial "0" :interval "1s" "awk '{u=$2+$4; t=$2+$4+$5; if (NR==1){u1=u; t1=t;} else print ($2+$4-u1) * 100 / (t-t1);}' <(grep 'cpu ' /proc/stat) <(sleep 0.5;grep 'cpu ' /proc/stat) &" )
+
 ; time variable gets the time every one second
 
 ( defpoll time :initial "time" :interval "1s" "date +%I:%M" )
@@ -353,10 +361,6 @@
 ; time variable gets the time every one second
 
 ( defpoll date :initial "date" :interval "1s" "echo $(date +%_F ; echo '(' ; date +%B ; date +%A ; echo ')' )" )
-
-; ram_usage variable gets the free ram size every one second
-
-( defpoll ram_usage :initial "ram" :interval "1s" "free -h | awk '/^Mem/ { print $3 }' | sed s/i//g" )
 
 ; date window ( second monitor middle ) -----------------------------------------------------------------------------------------------------------------------------------
 
@@ -372,7 +376,7 @@
                 :anchor "center top"
         )
         :stacking "fg"
-        :windowtype "dock"
+        :windowtype "desktop"
         :reserve ( struts :distance "50px" :side "top" )
         :wm-ignore false
         ( dates )

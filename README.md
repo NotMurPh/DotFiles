@@ -48,7 +48,7 @@ Here is a preview of my dotfiles
 
 - [Telegram](StarryNight/usr/share/TelegramDesktop)
 
-![Telegram](https://i.imgur.com/bo74BgQ.png)
+![Telegram](https://i.imgur.com/e8NRDbE.png)
 
 - [Discord](StarryNight/home/murphy/.config/discord) & [BetterDiscord](StarryNight/home/murphy/.config/BetterDiscord)
 

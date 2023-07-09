@@ -48,6 +48,7 @@ return require("packer").startup(function(use)
 
     -- Theme
     use("nvim-treesitter/nvim-treesitter")
+	use("elkowar/yuck.vim")
     use{ "catppuccin/nvim" , as = "catppuccin" }
 	use("folke/tokyonight.nvim")
 

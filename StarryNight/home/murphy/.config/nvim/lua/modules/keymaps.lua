@@ -1,4 +1,4 @@
--- keymap Made simpler
+-- Keymap made simpler
 local keymap = vim.keymap.set
 
 -- Global keybind optins

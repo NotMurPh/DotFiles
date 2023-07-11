@@ -18,7 +18,7 @@ fi
 
 # If task addition failed try removing it :)
 if [[ "$task_added" == false ]] ; then 
-	sed -i "0,/^${2}$/s///" "$list"
+	sed -i "0,/${2}/{/^${2}$/d}" "$list"
 fi
 
 # Show the contents of the specifed todolist

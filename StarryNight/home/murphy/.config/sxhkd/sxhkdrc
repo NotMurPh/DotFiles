@@ -12,7 +12,7 @@ super + alt + s
 
 # todo list
 super + ctrl + t
-	addr="/home/murphy/.config/rofi/todolist" && rofi -modi "general-todo:$addr general,movie-todo:$addr movie" -show general-todo
+	rofi -modi "general-todo:todolist general,movie-todo:todolist movie" -show general-todo
 # emoji list
 super + e
 	rofi -modi emoji -show emoji

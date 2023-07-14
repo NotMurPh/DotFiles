@@ -1,29 +1,11 @@
 #!/bin/bash
 
-# priority startup -------------------------------------------------------------------------------------------------------------------------------------------------
-
-export PATH="$PATH:/home/murphy/.local/bin"
-export PATH="$PATH:/usr/bin/eww"
-fehbg &
-picom -b
-pgrep -x eww > /dev/null || eww open-many actions spotify info dates > /dev/null 2>&1 && init_eww &
-pgrep -x sxhkd > /dev/null || sxhkd &
-xsetroot -cursor_name left_ptr &
-xrandr --output DP-4 --mode 1920x1080 --rate 240 &
-nvidia-settings -l &
-pgrep -x ChatterBlocker > /dev/null || ChatterBlocker /dev/input/by-id/usb-Logitech_G513_Carbon_Tactile_0B5238613437-event-kbd 30 2>&1 &
-
-# end of priority startup ------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 # bspwm config -----------------------------------------------------------------------------------------------------------------------------------------------------
 
 bspc monitor DP-4 -d 1 2 3 &
 bspc monitor HDMI-0 -d 4 5 6 &
 bspc config border_width 0 &
 bspc config window_gap 15 &
-bspc config split_ratio 0.50 &
 bspc config pointer_motion_interval 0 &
 bspc config external_rules_command /home/murphy/DotFiles/StarryNight/home/murphy/.config/bspwm/rules &
 
@@ -31,17 +13,33 @@ bspc config external_rules_command /home/murphy/DotFiles/StarryNight/home/murphy
 
 
 
+# priority startup -------------------------------------------------------------------------------------------------------------------------------------------------
+
+export PATH="$PATH:/home/murphy/.local/bin"
+fehbg &
+xsetroot -cursor_name left_ptr &
+xrandr --output DP-4 --mode 1920x1080 --rate 240 &
+picom -b
+pgrep -x eww > /dev/null || eww open-many actions spotify info dates &> /dev/null && init_eww &
+pgrep -x ChatterBlocker > /dev/null || ChatterBlocker /dev/input/by-id/usb-Logitech_G513_Carbon_Tactile_0B5238613437-event-kbd 30 > /dev/null &
+pgrep -x sxhkd > /dev/null || sxhkd &
+nvidia-settings -l &
+
+# end of priority startup ------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 #startup -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-vpn on
+pkill openrgb ; openrgb -p blue > /dev/null &
+vpn on > /dev/null &
 xset q | grep -o "Num Lock:    on" || xdotool key Num_Lock &
 setxkbmap -layout us,ir -option 'grp:win_space_toggle' &
-imwheel -b "45" -k
-pkill openrgb ; openrgb -p blue &
+imwheel -b "45" -k > /dev/null
+pkill fullscreenrc ; fullscreenrc > /dev/null &
 light-locker --late-locking --lock-after-screensaver=0 &
-pkill fullscreenrc ; fullscreenrc &
 pactl list | grep "Name: FilteredMic" > /dev/null || pactl load-module module-echo-cancel use_master_format=1 aec_method="webrtc" aec_args="analog_gain_control=1 agc_start_volume=0 noise_suppression=1" source_name="FilteredMic"
-pgrep -x gpu-screen-reco > /dev/null || gpu-screen-recorder -w "DP-4" -q "ultra" -f 60 -a "alsa_output.pci-0000_00_1f.3.analog-stereo.monitor|FilteredMic" -r 90 -c "mp4" -o /mnt/Murphy/Media/Records > /dev/null 2>&1 &
-export PATH="$PATH:/home/murphy/.local/bin/spotdl"
+sleep 1 ; pgrep -x gpu-screen-reco > /dev/null || gpu-screen-recorder -w "DP-4" -q "ultra" -f 60 -a "alsa_output.pci-0000_00_1f.3.analog-stereo.monitor|FilteredMic" -r 90 -c "mp4" -o /mnt/Murphy/Media/Records > /dev/null &
+export PATH="$PATH:/home/murphy/.local/bin/spotdl" &
 
 #end of startup ----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -35,7 +35,7 @@ super + ctrl + r
 
 # quit programs
 super + q
-	terminator
+	xclip -o | xclip -selection clipboard ; terminator
 
 # quit bspwm
 super + alt + q
@@ -111,7 +111,3 @@ super + g
 # record the last minute or so (instant replay)
 super + alt + c
 	killall -SIGUSR1 gpu-screen-recorder && notify-send "GpuScreenRecorder" "Last Minute Captured"
-
-# fix clipboard
-ctrl + c
-	xclip -o | xclip -sel clip 

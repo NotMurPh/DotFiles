@@ -39,7 +39,7 @@
     scale = 0
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 5
+    notification_limit = 4
 
     ### Progress bar ###
 
@@ -63,7 +63,7 @@
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
-    indicate_hidden = yes
+    indicate_hidden = no
 
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is

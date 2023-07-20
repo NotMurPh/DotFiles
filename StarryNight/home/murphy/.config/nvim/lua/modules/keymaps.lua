@@ -65,13 +65,13 @@ keymap( "i" , "<C-e>" , cmp.abort , options )
 -- Luasnip
 local ls = require("luasnip")
 
-keymap( { "n" , "i" , "s" } , "<C-j>" , function()
+keymap( { "n" , "i" , "s" } , "<C-k>" , function()
 	if ls.expand_or_jumpable() then
 		ls.expand_or_jump()
 	end
 end , options )
 
-keymap( { "n" , "i" , "s" } , "<C-k>" , function()
+keymap( { "n" , "i" , "s" } , "<C-j>" , function()
 	if ls.jumpable(-1) then
 		ls.jump(-1)
 	end

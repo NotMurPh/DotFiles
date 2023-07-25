@@ -39,7 +39,6 @@ interface2_existance=$( nmcli device | grep -o $interface2 )
 # Cycling through interfaces
 if [[ $interface1_state == $interface1 ]]; then
 
-	nmcli device disconnect $interface1
 	if [[ $interface2_existance == $interface2 ]]; then
 		nmcli device connect $interface2
 		UpdateEww "P-Murphy" "2"
@@ -47,11 +46,12 @@ if [[ $interface1_state == $interface1 ]]; then
 		nmcli device connect $interface3
 		UpdateEww "I-Murphy" "3"
 	fi
+	nmcli device disconnect $interface1
 
 elif [[ $interface2_state == $interface2 ]]; then
 
-	nmcli device disconnect $interface2
 	nmcli device connect $interface3
+	nmcli device disconnect $interface2
 	UpdateEww "I-Murphy" "3"
 
 elif [[ $interface3_state == $interface3 ]]; then

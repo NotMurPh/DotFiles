@@ -69,6 +69,10 @@ cmd trim %{{
 	ffmpeg -i $f -ss $start -t $end -c:v copy -c:a copy Trimmed_$(basename $f) &
 }}
 
+cmd on-quit ${{
+	pkill ctpv
+}}
+
 # Integrations
 
 set previewer ctpv

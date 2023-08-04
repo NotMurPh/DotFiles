@@ -25,17 +25,6 @@ require("bufferline").setup({
             }
         },
 
-		name_formatter = function(buf)
-			if buf.name:find("%.") then
-				if buf.name:sub(1,1) == "." and not buf.name:find("%.", 2) then
-					return buf.name
-				else
-					return "  " .. buf.name:match("(.-)%.[^%.]+$")
-				end
-			end
-			return buf.name
-		end,
-
 		custom_filter = function (bufnum)
 			if vim.fn.bufname(bufnum) ~= "[No Name]" then
 				return true

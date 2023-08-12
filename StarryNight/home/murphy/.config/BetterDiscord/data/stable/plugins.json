@@ -1,5 +1,5 @@
 {
     "BDFDB": false,
-    "PluginRepo": true,
-    "ThemeRepo": true
+    "PluginRepo": false,
+    "ThemeRepo": false
 }

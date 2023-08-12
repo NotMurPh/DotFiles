@@ -1,0 +1,45 @@
+:root {
+	--bg: #1E1E2EFF;
+	--fg: #FFFFFFFF;
+	--border: #1E1E2EFF;
+	--window_bg: #1E1E2EFF;
+	--window_fg: #FFFFFFFF;
+	--headerbar_backdrop: #1E1E2EFF;
+	--headerbar_bg: #1E1E2EFF;
+	--headerbar_fg: #FFFFFFFF;
+	--headerbar_shade: #000000D9;
+	--popover_bg: #1E1E2EFF;
+	--popover_fg: #FFFFFFFF;
+	--toast_bg: #1E1E2EB3;
+	--toast_fg: #FFFFFFFF;
+	--view_bg: #1E1E2EFF;
+	--view_fg: #FFFFFFFF; /* view_fg = #1E1E2EFF */
+	--accent: #585B70FF;
+	--accent_bg: #1E1E2EFF;
+	--accent_fg: #FFFFFFFF;
+	--accent_disabled: #585B7080;
+	--accent_hover_bg: #585B7012;
+	--accent_active_bg: #585B7029;
+	--destructive: #EE99A0FF;
+	--destructive_bg: #ED8796FF;
+	--destructive_fg: #FFFFFFFF;
+	--destructive_disabled: #EE99A080;
+	--destructive_hover_bg: #EE99A012;
+	--destructive_active_bg: #EE99A029;
+	--error: #EE99A0FF;
+	--error_bg: #ED8796FF;
+	--error_fg: #FFFFFFFF;
+	--success: #A6DA95FF;
+	--success_bg: #8BD5CAFF;
+	--success_fg: #FFFFFFFF;
+	--warning: #F5A97FFF;
+	--warning_bg: #EED49FFF;
+	--warning_fg: #11111BFF;
+	--button_fg: #FFFFFFFF;
+	--dim_label_fg: #FFFFFF8C;
+	--card_solid_bg: #1E1E2EFF;
+	--focusring: #585B7080;
+	--scrollbar: #585B7033;
+	--scrollbar_hover: #585B7066;
+	--scrollbar_active: #585B7099;
+}

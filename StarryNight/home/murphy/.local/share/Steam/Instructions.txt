@@ -2,4 +2,4 @@ First move starry-night folder to Adwaita-for-Steam/colorthemes folder
 mv starry-night ./Adwaita-for-Steam/colorthemes/
 
 Then go to Adwaita-for-Steam folder and execute this command 
-./install.py -c starry-night -w full
+./install.py -c starry-night -e library/hide_whats_new

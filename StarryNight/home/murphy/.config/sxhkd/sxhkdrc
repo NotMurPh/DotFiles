@@ -111,3 +111,14 @@ super + g
 # record the last minute or so (instant replay)
 super + alt + c
 	killall -SIGUSR1 gpu-screen-recorder && notify-send "GpuScreenRecorder" "Last Minute Captured"
+
+# start/stop manual record
+super + shift + c
+	bash -c 'addr="/mnt/Murphy/Media/Records/Replay_$(date +%F_%H-%M-%S).mp4"; \
+	if pgrep -f "Replay_" | grep -vw $$ ; then \
+			pkill -SIGINT -f "Replay_"; \
+			notify-send "GpuScreenRecorder" "Stopped Recording"; \
+	else \
+			gpu-screen-recorder -w "DP-4" -q "ultra" -f 60 -a "alsa_output.pci-0000_00_1f.3.analog-stereo.monitor|FilteredMic" -o "$addr" -v no > /dev/null & \
+			notify-send "GpuScreenRecorder" "Started Recording"; \
+	fi'

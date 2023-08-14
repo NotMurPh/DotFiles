@@ -21,7 +21,7 @@ xsetroot -cursor_name left_ptr &
 xrandr --output DP-4 --mode 1920x1080 --rate 240 &
 picom -b
 pgrep -x eww > /dev/null || eww open-many actions spotify info dates &> /dev/null && init_eww &
-pgrep -x ChatterBlocker > /dev/null || ChatterBlocker /dev/input/by-id/usb-Logitech_G513_Carbon_Tactile_0B5238613437-event-kbd 30 > /dev/null &
+pgrep -x ChatterBlocker > /dev/null || ChatterBlocker /dev/input/by-id/usb-Logitech_G513_Carbon_Tactile_0B5238613437-event-kbd 40 > /dev/null &
 pgrep -x sxhkd > /dev/null || sxhkd &
 nvidia-settings -l &
 

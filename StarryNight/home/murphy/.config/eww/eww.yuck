@@ -38,7 +38,7 @@
 
                 ( box )
                         
-                ( literal :content workspaces :halign "end")
+                ( literal :content workspaces :halign "end" )
         )
 )
 
@@ -218,7 +218,7 @@
 
                 (
                         scale
-                        :visible "${ spotify_status=='' ? false : true}"
+                        :visible "${ spotify_status=='' ? false : true }"
                         :class "player_time"
                         :value player_progress
                         :max 101
@@ -230,14 +230,14 @@
                 (
                         box
                         :space-evenly false
-                        :visible "${ spotify_status=='' ? false : true}"
+                        :visible "${ spotify_status=='' ? false : true }"
                         :halign "end" 
 
-                        ( button :class "${ shuffle_status=='On' ? 'shuffle_btn_on' : 'shuffle_btn_off' }" :onclick "${ shuffle_status=='On' ? 'eww update shuffle_status=Off && spotify_ctl --shuffle' : 'eww update shuffle_status=On && spotify_ctl --shuffle' }" "列")
+                        ( button :class "${ shuffle_status=='On' ? 'shuffle_btn_on' : 'shuffle_btn_off' }" :onclick "${ shuffle_status=='On' ? 'eww update shuffle_status=Off && spotify_ctl --shuffle' : 'eww update shuffle_status=On && spotify_ctl --shuffle' }" "列" )
 
                         ( button :class "prev_btn" :onclick "spotify_ctl --prev" "玲" )
         
-                        ( button :class "play_btn" :onclick "${spotify_status=='Playing' ? 'eww update spotify_status=Paused && spotify_ctl --toggle-player' : 'eww update spotify_status=Playing && spotify_ctl --toggle-player'}" "${spotify_status=='Playing' ? '' : '契'}" )
+                        ( button :class "play_btn" :onclick "${ spotify_status=='Playing' ? 'eww update spotify_status=Paused && spotify_ctl --toggle-player' : 'eww update spotify_status=Playing && spotify_ctl --toggle-player'}" "${ spotify_status=='Playing' ? '' : '契' }" )
 
                         ( button :class "next_btn" :onclick "spotify_ctl --next" "怜" )
 
@@ -362,6 +362,14 @@
 
 ( defpoll date :initial "date" :interval "1s" "echo $(date +%_F ; echo '(' ; date +%B ; date +%A ; echo ')' )" )
 
+; date_jalali variable gets the iranian date every second
+
+( defpoll date_jalali :initial "date" :interval "1s" "echo $( jdate +%F ; echo '(' ; jdate +%B ; jdate +%q | sed 's/-//' ; echo ')' )" )
+
+; time2 variable gets the time every one second
+
+( defpoll time2 :initial "time" :interval "1s" "echo $( date +%I:%M ; date +%p )" )
+
 ; date window ( second monitor middle ) -----------------------------------------------------------------------------------------------------------------------------------
 
 (
@@ -406,11 +414,3 @@
                 ( label :class "jalali" :text "${date_jalali}" :halign "end" )
         )
 )
-
-; date_jalali variable gets the iranian date every second
-
-( defpoll date_jalali :initial "date" :interval "1s" "echo $( jdate +%F ; echo '(' ; jdate +%B ; jdate +%q | sed 's/-//' ; echo ')' )" )
-
-; time2 variable gets the time every one second
-
-( defpoll time2 :initial "time" :interval "1s" "echo $(date +%I:%M ; date +%p)" )

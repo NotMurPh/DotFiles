@@ -15,7 +15,6 @@ bspc config external_rules_command /home/murphy/DotFiles/StarryNight/home/murphy
 
 # priority startup -------------------------------------------------------------------------------------------------------------------------------------------------
 
-export PATH="$PATH:/home/murphy/.local/bin"
 fehbg &
 xsetroot -cursor_name left_ptr &
 xrandr --output DP-4 --mode 1920x1080 --rate 240 &
@@ -23,7 +22,7 @@ picom -b
 pgrep -x eww > /dev/null || eww open-many actions spotify info dates &> /dev/null && init_eww &
 pgrep -x ChatterBlocker > /dev/null || ChatterBlocker /dev/input/by-id/usb-Logitech_G513_Carbon_Tactile_0B5238613437-event-kbd 40 > /dev/null &
 pgrep -x sxhkd > /dev/null || sxhkd &
-nvidia-settings -l &
+nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings -l &
 
 # end of priority startup ------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -41,6 +40,5 @@ pkill fullscreenrc ; fullscreenrc > /dev/null &
 light-locker --late-locking --lock-after-screensaver=0 &
 pactl list | grep "Name: FilteredMic" > /dev/null || pactl load-module module-echo-cancel use_master_format=1 aec_method="webrtc" aec_args="analog_gain_control=1 agc_start_volume=0 noise_suppression=1" source_name="FilteredMic"
 sleep 1 ; pgrep -x gpu-screen-reco > /dev/null || gpu-screen-recorder -w "DP-4" -q "ultra" -f 60 -a "alsa_output.pci-0000_00_1f.3.analog-stereo.monitor|FilteredMic" -r 90 -c "mp4" -o /mnt/Murphy/Media/Records -v no > /dev/null &
-export PATH="$PATH:/home/murphy/.local/bin/spotdl" &
 
 #end of startup ----------------------------------------------------------------------------------------------------------------------------------------------------

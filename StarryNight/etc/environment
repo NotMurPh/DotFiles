@@ -4,3 +4,4 @@ __GL_SYNC_TO_VBLANK=0
 EDITOR=nvim
 QT_QPA_PLATFORMTHEME=gtk2
 WINIT_X11_SCALE_FACTOR=1
+PF_INFO="ascii title os kernel wm uptime pkgs memory"

@@ -66,7 +66,7 @@ cmd trim %{{
 	if [[ $end == "0" || $end == "" ]] ; then
 		end=$(ffprobe -i $f -show_entries format=duration -v quiet -of csv="p=0")
 	fi
-	ffmpeg -i $f -ss $start -t $end -c:v copy -c:a copy Trimmed_$(basename $f) &
+	ffmpeg -i $f -ss $start -to $end -c:v copy -c:a copy Trimmed_$(basename $f) &
 }}
 
 # Integrations
@@ -74,4 +74,5 @@ cmd trim %{{
 set previewer ctpv
 set cleaner ctpvclear
 &ctpv -s $id
+&ctpvquit $id
 cmd on-quit $pkill ctpv

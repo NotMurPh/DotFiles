@@ -106,7 +106,7 @@ super + c
 
 # screenshot with selection (grab)
 super + g
-	addr="/mnt/Murphy/Media/Screenshots/$(date +%F_%H-%M-%S).png" && sel="$( test -f /tmp/fullscreen && ( slop -b 2 -c '1,1,0' ; true ) || slop -b 2 -c '1,1,0,0.5' -l )" && shotgun -g $sel $addr && xclip -t 'image/png' -selection clipboard $addr && notify-send "Screenshot" "Screen Captured"
+	addr="/mnt/Murphy/Media/Screenshots/$(date +%F_%H-%M-%S).png" && sel="$( test -f /tmp/fullscreen && ( slop -b 2 -c '1,1,0' ; true ) || slop -b 2 -c '1,1,0,0.5' -l )" && sleep 0.01 && shotgun -g $sel $addr && xclip -t 'image/png' -selection clipboard $addr && notify-send "Screenshot" "Screen Captured"
 
 # record the last minute or so (instant replay)
 super + alt + c

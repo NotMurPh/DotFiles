@@ -38,7 +38,7 @@ imwheel -b "45" -k &> /dev/null
 pgrep -x ClipGuard > /dev/null || ClipGuard > /dev/null &
 pkill fullscreenrc ; fullscreenrc > /dev/null &
 light-locker --late-locking --lock-after-screensaver=0 &
-pactl list | grep "Name: FilteredMic" > /dev/null || pactl load-module module-echo-cancel use_master_format=1 aec_method="webrtc" aec_args="analog_gain_control=1 agc_start_volume=0 noise_suppression=1" source_name="FilteredMic"
+pactl list | grep "Name: FilteredMic" > /dev/null || pactl load-module module-echo-cancel use_master_format=1 aec_method="webrtc" aec_args="noise_suppression=1" source_name="FilteredMic"
 sleep 1 ; pgrep -x gpu-screen-reco > /dev/null || gpu-screen-recorder -w "DP-4" -q "ultra" -f 60 -a "alsa_output.pci-0000_00_1f.3.analog-stereo.monitor|FilteredMic" -r 90 -c "mp4" -o /mnt/Murphy/Media/Records -v no > /dev/null &
 
 #end of startup ----------------------------------------------------------------------------------------------------------------------------------------------------

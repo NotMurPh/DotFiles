@@ -19,8 +19,8 @@ map D delete
 map m mkdir
 map a zip
 map x extract
-map c compress
-map C trim
+map c compress-video
+map C cut-video
 
 # Custom functions
 
@@ -51,13 +51,13 @@ cmd extract ${{
     esac
 }}
 
-cmd compress %{{
+cmd compress-video %{{
     for name in $fx ; do
         ffmpeg -i $name -vf "scale=trunc(iw/4)*2:trunc(ih/4)*2" -c:v libx265 -crf 28 Compressed_$(basename $name) &
     done
 }}
 
-cmd trim %{{
+cmd cut-video %{{
 	echo " start: "
 	read start
 	echo " end: "
@@ -66,7 +66,7 @@ cmd trim %{{
 	if [[ $end == "0" || $end == "" ]] ; then
 		end=$(ffprobe -i $f -show_entries format=duration -v quiet -of csv="p=0")
 	fi
-	ffmpeg -i $f -ss $start -to $end -c:v copy -c:a copy Trimmed_$(basename $f) &
+	ffmpeg -i $f -ss $start -to $end -c:v copy -c:a copy Cutted_$(basename $f) &
 }}
 
 # Integrations

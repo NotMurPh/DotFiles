@@ -11,7 +11,7 @@ set cursorpreviewfmt "\033[7m"
 
 # Key mapping
 
-map t shell
+map t touch
 map u push :unselect<enter>:clear<enter>
 map <enter> open
 map <delete> delete
@@ -28,6 +28,12 @@ cmd mkdir %{{
     echo " mkdir: "
     read name
     mkdir $name
+}}
+
+cmd touch %{{
+    echo " touch: "
+    read name
+    touch $name
 }}
 
 cmd zip ${{

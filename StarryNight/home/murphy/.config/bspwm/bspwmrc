@@ -33,7 +33,6 @@ nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings -l &
 pkill openrgb ; openrgb -p blue > /dev/null &
 vpn on > /dev/null &
 xset q | grep -o "Num Lock:    on" || xdotool key Num_Lock &
-setxkbmap -layout us,ir -option 'grp:win_space_toggle' &
 imwheel -b "45" -k &> /dev/null
 pgrep -x ClipGuard > /dev/null || ClipGuard > /dev/null &
 pkill fullscreenrc ; fullscreenrc > /dev/null &

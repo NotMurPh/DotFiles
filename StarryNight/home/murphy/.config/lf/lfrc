@@ -81,4 +81,7 @@ set previewer ctpv
 set cleaner ctpvclear
 &ctpv -s $id
 &ctpvquit $id
-cmd on-quit $pkill ctpv
+cmd on-quit ${{
+	pkill -f "ctpv -s $id"
+	pkill -f "ctpvquit -s $id"
+}}

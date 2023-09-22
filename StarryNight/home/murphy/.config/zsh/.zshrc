@@ -59,3 +59,34 @@ swap()
 ipinfo() {
     curl http://ip-api.com/$1
 }
+
+route() {
+
+	name=$(nmcli c | grep -vE 'NAME|lo' | awk -F '  ' 'NR==1 {print $1}')
+	gateway=$(nmcli connection show "$name" | grep IP4.GATEWAY | awk '{print $2}')
+
+	if [[ -z "$2" ]] ; then
+		echo "You didn't enter the required ip address!" ; return 
+	fi
+
+	case $1 in
+
+		add)
+			nmcli connection modify "$name" +ipv4.routes "$2 $gateway"
+		;;
+
+		remove)
+			nmcli connection modify "$name" -ipv4.routes "$2 $gateway"
+		;;
+
+		*)
+			echo "There is no operation $1, choose between either add/remove" ; return
+		;;
+
+	esac
+
+	nmcli connection up "$name"
+
+	echo "$name Updated successfully"
+
+}

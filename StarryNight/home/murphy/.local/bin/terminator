@@ -9,6 +9,6 @@ bspc node -c
 
 for each_name in "${blacklist[@]}" ; do 
 	if [[ $each_name == $focused_window_name || $each_name == $focused_window_class ]] ; then
-		sudo pkill -9 -x $focused_window_name || sudo pkill -9 -x $focused_window_class
+		sudo pkill -9 -x $each_name || sudo pkill -9 -x $each_name
 	fi
 done

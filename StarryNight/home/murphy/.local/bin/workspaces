@@ -10,7 +10,7 @@ ws5="5"
 ws6="6"
 
 # Unoccupied
-un="0"
+un="u"
 
 # check if Occupied
 o1=$(bspc query -D -d .occupied --names | grep "$ws1" )

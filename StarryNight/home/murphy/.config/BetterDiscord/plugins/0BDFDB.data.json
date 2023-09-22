@@ -49,6 +49,7 @@
 		},
 		"UserBadges": {
 			"active_developer": "6bdc42827a38498929a4920da12695d9",
+			"automod": "f2459b691ac7453ed6039bbcfaccbfcd",
 			"bot_commands": "6f9e37f9029ff57aef81db857890005e",
 			"bug_hunter_lvl1": "2717692c7dca7289b35297368a940dd0",
 			"bug_hunter_lvl2": "848f79194d4be5ff5f81505cbd0ce1e6",
@@ -131,6 +132,14 @@
 		"ChatRestrictionUtils": {"strings": ["openWarningPopout", "userCanUsePremiumMessageLength"], "exported": false, "value": "exports", "map": {
 			"applyChatRestrictions": ["openWarningPopout", "userCanUsePremiumMessageLength"]
 		}},
+		"ConnectionMetadataUtils": {"strings": ["connectedAccountVanityMetadataTag", "CONNECTIONS_PROFILE_GENERIC_VANITY_METRIC"], "exported": false, "value": "exports", "map": {
+			"getEbay": ["PC.EBAY_TOP_RATED_SELLER"],
+			"getPaypal": ["PC.PAYPAL_VERIFIED"],
+			"getReddit": ["PC.REDDIT_GOLD"],
+			"getSteam": ["PC.STEAM_GAME_COUNT"],
+			"getTiktok": ["PC.TIKTOK_FOLLOWER_COUNT"],
+			"getTwitter": ["PC.TWITTER_STATUSES_COUNT"]
+		}},
 		"ConnectionProviderUtils": {"props": ["get", "isSupported", "filter"]},
 		"ConnectionUtils": {"props": ["setShowActivity", "setVisibility"]},
 		"ContextMenuUtils": {"strings": ["renderLazy", "type:\"CONTEXT_MENU_CLOSE\""], "exported": false, "value": "exports", "map": {
@@ -146,7 +155,6 @@
 		"EmojiUtils": {"props": ["translateInlineEmojiToSurrogates", "translateSurrogatesToInlineEmoji"]},
 		"EmojiStateUtils": {"props": ["getURL", "isEmojiDisabled"]},
 		"Env": {"props": ["env"]},
-		"FileRequestUtils": {"props": ["getFileData", "getImageData"]},
 		"FolderSettingsUtils": {"props": ["updateLocale", "updateTheme"], "exported": false, "value": "exports", "map": {
 			"saveGuildFolders": ["guildFolders"]
 		}},
@@ -172,7 +180,7 @@
 			"renderImageComponent": ["renderAdjacentContent", "imageContent"]
 		}},
 		"MediaEngineUtils": {"props": ["setOutputDevice", "setInputDevice"]},
-		"MemberDisplayUtils": {"strings": ["getUserProfile", "getGuildMemberProfile", "_userProfile"], "exported": false, "value": "exports", "map": {
+		"MemberDisplayUtils": {"strings": ["getUserProfile", "getGuildMemberProfile", ".getUser("], "exported": false, "value": "exports", "map": {
 			"getDisplayProfile": ["getUserProfile"],
 			"getUserProfile": ["function(){return"]
 		}},
@@ -1496,7 +1504,7 @@
 		"GuildFolder": {"props": ["folder", "expandedFolderIconWrapper"]},
 		"GuildHeader": {"props": ["header", "name", "bannerImage"]},
 		"GuildHeaderButton": {"props": ["button", "open"]},
-		"GuildItem": {"props": ["listItem", "participating"], "length": 10, "smaller": true},
+		"GuildItem": {"props": ["listItem", "serverEmoji"]},
 		"GuildIcon": {"props": ["acronym", "selected", "wrapper"]},
 		"GuildInvite": {"props": ["wrapper", "guildIconJoined"]},
 		"GuildsButton": {"props": ["circleIconButton", "circleIcon"], "length": 6, "smaller": true},
@@ -1542,7 +1550,7 @@
 		"MembersWrapper": {"props": ["membersWrap", "membersGroup"]},
 		"Message": {"props": ["message", "mentioned"]},
 		"MessageAccessory": {"props": ["embedWrapper", "gifFavoriteButton"]},
-		"MessageAttachment": {"props": ["hiddenSpoilers", "spoiler"]},
+		"MessageAttachment": {"props": ["removeAttachmentButton", "inline"]},
 		"MessageBlocked": {"props": ["blockedMessageText", "expanded"]},
 		"MessageBody": {"props": ["markupRtl", "edited"]},
 		"MessageDivider": {"props": ["isUnread", "divider"]},
@@ -3228,9 +3236,6 @@
 		"slidertrack": ["Slider", "track"],
 		"spinner": ["Spinner", "spinner"],
 		"spoilercontainer": ["Spoiler", "spoilerContainer"],
-		"spoilerembed": ["MessageAttachment", "spoiler"],
-		"spoilerembedhidden": ["MessageAttachment", "hiddenSpoilers"],
-		"spoilerembedinline": ["MessageAttachment", "inline"],
 		"spoilerhidden": ["Spoiler", "hidden"],
 		"spoilertext": ["Spoiler", "spoilerContent"],
 		"spoilerwarning": ["Spoiler", "spoilerWarning"],

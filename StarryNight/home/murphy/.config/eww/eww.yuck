@@ -110,7 +110,7 @@
                         box
                         :space-evenly false
 
-                        ( button :class "${cycle_btn_class}" :onclick "cycle_networks &" "直")
+                        ( button :class "cycle_btn_class ${cycle_btn_class}" :onclick "cycle_networks &" "直")
 
                         (
                                 revealer
@@ -118,7 +118,7 @@
 								:reveal network_hover
 								:duration "400ms"
 
-                                ( button :class "${cycle_btn_status_class}" :onclick "cycle_networks &" "${cycle_btn_status}" )
+                                ( button :class "cycle_btn_status_class ${cycle_btn_status_class}" :onclick "cycle_networks &" "${cycle_btn_status}" )
                         )
 
                 )

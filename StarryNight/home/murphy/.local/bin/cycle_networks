@@ -31,9 +31,11 @@ UpdateEww() {
 interface1="enp4s0"
 interface2="enp0s20f0u9u1"
 interface3="wlp0s20f0u10"
+interface4="enp0s20f0u6u1"
 interface1_state=$( nmcli connection | grep -o $interface1 )
 interface2_state=$( nmcli connection | grep -o $interface2 )
 interface3_state=$( nmcli connection | grep -o $interface3 )
+interface4_state=$( nmcli connection | grep -o $interface4 )
 interface2_existance=$( nmcli device | grep -o $interface2 )
 
 # Cycling through interfaces
@@ -56,8 +58,14 @@ elif [[ $interface2_state == $interface2 ]]; then
 
 elif [[ $interface3_state == $interface3 ]]; then
 
-	nmcli device connect $interface1 || exit
+	nmcli device connect $interface4 || exit
 	nmcli device disconnect $interface3
+	UpdateEww "S-Murphy" "4"
+
+elif [[ $interface4_state == $interface4 ]]; then
+
+	nmcli device connect $interface1 || exit
+	nmcli device disconnect $interface4
 	UpdateEww "M-Murphy" "1"
 
 # When you disconnect your connected device

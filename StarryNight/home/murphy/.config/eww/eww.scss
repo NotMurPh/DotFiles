@@ -33,35 +33,37 @@ tooltip {
 
 // network section ----------------------------------------------------------
 
-.cycle_btn_class1 {
+.cycle_btn_class {
     padding: 2px 12.5px 0px 8px;
 }
 
 .cycle_btn_class2 {
-    padding: 2px 12.5px 0px 8px;
 	color: cyan;
 }
 
 .cycle_btn_class3 {
-    padding: 2px 12.5px 0px 8px;
 	color: yellow;
 }
 
-.cycle_btn_status_class1 {
+.cycle_btn_class4 {
+	color: #fa86c4;
+}
+
+.cycle_btn_status_class {
     padding: 5px 8px 0px 9px;
     font-size: 13px;
 }
 
 .cycle_btn_status_class2 {
-    padding: 5px 8px 0px 9px;
-    font-size: 13px;
 	color: cyan;
 }
 
 .cycle_btn_status_class3 {
-    padding: 5px 8px 0px 9px;
-    font-size: 13px;
     color: yellow;
+}
+
+.cycle_btn_status_class4 {
+    color: #fa86c4;
 }
 
 // vpn section ---------------------------------------------------------------

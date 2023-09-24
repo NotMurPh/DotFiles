@@ -8,6 +8,8 @@ GetCurrentInterface() {
 		echo "P-Murphy 2"
 	elif [[ $( nmcli connection | grep -o "wlp0s20f0u10"  ) == "wlp0s20f0u10" ]]; then
 		echo "I-Murphy 3"
+	elif [[ $( nmcli connection | grep -o "enp0s20f0u6u1"  ) == "enp0s20f0u6u1" ]]; then
+		echo "S-Murphy 4"
 	fi
 }
 

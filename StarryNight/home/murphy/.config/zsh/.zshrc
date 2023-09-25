@@ -90,3 +90,7 @@ route() {
 	echo "$name Updated successfully"
 
 }
+
+feh() {
+	/usr/bin/feh --keep-zoom-vp -g 1600x900 "$@"
+}

@@ -44,7 +44,7 @@ ic_6=""
 [ $a5 ] && ic_5=""
 [ $a6 ] && ic_6=""
 
-#tell eww
+# tell eww
 echo "( box :class \"workspaces_box\" :space-evenly \"false\" ( button :class \"$un$o1$a1\" :onclick \"bspc desktop -f $ws1\" \"$ic_1\" ) ( button :class \"$un$o2$a2\" :onclick \"bspc desktop -f $ws2\" \"$ic_2\" ) ( button :class \"$un$o3$a3\" :onclick \"bspc desktop -f $ws3\" \"$ic_3\" ) ( label :class \"workspace_spliter\" :text \"|\" ) ( button :class \"$un$o4$a4\" :onclick \"bspc desktop -f $ws4\" \"$ic_4\" ) ( button :class \"$un$o5$a5\" :onclick \"bspc desktop -f $ws5\" \"$ic_5\" ) ( button :class \"$un$o6$a6\" :onclick \"bspc desktop -f $ws6\" \"$ic_6\" ) )"
 
 }

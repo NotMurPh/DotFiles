@@ -13,6 +13,7 @@ super + alt + s
 # todo list
 super + ctrl + t
 	rofi -modi "general-todo:todolist general,movie-todo:todolist movie" -show general-todo
+
 # emoji list
 super + e
 	rofi -modi emoji -show emoji

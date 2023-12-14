@@ -14,7 +14,6 @@ bspc subscribe node_geometry node_focus desktop_focus node_remove | while read ;
 		pkill imwheel
 		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> $dunst_config_path
 		pkill dunst
-		sudo pkill -USR1 ChatterBlocker
 
 	# On fullscreen leave (Deactivate)
 	elif [[ $foucused_window_width != "1920" && -f ~/.cache/fullscreen ]]; then
@@ -24,7 +23,6 @@ bspc subscribe node_geometry node_focus desktop_focus node_remove | while read ;
 		imwheel -b "45" -k &> /dev/null
 		sed -i "$(( $(wc -l <$dunst_config_path)-3+1 )),$ d" $dunst_config_path
 		pkill dunst
-		sudo pkill -USR1 ChatterBlocker
 
 	fi
 

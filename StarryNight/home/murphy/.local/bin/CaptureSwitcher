@@ -1,0 +1,15 @@
+#!/bin/bash
+
+addr="/mnt/Murphy/Media/Records/Replay_$(date +%F_%H-%M-%S).mp4"
+
+if pgrep -f "Replay_" | grep -vw $$ ; then
+
+		pkill -SIGINT -f "Replay_";
+		notify-send "GpuScreenRecorder" "Recording Stopped";
+
+else
+
+		gpu-screen-recorder -w "DP-4" -q "ultra" -f 60 -a "IOMix.monitor" -o "$addr" -v no > /dev/null &
+		notify-send "GpuScreenRecorder" "Recording Started";
+
+fi

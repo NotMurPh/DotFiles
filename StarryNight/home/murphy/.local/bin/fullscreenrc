@@ -7,9 +7,9 @@ bspc subscribe node_geometry node_focus desktop_focus node_remove | while read ;
 	foucused_window_width=$(bspc query -T -n focused | jq ".client .tiledRectangle .width")
 
 	# On fullscreen (Activate)
-	if [[ $foucused_window_width == "1920" && ! -f /tmp/fullscreen ]]; then
+	if [[ $foucused_window_width == "1920" && ! -f ~/.cache/fullscreen ]]; then
 		echo "Enterd fullscreen"
-		touch /tmp/fullscreen
+		touch ~/.cache/fullscreen
 		eww close actions spotify info && eww reload
 		pkill imwheel
 		echo -e '[Spotify]\n    appname = "Spotify"\n    skip_display = "True"' >> $dunst_config_path
@@ -17,9 +17,9 @@ bspc subscribe node_geometry node_focus desktop_focus node_remove | while read ;
 		sudo pkill -USR1 ChatterBlocker
 
 	# On fullscreen leave (Deactivate)
-	elif [[ $foucused_window_width != "1920" && -f /tmp/fullscreen ]]; then
+	elif [[ $foucused_window_width != "1920" && -f ~/.cache/fullscreen ]]; then
 		echo "Left fullscreen"
-		rm /tmp/fullscreen
+		rm ~/.cache/fullscreen
 		eww open-many actions spotify info dates &> /dev/null && init_eww
 		imwheel -b "45" -k &> /dev/null
 		sed -i "$(( $(wc -l <$dunst_config_path)-3+1 )),$ d" $dunst_config_path

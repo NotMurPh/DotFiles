@@ -1,7 +1,7 @@
 #!/bin/bash
 
 open_udp2raw() {
-    sudo udp2raw -c -l 0.0.0.0:4444 -r 5.75.210.204:2005 --cipher-mode xor --auth-mode simple --raw-mode icmp > /dev/null 2>&1 &
+    sudo udp2raw -c -l 0.0.0.0:4444 -r 91.107.188.156:2001 --cipher-mode xor --auth-mode simple --raw-mode icmp > /dev/null 2>&1 &
 }
 
 close_udp2raw() {
@@ -25,7 +25,7 @@ case $1 in
     reload)
 		close_udp2raw
 		open_udp2raw
-	;;
+		;;
     *)
         echo 'Usage: Vpn <On/Off>'
         exit 1

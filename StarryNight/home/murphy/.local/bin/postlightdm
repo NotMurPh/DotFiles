@@ -3,5 +3,5 @@
 xrandr --output DP-4 --mode 1920x1080 --rate 240 &
 xsetroot -cursor_name left_ptr &
 xdotool mousemove 960 540 &
-pgrep -x ChatterBlocker > /dev/null || /home/murphy/.local/bin/ChatterBlocker /dev/input/by-id/usb-Logitech_G513_Carbon_Tactile_0B5238613437-event-kbd 30 > /dev/null &
+pgrep -x ChatterBlocker > /dev/null || /home/murphy/.local/bin/ChatterBlocker /dev/input/by-id/usb-Logitech_G513_Carbon_Tactile_0B5238613437-event-kbd 45 --delayed > /dev/null &
 xset q | grep -o "Num Lock:    on" || xdotool key Num_Lock &

@@ -1,0 +1,43 @@
+import = ["/home/murphy/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+
+[cursor]
+blink_interval = 550
+unfocused_hollow = false
+
+[cursor.style]
+blinking = "On"
+shape = "Underline"
+
+[font]
+builtin_box_drawing = true
+
+[font.bold]
+family = "Hurmit Nerd Font"
+style = "Bold"
+
+[font.normal]
+family = "Hurmit Nerd Font"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0003"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0016"
+key = "V"
+mods = "Control|Shift"
+
+[window.padding]
+x = 20
+y = 20

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+case ${1,,} in
+
+	minecraft)
+		rm -r ~/.minecraft ~/.java
+	;;
+
+	*)
+		echo "Can't find the junk files for $1" ; exit
+	;;
+
+esac
+
+echo "Junk Be Gone!"

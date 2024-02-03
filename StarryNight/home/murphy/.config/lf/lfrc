@@ -39,7 +39,7 @@ cmd touch %{{
 cmd zip ${{
     set -f
     mkdir Archive
-    cp -r $fx Archive
+    cp -r "$fx" Archive
     zip -r Archive.zip Archive
     rm -rf Archive
 }}

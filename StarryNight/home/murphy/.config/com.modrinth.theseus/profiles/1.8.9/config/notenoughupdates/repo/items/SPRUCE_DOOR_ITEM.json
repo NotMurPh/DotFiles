@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:spruce_door",
+  "displayname": "§fSpruce Door",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fSpruce Door\"},ExtraAttributes:{id:\"SPRUCE_DOOR_ITEM\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "SPRUCE_DOOR_ITEM",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "WOOD-1:1",
+    "A2": "WOOD-1:1",
+    "A3": "",
+    "B1": "WOOD-1:1",
+    "B2": "WOOD-1:1",
+    "B3": "",
+    "C1": "WOOD-1:1",
+    "C2": "WOOD-1:1",
+    "C3": "",
+    "count": 3
+  }
+}

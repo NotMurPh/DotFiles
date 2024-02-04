@@ -1,0 +1,18 @@
+{
+  "itemid": "minecraft:diamond_ore",
+  "displayname": "§aDiamond Ore",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§a§lUNCOMMON\"],Name:\"§aDiamond Ore\"},ExtraAttributes:{id:\"DIAMOND_ORE\"}}",
+  "damage": 0,
+  "lore": [
+    "§a§lUNCOMMON"
+  ],
+  "internalname": "DIAMOND_ORE",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://wiki.hypixel.net/Diamond_Ore"
+  ],
+  "crafttext": ""
+}

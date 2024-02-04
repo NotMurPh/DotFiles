@@ -1,0 +1,8 @@
+{
+  "name": "soopyAddonsData",
+  "description": "Custom soopy stuff.",
+  "author": "Soopyboo32",
+  "entry": "index.js",
+  "version": "0.0.1",
+  "requires": []
+}

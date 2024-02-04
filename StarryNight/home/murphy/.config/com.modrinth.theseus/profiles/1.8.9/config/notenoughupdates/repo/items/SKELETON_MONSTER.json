@@ -1,0 +1,36 @@
+{
+  "itemid": "minecraft:skull",
+  "displayname": "§aSkeleton (Monster)",
+  "nbttag": "{display:{Lore:[0:\"§7Just a normal skelly\",1:\"\",2:\"§c❤ Health§8: §c100 - 707\"],Name:\"§aSkeleton (Monster)\"},ExtraAttributes:{id:\"SKELETON_MONSTER\"}}",
+  "damage": 0,
+  "lore": [
+    "§7Just a normal skelly",
+    "",
+    "§c❤ Health§8: §c100 - 707"
+  ],
+  "internalname": "SKELETON_MONSTER",
+  "clickcommand": "viewrecipe",
+  "modver": "2.1.0-REL",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Skeleton",
+    "https://wiki.hypixel.net/Skeleton"
+  ],
+  "crafttext": "",
+  "recipes": [
+    {
+      "coins": 1,
+      "xp": 1,
+      "name": "§cSkeleton",
+      "render": "Skeleton",
+      "panorama": "dynamic",
+      "type": "drops",
+      "drops": [
+        {
+          "id": "BONE:1",
+          "chance": "x1-2"
+        }
+      ]
+    }
+  ]
+}

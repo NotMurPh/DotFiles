@@ -1,0 +1,8 @@
+{
+    "name":"BeaconBeam",
+    "author": "ZF5",
+    "entry": "index.js",
+    "version": "1.0.1",
+    "description": "Library to render beacon beams."  
+  }
+  

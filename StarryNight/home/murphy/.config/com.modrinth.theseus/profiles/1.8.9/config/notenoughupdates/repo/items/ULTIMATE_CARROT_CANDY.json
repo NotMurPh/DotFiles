@@ -1,0 +1,40 @@
+{
+  "itemid": "minecraft:golden_carrot",
+  "displayname": "§6Ultimate Carrot Candy",
+  "nbttag": "{ench:[],HideFlags:254,display:{Lore:[0:\"§7Feeding carrot candy to your pets\",1:\"§7gives them a boost of Exp but pets\",2:\"§7can only eat §a10 §7candy in their\",3:\"§7lifetime so choose your candy wisely!\",4:\"\",5:\"§7Grants §a1,500,000 §7pet Exp.\",6:\"\",7:\"§7§eRight-click on your summoned pet to\",8:\"§efeed it this candy!\",9:\"\",10:\"§6§lLEGENDARY\"],Name:\"§6Ultimate Carrot Candy\"},ExtraAttributes:{id:\"ULTIMATE_CARROT_CANDY\"}}",
+  "damage": 0,
+  "lore": [
+    "§7Feeding carrot candy to your pets",
+    "§7gives them a boost of Exp but pets",
+    "§7can only eat §a10 §7candy in their",
+    "§7lifetime so choose your candy wisely!",
+    "",
+    "§7Grants §a1,500,000 §7pet Exp.",
+    "",
+    "§7§eRight-click on your summoned pet to",
+    "§efeed it this candy!",
+    "",
+    "§6§lLEGENDARY"
+  ],
+  "recipe": {
+    "A1": "SUPERB_CARROT_CANDY:1",
+    "A2": "SUPERB_CARROT_CANDY:1",
+    "A3": "SUPERB_CARROT_CANDY:1",
+    "B1": "SUPERB_CARROT_CANDY:1",
+    "B2": "ULTIMATE_CARROT_CANDY_UPGRADE:1",
+    "B3": "SUPERB_CARROT_CANDY:1",
+    "C1": "SUPERB_CARROT_CANDY:1",
+    "C2": "SUPERB_CARROT_CANDY:1",
+    "C3": "SUPERB_CARROT_CANDY:1",
+    "count": 10
+  },
+  "internalname": "ULTIMATE_CARROT_CANDY",
+  "clickcommand": "viewrecipe",
+  "modver": "2.1.1-PRE",
+  "crafttext": "",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Ultimate_Carrot_Candy",
+    "https://wiki.hypixel.net/Ultimate_Carrot_Candy"
+  ]
+}

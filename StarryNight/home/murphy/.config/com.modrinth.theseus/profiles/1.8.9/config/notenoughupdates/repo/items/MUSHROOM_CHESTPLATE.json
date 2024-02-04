@@ -1,0 +1,40 @@
+{
+  "itemid": "minecraft:leather_chestplate",
+  "displayname": "§fMushroom Chestplate",
+  "nbttag": "{Unbreakable:1b,HideFlags:254,display:{Lore:[0:\"§7Health: §a+10\",1:\"§7Defense: §a+10\",2:\"\",3:\"§6Full Set Bonus: Night Affinity §7(0/4)\",4:\"§7Grants the wearer permanent §aNight\",5:\"§aVision§7 while worn. During the night,\",6:\"§7the stats of the armor pieces are\",7:\"§7§atripled§7.\",8:\"\",9:\"§7§8This item can be reforged!\",10:\"§7§4❣ §cRequires §aFarming Skill 7§c.\",11:\"§f§lCOMMON CHESTPLATE\"],color:16711680,Name:\"§fMushroom Chestplate\"},ExtraAttributes:{id:\"MUSHROOM_CHESTPLATE\"}}",
+  "damage": 0,
+  "lore": [
+    "§7Health: §a+10",
+    "§7Defense: §a+10",
+    "",
+    "§6Full Set Bonus: Night Affinity §7(0/4)",
+    "§7Grants the wearer permanent §aNight",
+    "§aVision§7 while worn. During the night,",
+    "§7the stats of the armor pieces are",
+    "§7§atripled§7.",
+    "",
+    "§7§8This item can be reforged!",
+    "§7§4❣ §cRequires §aFarming Skill 7§c.",
+    "§f§lCOMMON CHESTPLATE"
+  ],
+  "recipe": {
+    "A1": "RED_MUSHROOM:1",
+    "A2": "",
+    "A3": "RED_MUSHROOM:1",
+    "B1": "RED_MUSHROOM:1",
+    "B2": "RED_MUSHROOM:1",
+    "B3": "RED_MUSHROOM:1",
+    "C1": "RED_MUSHROOM:1",
+    "C2": "RED_MUSHROOM:1",
+    "C3": "RED_MUSHROOM:1"
+  },
+  "internalname": "MUSHROOM_CHESTPLATE",
+  "clickcommand": "viewrecipe",
+  "modver": "2.1.1-PRE",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Mushroom_Armor",
+    "https://wiki.hypixel.net/Mushroom_Chestplate"
+  ],
+  "crafttext": "Requires: Mushroom III"
+}

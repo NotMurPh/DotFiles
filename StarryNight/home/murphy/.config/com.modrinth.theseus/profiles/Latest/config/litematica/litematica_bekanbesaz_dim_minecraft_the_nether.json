@@ -1,0 +1,43 @@
+{
+  "selections": {
+    "mode": "NORMAL"
+  },
+  "placements": {},
+  "schematic_projects_manager": {},
+  "operation_mode": "SCHEMATIC_PLACEMENT",
+  "render_range": {
+    "mode": "ALL_BELOW",
+    "axis": "y",
+    "layer_single": 0,
+    "layer_above": 0,
+    "layer_below": 7,
+    "layer_range_min": 0,
+    "layer_range_max": 0,
+    "hotkey_range_min": false,
+    "hotkey_range_max": false
+  },
+  "area_simple": {
+    "name": "ShulkerUnloader",
+    "current": "ShulkerUnloader",
+    "boxes": [
+      {
+        "pos1": [
+          -2569,
+          7,
+          633
+        ],
+        "pos2": [
+          -2564,
+          4,
+          627
+        ],
+        "name": "ShulkerUnloader"
+      }
+    ]
+  },
+  "tool_mode_data": {
+    "delete": {
+      "use_placement": false
+    }
+  }
+}

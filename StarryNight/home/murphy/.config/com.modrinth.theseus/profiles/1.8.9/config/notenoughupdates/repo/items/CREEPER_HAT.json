@@ -1,0 +1,40 @@
+{
+  "itemid": "minecraft:skull",
+  "displayname": "§fCreeper Hat",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§7Strength: §c+5\",1:\"§7Crit Chance: §c+5%\",2:\"§7Crit Damage: §c+5%\",3:\"§7Health: §a+5\",4:\"§7Defense: §a+5\",5:\"§7Intelligence: §a+5\",6:\"\",7:\"§7Grants immunity to explosion\",8:\"§7damage.\",9:\"\",10:\"§7§8This item can be reforged!\",11:\"§f§lCOMMON HELMET\"],Name:\"§fCreeper Hat\"},ExtraAttributes:{id:\"CREEPER_HAT\"}}",
+  "damage": 4,
+  "lore": [
+    "§7Strength: §c+5",
+    "§7Crit Chance: §c+5%",
+    "§7Crit Damage: §c+5%",
+    "§7Health: §a+5",
+    "§7Defense: §a+5",
+    "§7Intelligence: §a+5",
+    "",
+    "§7Grants immunity to explosion",
+    "§7damage.",
+    "",
+    "§7§8This item can be reforged!",
+    "§f§lCOMMON HELMET"
+  ],
+  "recipe": {
+    "A1": "SULPHUR:1",
+    "A2": "SULPHUR:1",
+    "A3": "SULPHUR:1",
+    "B1": "SULPHUR:1",
+    "B2": "",
+    "B3": "SULPHUR:1",
+    "C1": "SULPHUR:1",
+    "C2": "SULPHUR:1",
+    "C3": "SULPHUR:1"
+  },
+  "internalname": "CREEPER_HAT",
+  "clickcommand": "viewrecipe",
+  "modver": "2.1.0-REL",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Creeper_Hat",
+    "https://wiki.hypixel.net/Creeper_Hat"
+  ],
+  "crafttext": "Requires: Gunpowder II"
+}

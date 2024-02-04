@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:pumpkin_seeds",
+  "displayname": "§fPumpkin Seeds",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fPumpkin Seeds\"},ExtraAttributes:{id:\"PUMPKIN_SEEDS\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "PUMPKIN_SEEDS",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "PUMPKIN:1",
+    "A2": "",
+    "A3": "",
+    "B1": "",
+    "B2": "",
+    "B3": "",
+    "C1": "",
+    "C2": "",
+    "C3": "",
+    "count": 4
+  }
+}

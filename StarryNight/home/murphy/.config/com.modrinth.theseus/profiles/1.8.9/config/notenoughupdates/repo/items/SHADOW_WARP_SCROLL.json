@@ -1,0 +1,35 @@
+{
+  "itemid": "minecraft:writable_book",
+  "displayname": "§5Shadow Warp",
+  "nbttag": "{generation:0,ench:[],HideFlags:254,display:{Lore:[0:\"§7§8Combinable in Anvil\",1:\"\",2:\"§7Applies the §6Shadow Warp\",3:\"§6Ability §7when combined with a\",4:\"§7§6Necron\u0027s Blade (Unrefined)§7.\",5:\"\",6:\"§6Ability: Shadow Warp §e§lRIGHT CLICK\",7:\"§7Created a spacial distortion\",8:\"§7§e10 §7blocks ahead of you that\",9:\"§7sucks all enemies around it.\",10:\"§7Using this ability again within\",11:\"§7§e5 §7seconds to detonate the\",12:\"§7warp and deal damage to enemies\",13:\"§7near it.\",14:\"§8Mana Cost: §3300\",15:\"§8Cooldown: §a10s\",16:\"\",17:\"§5§lEPIC DUNGEON ITEM\"],Name:\"§5Shadow Warp\"},ExtraAttributes:{id:\"SHADOW_WARP_SCROLL\"},resolved:0b}",
+  "damage": 0,
+  "lore": [
+    "§7§8Combinable in Anvil",
+    "",
+    "§7Applies the §6Shadow Warp",
+    "§6Ability §7when combined with a",
+    "§7§6Necron\u0027s Blade (Unrefined)§7.",
+    "",
+    "§6Ability: Shadow Warp §e§lRIGHT CLICK",
+    "§7Created a spacial distortion",
+    "§7§e10 §7blocks ahead of you that",
+    "§7sucks all enemies around it.",
+    "§7Using this ability again within",
+    "§7§e5 §7seconds to detonate the",
+    "§7warp and deal damage to enemies",
+    "§7near it.",
+    "§8Mana Cost: §3300",
+    "§8Cooldown: §a10s",
+    "",
+    "§5§lEPIC DUNGEON ITEM"
+  ],
+  "internalname": "SHADOW_WARP_SCROLL",
+  "crafttext": "",
+  "clickcommand": "",
+  "modver": "2.1.0-REL",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Necron%27s_Blade_Scrolls",
+    "https://wiki.hypixel.net/Shadow_Warp"
+  ]
+}

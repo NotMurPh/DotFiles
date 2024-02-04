@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:spruce_stairs",
+  "displayname": "§fSpruce Wood Stairs",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fSpruce Wood Stairs\"},ExtraAttributes:{id:\"SPRUCE_WOOD_STAIRS\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "SPRUCE_WOOD_STAIRS",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "WOOD-1:1",
+    "A2": "",
+    "A3": "",
+    "B1": "WOOD-1:1",
+    "B2": "WOOD-1:1",
+    "B3": "",
+    "C1": "WOOD-1:1",
+    "C2": "WOOD-1:1",
+    "C3": "WOOD-1:1",
+    "count": 4
+  }
+}

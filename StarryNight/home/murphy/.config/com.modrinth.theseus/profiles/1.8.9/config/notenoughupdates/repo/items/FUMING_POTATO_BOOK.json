@@ -1,0 +1,34 @@
+{
+  "internalname": "FUMING_POTATO_BOOK",
+  "itemid": "minecraft:book",
+  "displayname": "§5Fuming Potato Book",
+  "clickcommand": "",
+  "damage": 0,
+  "nbttag": "{ench:[],HideFlags:254,display:{Lore:[0:\"§8Combinable in Anvil and\",1:\"§8Reforge Anvil\",2:\"\",3:\"§7When applied to armor, grants\",4:\"§7§a+2❈ Defense §7and §c+4❤\",5:\"§cHealth§7.\",6:\"\",7:\"§7When applied to weapons, grants\",8:\"§7§c+2❁ Strength §7and §c+2❁\",9:\"§cDamage§7.\",10:\"\",11:\"§7This book bypasses the §5Hot\",12:\"§5Potato Book §7limit of §a10§7,\",13:\"§7allowing you to upgrade an item\",14:\"§7up to §a15 §7times!\",15:\"\",16:\"§5§lEPIC DUNGEON ITEM\"],Name:\"§5Fuming Potato Book\"},ExtraAttributes:{id:\"FUMING_POTATO_BOOK\"}}",
+  "modver": "2.1.0-REL",
+  "lore": [
+    "§8Combinable in Anvil and",
+    "§8Reforge Anvil",
+    "",
+    "§7When applied to armor, grants",
+    "§7§a+2❈ Defense §7and §c+4❤",
+    "§cHealth§7.",
+    "",
+    "§7When applied to weapons, grants",
+    "§7§c+2❁ Strength §7and §c+2❁",
+    "§cDamage§7.",
+    "",
+    "§7This book bypasses the §5Hot",
+    "§5Potato Book §7limit of §a10§7,",
+    "§7allowing you to upgrade an item",
+    "§7up to §a15 §7times!",
+    "",
+    "§5§lEPIC DUNGEON ITEM"
+  ],
+  "crafttext": "",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Fuming_Potato_Book",
+    "https://wiki.hypixel.net/Fuming_Potato_Book"
+  ]
+}

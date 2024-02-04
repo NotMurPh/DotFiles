@@ -1,0 +1,26 @@
+{
+  "itemid": "minecraft:web",
+  "displayname": "§aWeb",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§a§lUNCOMMON\"],Name:\"§aWeb\"},ExtraAttributes:{id:\"WEB\"}}",
+  "damage": 0,
+  "lore": [
+    "§a§lUNCOMMON"
+  ],
+  "recipe": {
+    "A1": "STRING:1",
+    "A2": "STRING:1",
+    "A3": "STRING:1",
+    "B1": "STRING:1",
+    "B2": "STRING:1",
+    "B3": "STRING:1",
+    "C1": "STRING:1",
+    "C2": "STRING:1",
+    "C3": "STRING:1"
+  },
+  "internalname": "WEB",
+  "modver": "2.1.0-REL",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "crafttext": "Requires: String II",
+  "infoType": ""
+}

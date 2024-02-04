@@ -1,0 +1,24 @@
+{
+  "itemid": "minecraft:dye",
+  "displayname": "§9Biofuel",
+  "nbttag": "{ench:[],HideFlags:254,display:{Lore:[0:\"§8Machine Fuel\",1:\"\",2:\"§7§7Adds §2+3,000♢ Fuel §7to a\",3:\"§7refuelable machine.\",4:\"§7§7§o100% renewable energy!\",5:\"\",6:\"§9§lRARE\"],Name:\"§9Biofuel\"},ExtraAttributes:{id:\"BIOFUEL\"}}",
+  "damage": 2,
+  "lore": [
+    "§8Machine Fuel",
+    "",
+    "§7§7Adds §2+3,000♢ Fuel §7to a",
+    "§7refuelable machine.",
+    "§7§7§o100% renewable energy!",
+    "",
+    "§9§lRARE"
+  ],
+  "internalname": "BIOFUEL",
+  "crafttext": "",
+  "clickcommand": "",
+  "modver": "2.1.1-PRE",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Biofuel",
+    "https://wiki.hypixel.net/Biofuel"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:prismarine_crystals",
+  "displayname": "§fMithril",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§7§8Brewing Ingredient\",1:\"\",2:\"§7§7§o\\\"The Man called it \\\"true-silver\\\" while\",3:\"§7§othe Dwarves, who loved it above all\",4:\"§7§othings, had their own, secret name\",5:\"§7§ofor it.\\\"\",6:\"\",7:\"§f§lCOMMON\"],Name:\"§fMithril\"},ExtraAttributes:{id:\"MITHRIL_ORE\"}}",
+  "damage": 0,
+  "lore": [
+    "§7§8Brewing Ingredient",
+    "",
+    "§7§7§o\"The Man called it \"true-silver\" while",
+    "§7§othe Dwarves, who loved it above all",
+    "§7§othings, had their own, secret name",
+    "§7§ofor it.\"",
+    "",
+    "§f§lCOMMON"
+  ],
+  "internalname": "MITHRIL_ORE",
+  "crafttext": "",
+  "clickcommand": "",
+  "modver": "2.1.1-PRE",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Mithril",
+    "https://wiki.hypixel.net/Mithril"
+  ]
+}

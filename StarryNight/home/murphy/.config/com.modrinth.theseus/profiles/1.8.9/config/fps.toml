@@ -1,0 +1,19 @@
+
+[personalization]
+
+	[personalization.general]
+		text_color_and_transparency = "255,0,255,255"
+		positioning = 0
+		scale = 1
+		toggle_fps_display = true
+		shadow_to_the_text = true
+
+	[personalization.background]
+		color_and_transparency = "64,211,211,211"
+		toggle_background = false
+		outer_edge = 2
+
+	[personalization.text_formatting]
+		toggle_brackets = false
+		format = 2
+

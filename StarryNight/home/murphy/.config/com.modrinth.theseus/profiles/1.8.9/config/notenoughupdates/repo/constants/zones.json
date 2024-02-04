@@ -1,0 +1,152 @@
+{
+  "hub": {
+    "Display": "Hub",
+    "Scoreboard": [
+      "Auction House",
+      "Bank",
+      "Bazaar Alley",
+      "Blacksmith",
+      "Builder's House",
+      "Coal Mine",
+      "Colosseum",
+      "Community Center",
+      "Farm House",
+      "Farm",
+      "Fashion Shop",
+      "Flower House",
+      "Forest",
+      "Graveyard",
+      "High Level",
+      "Mountain",
+      "Ruins",
+      "Village",
+      "Wilderness",
+      "Wizard Tower"
+    ]
+  },
+  "combat_1": {
+    "Display": "Spider's Den",
+    "Scoreboard": [
+      "Spider's Den"
+    ]
+  },
+  "combat_2": {
+    "Display": "Crimson Isle",
+    "Scoreboard": [
+      "Crimson Isle",
+      "Stronghold",
+      "Crimson Fields",
+      "Burning Desert",
+      "Dragontail",
+      "Dragontail Bank",
+      "Dragontail Townsquare",
+      "Dragontail Auction House",
+      "The Bastion",
+      "Ruins of Ashfang",
+      "Forgotten Skull",
+      "The Wasteland",
+      "Mystic Marsh",
+      "Cathedral",
+      "Scarleton",
+      "Scarleton Plaza",
+      "Scarleton Auction House",
+      "Scarleton Bank",
+      "Courtyard",
+      "Aura's Lab",
+      "Dojo",
+      "Dojo Area",
+      "Barbarian Outpost",
+      "Magma Chamber",
+      "Minion Shop",
+      "Mage Outpost",
+      "Blazing Volcano",
+      "Kuundra's End"
+    ]
+  },
+  "combat_3": {
+    "Display": "The End",
+    "Scoreboard": [
+      "The End",
+      "Dragon's Nest",
+      "Void Speluture"
+    ]
+  },
+  "foraging_1": {
+    "Display": "The Park",
+    "Scoreboard": [
+      "Birch Park",
+      "Howling Cave",
+      "Spruce Woods",
+      "Birch Park",
+      "Dark Thicket",
+      "Savanna Woodland",
+      "Jungle Island"
+    ]
+  },
+  "farming_1": {
+    "Display": "The Farming Islands",
+    "Scoreboard": [
+      "The Barn",
+      "Windmill",
+      "Mushroom Desert",
+      "Oasis",
+      "Trappers Den",
+      "Jake's House",
+      "Treasure Hunter Camp",
+      "Desert Settlement",
+      "Mushroom Gorge",
+      "Overgrown Mushroom Cave",
+      "Shepherds Keep",
+      "Glowing Mushroom Cave"
+    ]
+  },
+  "mining_1": {
+    "Display": "Gold Mine",
+    "Scoreboard": [
+      "Gold Mine"
+    ]
+  },
+  "mining_2": {
+    "Display": "Deep Caverns",
+    "Scoreboard": [
+      "Deep Caverns",
+      "Gunpowder Mines",
+      "Lapis Quarry",
+      "Pigmen's Den",
+      "Slimehill",
+      "Diamond Reserve",
+      "Obsidian Sanctuary"
+    ]
+  },
+  "mining_3": {
+    "Display": "Dwarven Mines",
+    "Scoreboard": [
+      "Aristocrat Passage",
+      "Cliffside Veins",
+      "Divan's Gateway",
+      "Dwarven Mines",
+      "Dwarven Village",
+      "Far Reserve",
+      "Forge Basin",
+      "Goblin Burrows",
+      "Hanging Court",
+      "Palace Bridge",
+      "Rampaert's Quarry",
+      "Royal Mines",
+      "Royal Palace",
+      "Royal Quarters",
+      "The Forge",
+      "The Lift",
+      "The Mist",
+      "Upper Mines"
+    ]
+  },
+  "winter": {
+    "Display": "Jerry's Workshop",
+    "Scoreboard": []
+  },
+  "dungeon_hub": {
+    "Display": "Dungeons Hub",
+    "Scoreboard": []
+  }
+}

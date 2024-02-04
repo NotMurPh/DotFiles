@@ -1,0 +1,54 @@
+{
+  "itemid": "minecraft:skull",
+  "displayname": "§9Tank Zombie (Monster)",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§7Hefty zombie.\",1:\"\",2:\"§c❤ Health§8: §c1,500 - 14,000\",3:\"§c❤ Health §8(MM) : §c60,000 - 225,000\"],Name:\"§9Tank Zombie (Monster)\"},ExtraAttributes:{id:\"TANK_ZOMBIE_MONSTER\"}}",
+  "damage": 2,
+  "lore": [
+    "§7Hefty zombie.",
+    "",
+    "§c❤ Health§8: §c1,500 - 14,000",
+    "§c❤ Health §8(MM) : §c60,000 - 225,000"
+  ],
+  "internalname": "TANK_ZOMBIE_MONSTER",
+  "clickcommand": "viewrecipe",
+  "modver": "2.1.0-REL",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Tank_Zombie",
+    "https://wiki.hypixel.net/Tank_Zombie"
+  ],
+  "crafttext": "",
+  "recipes": [
+    {
+      "combat_xp": 60,
+      "coins": 1,
+      "xp": 30,
+      "name": "§cTank Zombie",
+      "panorama": "dungeon",
+      "render": "@neurepo:mobs/tank_zombie.json",
+      "type": "drops",
+      "drops": [
+        {
+          "id": "HEAVY_HELMET",
+          "chance": "5%"
+        },
+        {
+          "id": "HEAVY_CHESTPLATE",
+          "chance": "5%"
+        },
+        {
+          "id": "HEAVY_LEGGINGS",
+          "chance": "5%"
+        },
+        {
+          "id": "HEAVY_BOOTS",
+          "chance": "5%"
+        },
+        {
+          "id": "PREMIUM_FLESH",
+          "chance": "0.1%"
+        }
+      ]
+    }
+  ]
+}

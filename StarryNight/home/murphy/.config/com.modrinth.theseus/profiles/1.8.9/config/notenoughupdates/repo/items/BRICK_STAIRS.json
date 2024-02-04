@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:brick_stairs",
+  "displayname": "§fBrick Stairs",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fBrick Stairs\"},ExtraAttributes:{id:\"BRICK_STAIRS\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "BRICK_STAIRS",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "BRICK:1",
+    "A2": "",
+    "A3": "",
+    "B1": "BRICK:1",
+    "B2": "BRICK:1",
+    "B3": "",
+    "C1": "BRICK:1",
+    "C2": "BRICK:1",
+    "C3": "BRICK:1",
+    "count": 4
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:stick",
+  "displayname": "§fStick",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fStick\"},ExtraAttributes:{id:\"STICK\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "STICK",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "WOOD:1",
+    "A2": "",
+    "A3": "",
+    "B1": "WOOD:1",
+    "B2": "",
+    "B3": "",
+    "C1": "",
+    "C2": "",
+    "C3": "",
+    "count": 4
+  }
+}

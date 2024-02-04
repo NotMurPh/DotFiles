@@ -1,0 +1,8 @@
+{
+    "name": "guimanager",
+    "description": "A cool utils module to make creating gui's easier",
+    "author": "Soopyboo32",
+    "entry": "main.js",
+    "version": "0.1.7",
+    "requires": []
+}

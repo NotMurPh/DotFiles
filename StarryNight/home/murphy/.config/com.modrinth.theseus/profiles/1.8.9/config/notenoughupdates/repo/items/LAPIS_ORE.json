@@ -1,0 +1,18 @@
+{
+  "itemid": "minecraft:lapis_ore",
+  "displayname": "§aLapis Lazuli Ore",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§a§lUNCOMMON\"],Name:\"§aLapis Lazuli Ore\"},ExtraAttributes:{id:\"LAPIS_ORE\"}}",
+  "damage": 0,
+  "lore": [
+    "§a§lUNCOMMON"
+  ],
+  "internalname": "LAPIS_ORE",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://wiki.hypixel.net/Lapis_Lazuli_Ore"
+  ],
+  "crafttext": ""
+}

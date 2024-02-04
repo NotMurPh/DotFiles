@@ -1,0 +1,15 @@
+{
+  "frameQueueSize": 2,
+  "resolution": {
+    "width": 1920,
+    "height": 1080,
+    "refreshRate": 0
+  },
+  "windowedFullscreen": false,
+  "guiOptimizations": false,
+  "advCulling": 2,
+  "indirectDraw": false,
+  "uniqueOpaqueLayer": true,
+  "entityCulling": true,
+  "device": -1
+}

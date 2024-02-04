@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:jungle_door",
+  "displayname": "§fJungle Door",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fJungle Door\"},ExtraAttributes:{id:\"JUNGLE_DOOR_ITEM\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "JUNGLE_DOOR_ITEM",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "WOOD-3:1",
+    "A2": "WOOD-3:1",
+    "A3": "",
+    "B1": "WOOD-3:1",
+    "B2": "WOOD-3:1",
+    "B3": "",
+    "C1": "WOOD-3:1",
+    "C2": "WOOD-3:1",
+    "C3": "",
+    "count": 3
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "itemid": "minecraft:lapis_block",
+  "displayname": "§fLapis Lazuli Block",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fLapis Lazuli Block\"},ExtraAttributes:{id:\"LAPIS_BLOCK\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "LAPIS_BLOCK",
+  "modver": "2.1.0-REL",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "INK_SACK-4:1",
+    "A2": "INK_SACK-4:1",
+    "A3": "INK_SACK-4:1",
+    "B1": "INK_SACK-4:1",
+    "B2": "INK_SACK-4:1",
+    "B3": "INK_SACK-4:1",
+    "C1": "INK_SACK-4:1",
+    "C2": "INK_SACK-4:1",
+    "C3": "INK_SACK-4:1"
+  },
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://wiki.hypixel.net/Lapis_Lazuli_Block"
+  ]
+}

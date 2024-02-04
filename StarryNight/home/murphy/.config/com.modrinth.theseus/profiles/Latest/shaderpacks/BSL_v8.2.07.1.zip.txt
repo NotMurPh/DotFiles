@@ -1,0 +1,5 @@
+#Sun Jan 28 21:27:55 IRST 2024
+shadowDistance=192.0
+LIGHT_SHAFT=false
+shadowMapResolution=1536
+SHADOW_COLOR=false

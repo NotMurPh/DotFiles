@@ -1,0 +1,41 @@
+{
+  "itemid": "minecraft:prismarine_shard",
+  "displayname": "§9Serrated Claws",
+  "nbttag": "{ench:[],HideFlags:254,display:{Lore:[0:\"§8Consumed on use\",1:\"\",2:\"§7§7Pet items can boost pets in\",3:\"§7various ways but pets can only\",4:\"§7hold 1 item at a time so choose\",5:\"§7wisely!\",6:\"\",7:\"§7§7Grants §9+25☠ Crit Damage§7.\",8:\"\",9:\"§7§eRight click on your summoned\",10:\"§epet to give it this item!\",11:\"\",12:\"§9§lRARE PET ITEM\"],Name:\"§9Serrated Claws\"},ExtraAttributes:{id:\"SERRATED_CLAWS\"}}",
+  "damage": 0,
+  "lore": [
+    "§8Consumed on use",
+    "",
+    "§7§7Pet items can boost pets in",
+    "§7various ways but pets can only",
+    "§7hold 1 item at a time so choose",
+    "§7wisely!",
+    "",
+    "§7§7Grants §9+25☠ Crit Damage§7.",
+    "",
+    "§7§eRight click on your summoned",
+    "§epet to give it this item!",
+    "",
+    "§9§lRARE PET ITEM"
+  ],
+  "recipe": {
+    "A1": "",
+    "A2": "ENCHANTED_GOLD_BLOCK:6",
+    "A3": "",
+    "B1": "ENCHANTED_GOLD_BLOCK:6",
+    "B2": "PET_ITEM_SHARPENED_CLAWS_UNCOMMON:1",
+    "B3": "ENCHANTED_GOLD_BLOCK:6",
+    "C1": "",
+    "C2": "ZOG_ANVIL:1",
+    "C3": ""
+  },
+  "internalname": "SERRATED_CLAWS",
+  "clickcommand": "viewrecipe",
+  "modver": "2.1.1-PRE",
+  "crafttext": "",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Serrated_Claws",
+    "https://wiki.hypixel.net/Serrated_Claws"
+  ]
+}

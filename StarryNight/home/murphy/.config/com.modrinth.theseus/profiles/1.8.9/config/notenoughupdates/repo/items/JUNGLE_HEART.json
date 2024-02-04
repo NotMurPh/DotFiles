@@ -1,0 +1,21 @@
+{
+  "itemid": "minecraft:skull",
+  "displayname": "§6Jungle Heart",
+  "nbttag": "{HideFlags:254,SkullOwner:{Id:\"de347d71-8e09-33ec-8f12-2ae503f06c9c\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTY5MTA2NzYyOTI3OSwKICAicHJvZmlsZUlkIiA6ICI0NmY3N2NjNmQ2MjU0NjEzYjc2NmYyZDRmMDM2MzZhNiIsCiAgInByb2ZpbGVOYW1lIiA6ICJNaXNzV29sZiIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8xNGFkZWEwZDgyMjYzZDIzMzM4NDdlYzM0ODgyMTRjYTI1MjM2NDIzYjg2NTdiYjgyZTA4ZWJjMzRiZDcwODgyIiwKICAgICAgIm1ldGFkYXRhIiA6IHsKICAgICAgICAibW9kZWwiIDogInNsaW0iCiAgICAgIH0KICAgIH0KICB9Cn0\u003d\"}]}},display:{Lore:[0:\"§7§7Found in the deepest layers of\",1:\"§7the Jungle Temple.\",2:\"\",3:\"§6§lLEGENDARY\"],Name:\"§6Jungle Heart\"},ExtraAttributes:{id:\"JUNGLE_HEART\"}}",
+  "damage": 3,
+  "lore": [
+    "§7§7Found in the deepest layers of",
+    "§7the Jungle Temple.",
+    "",
+    "§6§lLEGENDARY"
+  ],
+  "internalname": "JUNGLE_HEART",
+  "crafttext": "",
+  "clickcommand": "",
+  "modver": "2.1.1-PRE",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Jungle_Heart",
+    "https://wiki.hypixel.net/Jungle_Heart"
+  ]
+}

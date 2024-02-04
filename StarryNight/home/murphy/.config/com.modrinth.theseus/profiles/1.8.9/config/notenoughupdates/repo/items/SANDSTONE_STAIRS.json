@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:sandstone_stairs",
+  "displayname": "§fSandstone Stairs",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fSandstone Stairs\"},ExtraAttributes:{id:\"SANDSTONE_STAIRS\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "SANDSTONE_STAIRS",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "SANDSTONE:1",
+    "A2": "",
+    "A3": "",
+    "B1": "SANDSTONE:1",
+    "B2": "SANDSTONE:1",
+    "B3": "",
+    "C1": "SANDSTONE:1",
+    "C2": "SANDSTONE:1",
+    "C3": "SANDSTONE:1",
+    "count": 4
+  }
+}

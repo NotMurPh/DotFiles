@@ -1,0 +1,36 @@
+{
+  "itemid": "minecraft:coal",
+  "displayname": "§fCoal",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§7§8Brewing Ingredient\",1:\"\",2:\"§7Increases the speed of\",3:\"§7your minion by §a5%§7 for 30\",4:\"§7minutes§7!\",5:\"\",6:\"§f§lCOMMON\"],Name:\"§fCoal\"},ExtraAttributes:{id:\"COAL\"}}",
+  "damage": 0,
+  "lore": [
+    "§7§8Brewing Ingredient",
+    "",
+    "§7Increases the speed of",
+    "§7your minion by §a5%§7 for 30",
+    "§7minutes§7!",
+    "",
+    "§f§lCOMMON"
+  ],
+  "internalname": "COAL",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "COAL_BLOCK:1",
+    "A2": "",
+    "A3": "",
+    "B1": "",
+    "B2": "",
+    "B3": "",
+    "C1": "",
+    "C2": "",
+    "C3": "",
+    "count": 9
+  },
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://wiki.hypixel.net/Coal"
+  ],
+  "crafttext": ""
+}

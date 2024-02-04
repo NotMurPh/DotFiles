@@ -1,0 +1,17 @@
+{
+  "anArgbColor": 1079794780,
+  "aBoolean": true,
+  "aDouble": 0.56,
+  "anEnum": "NORMAL",
+  "aFloat": 1.3,
+  "aHexColor": 6788807,
+  "anInt": 42,
+  "aLong": 1938,
+  "aShort": 10,
+  "aString": "Basic string value",
+  "anotherDouble": 3.432,
+  "anotherFloat": 1.02,
+  "anotherInt": 5,
+  "anotherLong": 1938,
+  "anotherShort": 25
+}

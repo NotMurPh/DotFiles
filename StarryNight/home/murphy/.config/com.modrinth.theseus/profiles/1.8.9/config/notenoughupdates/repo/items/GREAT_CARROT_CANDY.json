@@ -1,0 +1,39 @@
+{
+  "itemid": "minecraft:carrot",
+  "displayname": "§9Great Carrot Candy",
+  "nbttag": "{ench:[],HideFlags:254,display:{Lore:[0:\"§7Feeding carrot candy to your pets\",1:\"§7gives them a boost of Exp but pets\",2:\"§7can only eat §a10 §7candy in their\",3:\"§7lifetime so choose your candy wisely!\",4:\"\",5:\"§7Grants §a200,000 §7pet Exp.\",6:\"\",7:\"§7§eRight-click on your summoned pet to\",8:\"§efeed it this candy!\",9:\"\",10:\"§9§lRARE\"],Name:\"§9Great Carrot Candy\"},ExtraAttributes:{id:\"GREAT_CARROT_CANDY\"}}",
+  "damage": 0,
+  "lore": [
+    "§7Feeding carrot candy to your pets",
+    "§7gives them a boost of Exp but pets",
+    "§7can only eat §a10 §7candy in their",
+    "§7lifetime so choose your candy wisely!",
+    "",
+    "§7Grants §a200,000 §7pet Exp.",
+    "",
+    "§7§eRight-click on your summoned pet to",
+    "§efeed it this candy!",
+    "",
+    "§9§lRARE"
+  ],
+  "recipe": {
+    "A1": "ENCHANTED_CARROT:40",
+    "A2": "ENCHANTED_CARROT:40",
+    "A3": "ENCHANTED_CARROT:40",
+    "B1": "ENCHANTED_CARROT:40",
+    "B2": "SIMPLE_CARROT_CANDY:1",
+    "B3": "ENCHANTED_CARROT:40",
+    "C1": "ENCHANTED_CARROT:40",
+    "C2": "ENCHANTED_CARROT:40",
+    "C3": "ENCHANTED_CARROT:40"
+  },
+  "internalname": "GREAT_CARROT_CANDY",
+  "clickcommand": "viewrecipe",
+  "modver": "2.1.1-PRE",
+  "crafttext": "Requires: Carrot VI",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Great_Carrot_Candy",
+    "https://wiki.hypixel.net/Great_Carrot_Candy"
+  ]
+}

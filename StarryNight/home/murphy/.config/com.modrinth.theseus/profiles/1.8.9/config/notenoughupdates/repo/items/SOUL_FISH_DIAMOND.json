@@ -1,0 +1,24 @@
+{
+  "itemid": "minecraft:skull",
+  "displayname": "§5Soul Fish§r §l§B§LDIAMOND",
+  "nbttag": "{HideFlags:254,SkullOwner:{Id:\"053ebb0f-a2db-306d-8ffd-5a31a2a65816\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTY0MTIzNzkwNTY1OCwKICAicHJvZmlsZUlkIiA6ICJjZGM5MzQ0NDAzODM0ZDdkYmRmOWUyMmVjZmM5MzBiZiIsCiAgInByb2ZpbGVOYW1lIiA6ICJSYXdMb2JzdGVycyIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9iNjM5MTJkZjY1NDAzNTk3NzRmYjVjYjQ1NDZhMmVlYTE3MzZmM2ZjN2NmMjg0ODQyMTY5N2MxYmU4YTUzNjEiCiAgICB9CiAgfQp9\"}]}},display:{Lore:[0:\"§7Found in Stronghold.\",1:\"\",2:\"§7Bring this to §fOdger §7at the\",3:\"§7top of the Blazing Volcano.\",4:\"\",5:\"§8§l* §8Soulbound §8§l*\",6:\"§5§lEPIC TROPHY FISH\"],Name:\"§5Soul Fish§r §l§B§LDIAMOND\"},ExtraAttributes:{id:\"SOUL_FISH_DIAMOND\"}}",
+  "damage": 3,
+  "lore": [
+    "§7Found in Stronghold.",
+    "",
+    "§7Bring this to §fOdger §7at the",
+    "§7top of the Blazing Volcano.",
+    "",
+    "§8§l* §8Soulbound §8§l*",
+    "§5§lEPIC TROPHY FISH"
+  ],
+  "internalname": "SOUL_FISH_DIAMOND",
+  "crafttext": "",
+  "clickcommand": "",
+  "modver": "2.1.0-REL",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Trophy_Fishes",
+    "https://wiki.hypixel.net/Trophy_Fish"
+  ]
+}

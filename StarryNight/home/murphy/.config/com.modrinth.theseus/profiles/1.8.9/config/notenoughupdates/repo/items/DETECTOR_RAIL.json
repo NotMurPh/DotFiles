@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:detector_rail",
+  "displayname": "§fDetector Rail",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fDetector Rail\"},ExtraAttributes:{id:\"DETECTOR_RAIL\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "DETECTOR_RAIL",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "IRON_INGOT:1",
+    "A2": "",
+    "A3": "IRON_INGOT:1",
+    "B1": "IRON_INGOT:1",
+    "B2": "STONE_PLATE:1",
+    "B3": "IRON_INGOT:1",
+    "C1": "IRON_INGOT:1",
+    "C2": "REDSTONE:1",
+    "C3": "IRON_INGOT:1",
+    "count": 6
+  }
+}

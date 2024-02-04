@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "drawWithShadows": false,
+  "textSpacing": 5,
+  "textColor": 15658734,
+  "textAlpha": 230,
+  "offsetTop": 500,
+  "offsetLeft": 4,
+  "holdKeyToShowFps": false,
+  "fps": "",
+  "coordinates": "",
+  "ping": "Ping: "
+}

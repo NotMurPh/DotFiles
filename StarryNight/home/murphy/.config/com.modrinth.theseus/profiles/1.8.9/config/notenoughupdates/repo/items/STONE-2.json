@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:stone",
+  "displayname": "§fPolished Granite",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fPolished Granite\"},ExtraAttributes:{id:\"STONE\"}}",
+  "damage": 2,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "STONE-2",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "STONE-1:1",
+    "A2": "STONE-1:1",
+    "A3": "",
+    "B1": "STONE-1:1",
+    "B2": "STONE-1:1",
+    "B3": "",
+    "C1": "",
+    "C2": "",
+    "C3": "",
+    "count": 4
+  }
+}

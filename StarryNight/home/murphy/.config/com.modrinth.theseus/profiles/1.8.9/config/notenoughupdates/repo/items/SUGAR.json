@@ -1,0 +1,28 @@
+{
+  "itemid": "minecraft:sugar",
+  "displayname": "§fSugar",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fSugar\"},ExtraAttributes:{id:\"SUGAR\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "SUGAR",
+  "modver": "2.1.0-REL",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "SUGAR_CANE:1",
+    "A2": "",
+    "A3": "",
+    "B1": "",
+    "B2": "",
+    "B3": "",
+    "C1": "",
+    "C2": "",
+    "C3": ""
+  },
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://wiki.hypixel.net/Sugar"
+  ]
+}

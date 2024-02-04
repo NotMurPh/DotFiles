@@ -1,0 +1,31 @@
+{
+  "itemid": "minecraft:stone_shovel",
+  "displayname": "§fStone Shovel",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§7Damage: §c+20\",1:\"\",2:\"§f§lCOMMON SHOVEL\"],Name:\"§fStone Shovel\"},ExtraAttributes:{id:\"STONE_SPADE\"}}",
+  "damage": 0,
+  "lore": [
+    "§7Damage: §c+20",
+    "",
+    "§f§lCOMMON SHOVEL"
+  ],
+  "internalname": "STONE_SPADE",
+  "modver": "2.1.0-REL",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "COBBLESTONE:1",
+    "A2": "",
+    "A3": "",
+    "B1": "STICK:1",
+    "B2": "",
+    "B3": "",
+    "C1": "STICK:1",
+    "C2": "",
+    "C3": ""
+  },
+  "crafttext": "",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://wiki.hypixel.net/Stone_Shovel"
+  ]
+}

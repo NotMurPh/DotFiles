@@ -1,0 +1,24 @@
+{
+  "itemid": "minecraft:cake",
+  "displayname": "§fPet Cake",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§7Feeding this to your pets gives\",1:\"§7them a boost of §a1,000 exp§7!\",2:\"\",3:\"§7§eRight click on your summoned\",4:\"§epet to feed it!\",5:\"\",6:\"§f§lCOMMON\"],Name:\"§fPet Cake\"},ExtraAttributes:{id:\"PET_CAKE\"}}",
+  "damage": 0,
+  "lore": [
+    "§7Feeding this to your pets gives",
+    "§7them a boost of §a1,000 exp§7!",
+    "",
+    "§7§eRight click on your summoned",
+    "§epet to feed it!",
+    "",
+    "§f§lCOMMON"
+  ],
+  "internalname": "PET_CAKE",
+  "crafttext": "",
+  "clickcommand": "",
+  "modver": "2.1.1-PRE",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Pet_Cake",
+    "https://wiki.hypixel.net/Pet_Cake"
+  ]
+}

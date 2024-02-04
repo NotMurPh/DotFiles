@@ -1,0 +1,15 @@
+{
+  "$schema": "../CTAutocomplete/schema.json",
+  "creator": "BetterMap",
+  "author": "Bloom/Soopyboo32/Tenios",
+  "entry": "index.js",
+  "description": "Better Map !!!",
+  "name": "BetterMap",
+  "version": "1.0.17",
+  "requires": [
+    "soopyApis",
+    "guimanager",
+    "soopyAddonsData",
+    "BeaconBeam"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "itemid": "minecraft:prismarine_shard",
+  "displayname": "§f§f§5Titanium Drill DR-X355",
+  "nbttag": "{ench:[],overrideMeta:1b,HideFlags:254,display:{Lore:[0:\"§8Breaking Power 7\",1:\"\",2:\"§7Damage: §c+75\",3:\"§7Mining Speed: §a+700\",4:\"§7Mining Fortune: §a+25\",5:\"\",6:\"§7Fuel Tank: §cNot Installed\",7:\"§7§7Increases fuel capacity with\",8:\"§7part installed.\",9:\"\",10:\"§7Drill Engine: §cNot Installed\",11:\"§7§7Increases §6⸕ Mining Speed\",12:\"§6§7with part installed.\",13:\"\",14:\"§7Upgrade Module: §cNot Installed\",15:\"§7§7Applies a passive upgrade with\",16:\"§7part installed.\",17:\"\",18:\"§7Apply Drill Parts to this Drill\",19:\"§7by talking to a §2Drill\",20:\"§2Mechanic§7!\",21:\"\",22:\"§7Fuel: §23,000§8/3k\",23:\"\",24:\"§7§8This item can be reforged!\",25:\"§7§4❣ §cRequires §5Heart of the\",26:\"§5Mountain Tier 5§c.\",27:\"§5§lEPIC DRILL\"],Name:\"§f§f§5Titanium Drill DR-X355\"},ExtraAttributes:{id:\"TITANIUM_DRILL_1\"},AttributeModifiers:[]}",
+  "damage": 0,
+  "lore": [
+    "§8Breaking Power 7",
+    "",
+    "§7Damage: §c+75",
+    "§7Mining Speed: §a+700",
+    "§7Mining Fortune: §a+25",
+    "",
+    "§7Fuel Tank: §cNot Installed",
+    "§7§7Increases fuel capacity with",
+    "§7part installed.",
+    "",
+    "§7Drill Engine: §cNot Installed",
+    "§7§7Increases §6⸕ Mining Speed",
+    "§6§7with part installed.",
+    "",
+    "§7Upgrade Module: §cNot Installed",
+    "§7§7Applies a passive upgrade with",
+    "§7part installed.",
+    "",
+    "§7Apply Drill Parts to this Drill",
+    "§7by talking to a §2Drill",
+    "§2Mechanic§7!",
+    "",
+    "§7Fuel: §23,000§8/3k",
+    "",
+    "§7§8This item can be reforged!",
+    "§7§4❣ §cRequires §5Heart of the",
+    "§5Mountain Tier 5§c.",
+    "§5§lEPIC DRILL"
+  ],
+  "internalname": "TITANIUM_DRILL_1",
+  "crafttext": "",
+  "clickcommand": "viewrecipe",
+  "modver": "2.1.1-PRE",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Titanium_Drill_DR-X355",
+    "https://wiki.hypixel.net/Titanium_Drill_DR-X355"
+  ],
+  "recipes": [
+    {
+      "type": "forge",
+      "inputs": [
+        "FUEL_TANK:1",
+        "DRILL_ENGINE:1",
+        "REFINED_MITHRIL:10",
+        "REFINED_TITANIUM:10",
+        "GOLDEN_PLATE:6"
+      ],
+      "count": 1,
+      "overrideOutputId": "TITANIUM_DRILL_1",
+      "duration": 230400
+    }
+  ]
+}

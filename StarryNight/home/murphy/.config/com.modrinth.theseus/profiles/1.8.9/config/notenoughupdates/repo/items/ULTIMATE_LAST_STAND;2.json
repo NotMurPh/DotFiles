@@ -1,0 +1,34 @@
+{
+  "itemid": "minecraft:enchanted_book",
+  "displayname": "§f§f§fEnchanted Book",
+  "nbttag": "{ench:[],overrideMeta:1b,HideFlags:254,display:{Lore:[0:\"§9§d§lLast Stand II\",1:\"§7Gain §a+10% §a❈ Defense §7when\",2:\"§7hit while below §c40%❤§7.\",3:\"\",4:\"§7§cYou can only have 1 Ultimate\",5:\"§cEnchantment on an item!\",6:\"\",7:\"§7Use this on an item in an Anvil\",8:\"§7to apply it!\",9:\"\",10:\"§6Source:\",11:\"§aI-V: §7Dungeons\",12:\"\",13:\"§6Applied To:\",14:\"§7- §fArmor\",15:\"\",16:\"§f§lCOMMON\"],Name:\"§f§f§fEnchanted Book\"},ExtraAttributes:{id:\"ULTIMATE_LAST_STAND;2\",enchantments:{ultimate_last_stand:2}},AttributeModifiers:[]}",
+  "damage": 0,
+  "lore": [
+    "§9§d§lLast Stand II",
+    "§7Gain §a+10% §a❈ Defense §7when",
+    "§7hit while below §c40%❤§7.",
+    "",
+    "§7§cYou can only have 1 Ultimate",
+    "§cEnchantment on an item!",
+    "",
+    "§7Use this on an item in an Anvil",
+    "§7to apply it!",
+    "",
+    "§6Source:",
+    "§aI-V: §7Dungeons",
+    "",
+    "§6Applied To:",
+    "§7- §fArmor",
+    "",
+    "§f§lCOMMON"
+  ],
+  "internalname": "ULTIMATE_LAST_STAND;2",
+  "parent": "ULTIMATE_LAST_STAND;1",
+  "crafttext": "",
+  "clickcommand": "",
+  "modver": "2.1.0-REL",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Ultimate_Enchantments"
+  ]
+}

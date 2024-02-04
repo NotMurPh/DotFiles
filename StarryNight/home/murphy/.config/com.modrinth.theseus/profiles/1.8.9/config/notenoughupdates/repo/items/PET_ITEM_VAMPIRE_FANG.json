@@ -1,0 +1,21 @@
+{
+  "itemid": "minecraft:ghast_tear",
+  "displayname": "§6Vampire Fang",
+  "nbttag": "{ench:[],HideFlags:254,display:{Lore:[0:\"§7Use at §bKat §7to upgrade §eBat Pets §7to\",1:\"§7§dMythic §7rarity.\",2:\"\",3:\"§6§lLEGENDARY\"],Name:\"§6Vampire Fang\"},ExtraAttributes:{id:\"PET_ITEM_VAMPIRE_FANG\"}}",
+  "damage": 0,
+  "lore": [
+    "§7Use at §bKat §7to upgrade §eBat Pets §7to",
+    "§7§dMythic §7rarity.",
+    "",
+    "§6§lLEGENDARY"
+  ],
+  "internalname": "PET_ITEM_VAMPIRE_FANG",
+  "crafttext": "",
+  "clickcommand": "",
+  "modver": "2.1.1-PRE",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Pet_Items",
+    "https://wiki.hypixel.net/Vampire_Fang"
+  ]
+}

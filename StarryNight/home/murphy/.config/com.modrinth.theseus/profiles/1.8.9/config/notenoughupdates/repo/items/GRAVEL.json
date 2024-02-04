@@ -1,0 +1,17 @@
+{
+  "itemid": "minecraft:gravel",
+  "displayname": "§fGravel",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fGravel\"},ExtraAttributes:{id:\"GRAVEL\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "GRAVEL",
+  "modver": "2.1.0-REL",
+  "vanilla": true,
+  "clickcommand": "",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://wiki.hypixel.net/Gravel"
+  ]
+}

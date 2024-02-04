@@ -1,0 +1,23 @@
+{
+  "itemid": "minecraft:dye",
+  "displayname": "§f§f§6Necron Dye",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§7§8Combinable in Anvil\",1:\"\",2:\"§7Changes the color of a leather\",3:\"§7armor piece to §6#E7413C§7!\",4:\"\",5:\"§6§lLEGENDARY\"],Name:\"§f§f§6Necron Dye\"},ExtraAttributes:{id:\"DYE_NECRON\"}}",
+  "damage": 14,
+  "lore": [
+    "§7§8Combinable in Anvil",
+    "",
+    "§7Changes the color of a leather",
+    "§7armor piece to §6#E7413C§7!",
+    "",
+    "§6§lLEGENDARY"
+  ],
+  "internalname": "DYE_NECRON",
+  "crafttext": "",
+  "clickcommand": "",
+  "modver": "2.1.0-REL",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Dyes",
+    "https://wiki.hypixel.net/Necron_Dye"
+  ]
+}

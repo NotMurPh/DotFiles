@@ -1,0 +1,69 @@
+{
+  "itemid": "minecraft:skull",
+  "displayname": "§3Abyssal Miner (Sea Creature)",
+  "nbttag": "{HideFlags:254,SkullOwner:{Id:\"27d4a35c-d53b-374b-b56c-57f99c53bdbb\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTYyMDM0NDMxMzcxNCwKICAicHJvZmlsZUlkIiA6ICI0NWY3YTJlNjE3ODE0YjJjODAwODM5MmRmN2IzNWY0ZiIsCiAgInByb2ZpbGVOYW1lIiA6ICJfSnVzdERvSXQiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNThiZTA1Y2ZhZTJjNmE3ZDQ3ZGEyY2U4OGIzZTAwYzcyYTE0NWNjMzIxOGYwNDFiM2RkNWJkNWZhNWNhODI3IgogICAgfQogIH0KfQ==\"}]},Name:\"8b9afe00-12b8-2184-89a9-6aed27075943\"},display:{Lore:[0:\"\"],Name:\"§9Taylor (NPC)\"},ExtraAttributes:{id:\"TAYLOR_NPC\"}}",
+  "damage": 3,
+  "lore": [
+    "§c❤ Health§8: §c2,000,000",
+    "",
+    "§6§lLEGENDARY"
+  ],
+  "internalname": "ZOMBIE_MINER_SC",
+  "clickcommand": "viewrecipe",
+  "modver": "2.1.1-PRE",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Zombie_Miner",
+    "https://wiki.hypixel.net/Zombie_Miner"
+  ],
+  "crafttext": "viewrecipe",
+  "recipes": [
+    {
+      "name": "§cZombie Miner",
+      "level": 150,
+      "coins": 10,
+      "xp": 10,
+      "render": "@neurepo:mobs/zombie_miner.json",
+      "panorama": "crystal_hollows",
+      "type": "drops",
+      "extra": [
+        "§cRequirements:",
+        "§7- Fishing Skill 24",
+        "§7- §2Mithril Deposits",
+        "§7- §bPrecursor Remnants",
+        "§7- §2Jungle",
+        "§7- §bFished from water"
+      ],
+      "drops": [
+        {
+          "id": "FLAWED_AMETHYST_GEM",
+          "chance": "20%"
+        },
+        {
+          "id": "FLAWED_JADE_GEM",
+          "chance": "20%"
+        },
+        {
+          "id": "FLAWED_SAPPHIRE_GEM",
+          "chance": "20%"
+        },
+        {
+          "id": "ROUGH_AMETHYST_GEM:20",
+          "chance": "100%"
+        },
+        {
+          "id": "ROUGH_JADE_GEM:20",
+          "chance": "100%"
+        },
+        {
+          "id": "ROUGH_SAPPHIRE_GEM:20",
+          "chance": "100%"
+        },
+        {
+          "id": "PISCARY;6",
+          "chance": "0.5%"
+        }
+      ]
+    }
+  ]
+}

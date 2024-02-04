@@ -1,0 +1,25 @@
+{
+  "itemid": "minecraft:quartz_stairs",
+  "displayname": "§fQuartz Stairs",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§f§lCOMMON\"],Name:\"§fQuartz Stairs\"},ExtraAttributes:{id:\"QUARTZ_STAIRS\"}}",
+  "damage": 0,
+  "lore": [
+    "§f§lCOMMON"
+  ],
+  "internalname": "QUARTZ_STAIRS",
+  "modver": "2.1.1-PRE",
+  "vanilla": true,
+  "clickcommand": "viewrecipe",
+  "recipe": {
+    "A1": "QUARTZ_BLOCK:1",
+    "A2": "",
+    "A3": "",
+    "B1": "QUARTZ_BLOCK:1",
+    "B2": "QUARTZ_BLOCK:1",
+    "B3": "",
+    "C1": "QUARTZ_BLOCK:1",
+    "C2": "QUARTZ_BLOCK:1",
+    "C3": "QUARTZ_BLOCK:1",
+    "count": 4
+  }
+}

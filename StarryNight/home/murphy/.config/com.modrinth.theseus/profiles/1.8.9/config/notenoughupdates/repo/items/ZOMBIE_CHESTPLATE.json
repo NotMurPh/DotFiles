@@ -1,0 +1,38 @@
+{
+  "itemid": "minecraft:diamond_chestplate",
+  "displayname": "§f§f§5Zombie Chestplate",
+  "nbttag": "{Unbreakable:1b,HideFlags:254,display:{Lore:[0:\"§7Health: §a+200\",1:\"§7Defense: §a+40\",2:\"\",3:\"§6Full Set Bonus: Projectile Absorption §7(0/3)\",4:\"§7Heals the wearer for §a10§7 per\",5:\"§7second for §a5§7 seconds when\",6:\"§7hit by a projectile.\",7:\"\",8:\"§7§8This item can be reforged!\",9:\"§5§lEPIC CHESTPLATE\"],Name:\"§f§f§5Zombie Chestplate\"},ExtraAttributes:{id:\"ZOMBIE_CHESTPLATE\"}}",
+  "damage": 0,
+  "lore": [
+    "§7Health: §a+200",
+    "§7Defense: §a+40",
+    "",
+    "§6Full Set Bonus: Projectile Absorption §7(0/3)",
+    "§7Heals the wearer for §a10§7 per",
+    "§7second for §a5§7 seconds when",
+    "§7hit by a projectile.",
+    "",
+    "§7§8This item can be reforged!",
+    "§5§lEPIC CHESTPLATE"
+  ],
+  "recipe": {
+    "A1": "ENCHANTED_ROTTEN_FLESH:1",
+    "A2": "",
+    "A3": "ENCHANTED_ROTTEN_FLESH:1",
+    "B1": "ENCHANTED_ROTTEN_FLESH:1",
+    "B2": "ZOMBIE_HEART:1",
+    "B3": "ENCHANTED_ROTTEN_FLESH:1",
+    "C1": "ZOMBIE_HEART:1",
+    "C2": "ZOMBIE_HEART:1",
+    "C3": "ZOMBIE_HEART:1"
+  },
+  "internalname": "ZOMBIE_CHESTPLATE",
+  "clickcommand": "viewrecipe",
+  "modver": "2.1.1-PRE",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Zombie_Armor",
+    "https://wiki.hypixel.net/Zombie_Chestplate"
+  ],
+  "crafttext": "Requires: Rotten Flesh VIII"
+}

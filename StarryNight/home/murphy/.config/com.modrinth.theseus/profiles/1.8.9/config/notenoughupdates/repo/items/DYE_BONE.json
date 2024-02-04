@@ -1,0 +1,23 @@
+{
+  "itemid": "minecraft:dye",
+  "displayname": "§f§f§5Bone Dye",
+  "nbttag": "{HideFlags:254,display:{Lore:[0:\"§7§8Combinable in Anvil\",1:\"\",2:\"§7Changes the color of a leather\",3:\"§7armor piece to §f#E3DAC9§7!\",4:\"\",5:\"§5§lEPIC\"],Name:\"§f§f§5Bone Dye\"},ExtraAttributes:{id:\"DYE_BONE\"}}",
+  "damage": 15,
+  "lore": [
+    "§7§8Combinable in Anvil",
+    "",
+    "§7Changes the color of a leather",
+    "§7armor piece to §f#E3DAC9§7!",
+    "",
+    "§5§lEPIC"
+  ],
+  "internalname": "DYE_BONE",
+  "crafttext": "",
+  "clickcommand": "",
+  "modver": "2.1.0-REL",
+  "infoType": "WIKI_URL",
+  "info": [
+    "https://hypixel-skyblock.fandom.com/wiki/Dyes",
+    "https://wiki.hypixel.net/Bone_Dye"
+  ]
+}

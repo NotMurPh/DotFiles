@@ -80,5 +80,8 @@ export WINIT_X11_SCALE_FACTOR=1
 # Pfetch
 export PF_INFO="ascii title os kernel wm uptime pkgs memory"
 
+# Modrinth
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
+
 # General
 export EDITOR=nvim

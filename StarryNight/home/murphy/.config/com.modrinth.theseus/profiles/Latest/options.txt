@@ -155,7 +155,7 @@ key_key.voice_chat_adjust_volumes:key.keyboard.unknown
 key_iris.keybind.reload:key.keyboard.unknown
 key_iris.keybind.toggleShaders:key.keyboard.k
 key_iris.keybind.shaderPackSelection:key.keyboard.o
-soundCategory_master:0.10927152317880795
+soundCategory_master:0.059602649006622516
 soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0

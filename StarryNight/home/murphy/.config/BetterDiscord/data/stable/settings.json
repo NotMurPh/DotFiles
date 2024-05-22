@@ -2,7 +2,8 @@
     "general": {
         "voiceDisconnect": true,
         "showToasts": true,
-        "mediaKeys": true
+        "mediaKeys": true,
+        "bdContextMenu": true
     },
     "addons": {
         "addonErrors": true,

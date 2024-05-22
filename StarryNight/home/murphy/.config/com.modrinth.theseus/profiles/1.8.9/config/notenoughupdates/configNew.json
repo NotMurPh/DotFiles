@@ -399,7 +399,7 @@
   },
   "enchantingSolvers": {
     "enableTableGUI": true,
-    "enableHexGUI": true,
+    "enableHexGUI": false,
     "enchantSorting": 0,
     "enchantOrdering": 0,
     "maxEnchLevel": false,
@@ -702,14 +702,14 @@
     "customTodos": [],
     "profileSpecific": {
       "Pineapple": {
-        "godPotionDuration": 0,
+        "godPotionDuration": 43200000,
         "puzzlerCompleted": 0,
         "firstCakeAte": 0,
         "fetchurCompleted": 0,
         "commissionsCompleted": 0,
         "lastFreeRiftInfusionApplied": 0,
         "experimentsCompleted": 0,
-        "cookieBuffRemaining": 0,
+        "cookieBuffRemaining": 1715635488178,
         "forgeItems": [],
         "commissionMilestone": 0,
         "automatonParts": {
@@ -743,15 +743,15 @@
           "19": {
             "itemid": "minecraft:skull",
             "displayname": "§5Ender Cloak",
-            "nbttag": "{HideFlags:254,SkullOwner:{Id:\"9b32c16e-e77b-33b9-b0c0-fe3ef3ddf92c\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTY1NjUzNzc2NzM4NywKICAicHJvZmlsZUlkIiA6ICIzYWJkYjI5ZDI2MTU0YTAxOWEzZWQ3OGRlMzI4OWUxNCIsCiAgInByb2ZpbGVOYW1lIiA6ICJFcmljSHViZXIiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzc3OGZiNmYyZTY0OWMwYWRhYmY1MWVmNDVjN2NlMzIzZmUxNzU4ZjZkYWM0ZjhjZDEzYWRkMWUyYWYyOWZmNiIKICAgIH0KICB9Cn0\"}]}},display:{Lore:[0:\"§7Health: §a+15\",1:\"§7Defense: §a+10\",2:\"\",3:\"§7All stats on this piece of\",4:\"§7equipment are multiplied by §52x\",5:\"§5§7while on the End Island!\",6:\"\",7:\"§7§8This item can be reforged!\",8:\"§8§l* §8Co-op Soulbound §8§l*\",9:\"§5§lEPIC CLOAK\"],Name:\"§5Ender Cloak\"},ExtraAttributes:{id:\"ENDER_CLOAK\",uuid:\"aa3610e5-e78b-4d99-80ea-3d74991bf47a\",timestamp:\"1/4/23 9:14 AM\"}}",
+            "nbttag": "{HideFlags:254,SkullOwner:{Id:\"9b32c16e-e77b-33b9-b0c0-fe3ef3ddf92c\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTY1NjUzNzc2NzM4NywKICAicHJvZmlsZUlkIiA6ICIzYWJkYjI5ZDI2MTU0YTAxOWEzZWQ3OGRlMzI4OWUxNCIsCiAgInByb2ZpbGVOYW1lIiA6ICJFcmljSHViZXIiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzc3OGZiNmYyZTY0OWMwYWRhYmY1MWVmNDVjN2NlMzIzZmUxNzU4ZjZkYWM0ZjhjZDEzYWRkMWUyYWYyOWZmNiIKICAgIH0KICB9Cn0\"}]}},display:{Lore:[0:\"§7Health: §a+15\",1:\"§7Defense: §a+10\",2:\"\",3:\"§7All stats on this piece of equipment\",4:\"§7are multiplied by §52x §7while on the End\",5:\"§7Island!\",6:\"\",7:\"§7§8This item can be reforged!\",8:\"§8§l* §8Co-op Soulbound §8§l*\",9:\"§5§lEPIC CLOAK\"],Name:\"§5Ender Cloak\"},ExtraAttributes:{id:\"ENDER_CLOAK\",uuid:\"aa3610e5-e78b-4d99-80ea-3d74991bf47a\",timestamp:\"1/4/23 9:14 AM\"}}",
             "damage": 3,
             "lore": [
               "§7Health: §a+15",
               "§7Defense: §a+10",
               "",
-              "§7All stats on this piece of",
-              "§7equipment are multiplied by §52x",
-              "§5§7while on the End Island!",
+              "§7All stats on this piece of equipment",
+              "§7are multiplied by §52x §7while on the End",
+              "§7Island!",
               "",
               "§7§8This item can be reforged!",
               "§8§l* §8Co-op Soulbound §8§l*",
@@ -762,15 +762,15 @@
           "37": {
             "itemid": "minecraft:skull",
             "displayname": "§5Ender Gauntlet",
-            "nbttag": "{HideFlags:254,SkullOwner:{Id:\"bd07d48f-8954-344a-882d-3710a6e055e5\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTY1NjUzNzgyMzQ3NCwKICAicHJvZmlsZUlkIiA6ICIyMWUzNjdkNzI1Y2Y0ZTNiYjI2OTJjNGEzMDBhNGRlYiIsCiAgInByb2ZpbGVOYW1lIiA6ICJHZXlzZXJNQyIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8yMmI4ODEzZmJkOGEwNDlkMGU0MmE3Nzk5ZjhkYjY5ZGZlZDljZGQ0NGU3MzUwY2FlZWM1ZjAyM2M3MTUxYzJmIgogICAgfQogIH0KfQ\"}]}},display:{Lore:[0:\"§7Health: §a+15\",1:\"§7Defense: §a+10\",2:\"\",3:\"§7All stats on this piece of\",4:\"§7equipment are multiplied by §52x\",5:\"§5§7while on the End Island!\",6:\"\",7:\"§7§8This item can be reforged!\",8:\"§8§l* §8Co-op Soulbound §8§l*\",9:\"§5§lEPIC GLOVES\"],Name:\"§5Ender Gauntlet\"},ExtraAttributes:{id:\"ENDER_GAUNTLET\",uuid:\"03e53ba6-cb25-4bcf-9b34-e91c10c66584\",timestamp:\"1/4/23 9:06 AM\"}}",
+            "nbttag": "{HideFlags:254,SkullOwner:{Id:\"bd07d48f-8954-344a-882d-3710a6e055e5\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTY1NjUzNzgyMzQ3NCwKICAicHJvZmlsZUlkIiA6ICIyMWUzNjdkNzI1Y2Y0ZTNiYjI2OTJjNGEzMDBhNGRlYiIsCiAgInByb2ZpbGVOYW1lIiA6ICJHZXlzZXJNQyIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8yMmI4ODEzZmJkOGEwNDlkMGU0MmE3Nzk5ZjhkYjY5ZGZlZDljZGQ0NGU3MzUwY2FlZWM1ZjAyM2M3MTUxYzJmIgogICAgfQogIH0KfQ\"}]}},display:{Lore:[0:\"§7Health: §a+15\",1:\"§7Defense: §a+10\",2:\"\",3:\"§7All stats on this piece of equipment\",4:\"§7are multiplied by §52x §7while on the End\",5:\"§7Island!\",6:\"\",7:\"§7§8This item can be reforged!\",8:\"§8§l* §8Co-op Soulbound §8§l*\",9:\"§5§lEPIC GLOVES\"],Name:\"§5Ender Gauntlet\"},ExtraAttributes:{id:\"ENDER_GAUNTLET\",uuid:\"03e53ba6-cb25-4bcf-9b34-e91c10c66584\",timestamp:\"1/4/23 9:06 AM\"}}",
             "damage": 3,
             "lore": [
               "§7Health: §a+15",
               "§7Defense: §a+10",
               "",
-              "§7All stats on this piece of",
-              "§7equipment are multiplied by §52x",
-              "§5§7while on the End Island!",
+              "§7All stats on this piece of equipment",
+              "§7are multiplied by §52x §7while on the End",
+              "§7Island!",
               "",
               "§7§8This item can be reforged!",
               "§8§l* §8Co-op Soulbound §8§l*",
@@ -781,15 +781,15 @@
           "10": {
             "itemid": "minecraft:skull",
             "displayname": "§5Ender Necklace",
-            "nbttag": "{HideFlags:254,SkullOwner:{Id:\"ec2cd15f-06cf-30e2-9ced-397aa0f6fef0\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTY1NjUzNzc4NTE1MCwKICAicHJvZmlsZUlkIiA6ICIwODFiZTAxZmZlMmU0ODMyODI3MDIwMjBlNmI1M2ExNyIsCiAgInByb2ZpbGVOYW1lIiA6ICJMeXJpY1BsYXRlMjUyNDIiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzZkYTdiOTU3YjgyMTAzYjE3MTQwZTcxMTc5MTE0NjQ4YTAwMjkxYjA1NjU3YzI3ZDNmOTNkNzI2ZTg3ZTY0MCIKICAgIH0KICB9Cn0\"}]}},display:{Lore:[0:\"§7Health: §a+15\",1:\"§7Defense: §a+10\",2:\"\",3:\"§7All stats on this piece of\",4:\"§7equipment are multiplied by §52x\",5:\"§5§7while on the End Island!\",6:\"\",7:\"§7§8This item can be reforged!\",8:\"§8§l* §8Co-op Soulbound §8§l*\",9:\"§5§lEPIC NECKLACE\"],Name:\"§5Ender Necklace\"},ExtraAttributes:{id:\"ENDER_NECKLACE\",uuid:\"4ebc17f4-d06d-470e-ae17-67cfdf17160f\",timestamp:\"1/4/23 9:02 AM\"}}",
+            "nbttag": "{HideFlags:254,SkullOwner:{Id:\"ec2cd15f-06cf-30e2-9ced-397aa0f6fef0\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTY1NjUzNzc4NTE1MCwKICAicHJvZmlsZUlkIiA6ICIwODFiZTAxZmZlMmU0ODMyODI3MDIwMjBlNmI1M2ExNyIsCiAgInByb2ZpbGVOYW1lIiA6ICJMeXJpY1BsYXRlMjUyNDIiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzZkYTdiOTU3YjgyMTAzYjE3MTQwZTcxMTc5MTE0NjQ4YTAwMjkxYjA1NjU3YzI3ZDNmOTNkNzI2ZTg3ZTY0MCIKICAgIH0KICB9Cn0\"}]}},display:{Lore:[0:\"§7Health: §a+15\",1:\"§7Defense: §a+10\",2:\"\",3:\"§7All stats on this piece of equipment\",4:\"§7are multiplied by §52x §7while on the End\",5:\"§7Island!\",6:\"\",7:\"§7§8This item can be reforged!\",8:\"§8§l* §8Co-op Soulbound §8§l*\",9:\"§5§lEPIC NECKLACE\"],Name:\"§5Ender Necklace\"},ExtraAttributes:{id:\"ENDER_NECKLACE\",uuid:\"4ebc17f4-d06d-470e-ae17-67cfdf17160f\",timestamp:\"1/4/23 9:02 AM\"}}",
             "damage": 3,
             "lore": [
               "§7Health: §a+15",
               "§7Defense: §a+10",
               "",
-              "§7All stats on this piece of",
-              "§7equipment are multiplied by §52x",
-              "§5§7while on the End Island!",
+              "§7All stats on this piece of equipment",
+              "§7are multiplied by §52x §7while on the End",
+              "§7Island!",
               "",
               "§7§8This item can be reforged!",
               "§8§l* §8Co-op Soulbound §8§l*",
@@ -800,15 +800,15 @@
           "28": {
             "itemid": "minecraft:skull",
             "displayname": "§5Ender Belt",
-            "nbttag": "{HideFlags:254,SkullOwner:{Id:\"ab2708bd-f1fa-3fa0-93b2-1e3de2210dfe\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTY1NjUzNzgwNDIwNywKICAicHJvZmlsZUlkIiA6ICJlZDUzZGQ4MTRmOWQ0YTNjYjRlYjY1MWRjYmE3N2U2NiIsCiAgInByb2ZpbGVOYW1lIiA6ICI0MTQxNDE0MWgiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjAzMmEwMTY2MjFlMTI2ODcwZmEwMGMyOWM1MWQ5NDJhZmRiYTVhOTRhMjMyN2YyNjRmZTFhOTQwOWU0NTVhZSIKICAgIH0KICB9Cn0\"}]}},display:{Lore:[0:\"§7Health: §a+15\",1:\"§7Defense: §a+10\",2:\"\",3:\"§7All stats on this piece of\",4:\"§7equipment are multiplied by §52x\",5:\"§5§7while on the End Island!\",6:\"\",7:\"§7§8This item can be reforged!\",8:\"§8§l* §8Co-op Soulbound §8§l*\",9:\"§5§lEPIC BELT\"],Name:\"§5Ender Belt\"},ExtraAttributes:{id:\"ENDER_BELT\",uuid:\"26248a40-7657-47bb-b2e8-219386738b91\",timestamp:\"1/4/23 9:12 AM\"}}",
+            "nbttag": "{HideFlags:254,SkullOwner:{Id:\"ab2708bd-f1fa-3fa0-93b2-1e3de2210dfe\",Properties:{textures:[0:{Value:\"ewogICJ0aW1lc3RhbXAiIDogMTY1NjUzNzgwNDIwNywKICAicHJvZmlsZUlkIiA6ICJlZDUzZGQ4MTRmOWQ0YTNjYjRlYjY1MWRjYmE3N2U2NiIsCiAgInByb2ZpbGVOYW1lIiA6ICI0MTQxNDE0MWgiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjAzMmEwMTY2MjFlMTI2ODcwZmEwMGMyOWM1MWQ5NDJhZmRiYTVhOTRhMjMyN2YyNjRmZTFhOTQwOWU0NTVhZSIKICAgIH0KICB9Cn0\"}]}},display:{Lore:[0:\"§7Health: §a+15\",1:\"§7Defense: §a+10\",2:\"\",3:\"§7All stats on this piece of equipment\",4:\"§7are multiplied by §52x §7while on the End\",5:\"§7Island!\",6:\"\",7:\"§7§8This item can be reforged!\",8:\"§8§l* §8Co-op Soulbound §8§l*\",9:\"§5§lEPIC BELT\"],Name:\"§5Ender Belt\"},ExtraAttributes:{id:\"ENDER_BELT\",uuid:\"26248a40-7657-47bb-b2e8-219386738b91\",timestamp:\"1/4/23 9:12 AM\"}}",
             "damage": 3,
             "lore": [
               "§7Health: §a+15",
               "§7Defense: §a+10",
               "",
-              "§7All stats on this piece of",
-              "§7equipment are multiplied by §52x",
-              "§5§7while on the End Island!",
+              "§7All stats on this piece of equipment",
+              "§7are multiplied by §52x §7while on the End",
+              "§7Island!",
               "",
               "§7§8This item can be reforged!",
               "§8§l* §8Co-op Soulbound §8§l*",
@@ -817,7 +817,7 @@
             "internalname": "_"
           }
         },
-        "magicalPower": 0,
+        "magicalPower": 350,
         "chestCount": 0,
         "openedChestCount": 0,
         "mithrilPowderFound": 0,
@@ -1285,8 +1285,19 @@
       true
     ],
     "favourites": [],
-    "previousAuctionSearches": [],
-    "previousBazaarSearches": [],
+    "previousAuctionSearches": [
+      "Hyperion",
+      "everburn",
+      "flame",
+      "Eternal Flame Ring"
+    ],
+    "previousBazaarSearches": [
+      "Flycatcher",
+      "Magical Mushroom Soup",
+      "Enchanted Red Mushroom",
+      "XX-Large Storage",
+      "summon"
+    ],
     "previousProfileSearches": [],
     "eventFavourites": [],
     "quickCommands": [

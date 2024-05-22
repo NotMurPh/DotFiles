@@ -23,9 +23,9 @@
         "maxLevel": 100,
         "expRequiredForNextLevel": 1886700,
         "expRequiredForMaxLevel": 25353230,
-        "expInCurrentLevel": 1.1327002E7,
-        "expTotal": 3.6680232E7,
-        "percentageToNextLevel": 6.0036054
+        "expInCurrentLevel": 1.5927254E7,
+        "expTotal": 4.1280484E7,
+        "percentageToNextLevel": 8.441858
       },
       "petXpType": "combat",
       "petItem": "PET_ITEM_LUCKY_CLOVER",
@@ -167,9 +167,9 @@
         "maxLevel": 100,
         "expRequiredForNextLevel": 1386700,
         "expRequiredForMaxLevel": 18608500,
-        "expInCurrentLevel": 1.2778104E7,
-        "expTotal": 3.1386604E7,
-        "percentageToNextLevel": 9.214757
+        "expInCurrentLevel": 1.3576814E7,
+        "expTotal": 3.2185314E7,
+        "percentageToNextLevel": 9.790736
       },
       "petXpType": "fishing",
       "petItem": "DWARF_TURTLE_SHELMET",
@@ -299,8 +299,8 @@
       "candyUsed": 0
     }
   },
-  "selectedPet": 10,
-  "selectedPet2": 1,
+  "selectedPet": 1,
+  "selectedPet2": 0,
   "tamingLevel": 1,
   "beastMultiplier": 0.0
 }

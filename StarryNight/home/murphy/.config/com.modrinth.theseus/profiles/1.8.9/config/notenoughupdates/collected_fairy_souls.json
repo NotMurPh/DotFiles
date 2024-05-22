@@ -1,5 +1,9 @@
 {
   "pineapple": {
-    "dungeon_hub": []
+    "dungeon_hub": [],
+    "hub": [
+      45
+    ],
+    "farming_1": []
   }
 }

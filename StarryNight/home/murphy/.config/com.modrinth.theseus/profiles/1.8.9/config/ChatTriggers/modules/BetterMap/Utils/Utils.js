@@ -174,14 +174,14 @@ export function spawnParticleAtLocation(loc, velo, particle) {
   let id = idField.get(particleType);
 
   Client.getMinecraft().field_71438_f.func_174974_b(
-  id, // particleID
-  true, // shouldIgnoreRange
-  loc[0], // x
-  loc[1], // y
-  loc[2], // z
-  velo[0], // speedX
-  velo[1], // speedY
-  velo[2] // speedZ
+    id, // particleID
+    true, // shouldIgnoreRange
+    loc[0], // x
+    loc[1], // y
+    loc[2], // z
+    velo[0], // speedX
+    velo[1], // speedY
+    velo[2] // speedZ
   );
 }
 

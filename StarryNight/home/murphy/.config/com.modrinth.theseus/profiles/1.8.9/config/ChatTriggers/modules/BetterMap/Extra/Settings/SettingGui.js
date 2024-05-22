@@ -151,8 +151,8 @@ class SettingGui {
 
     this.addSidebarElement(new ButtonWithArrow().setText("&0Discord").addEvent(new SoopyMouseClickEvent().setHandler(() => {
       java.awt.Desktop.getDesktop().browse(
-      new java.net.URI("https://discord.gg/Uq5YzpaMsr"));
-
+        new java.net.URI("https://discord.gg/Uq5YzpaMsr")
+      );
     })), 0.3, 0.4, 0.075);
     this.addSidebarElement();
 

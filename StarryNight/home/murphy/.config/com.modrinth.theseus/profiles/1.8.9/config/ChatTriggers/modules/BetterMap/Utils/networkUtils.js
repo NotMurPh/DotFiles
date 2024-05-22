@@ -48,14 +48,14 @@ if (!global.networkUtilsThingSoopy) {// If soopyv2 is running it should just use
 
     if (conn.getResponseCode() < 400) {
       stringData = new jBufferedReader(
-      new jInputStreamReader(conn.getInputStream(), jStandardCharsets.UTF_8)).
+        new jInputStreamReader(conn.getInputStream(), jStandardCharsets.UTF_8)).
       lines().
       collect(jCollectors.joining("\n"));
 
       conn.getInputStream().close();
     } else {
       stringData = new jBufferedReader(
-      new jInputStreamReader(conn.getErrorStream(), jStandardCharsets.UTF_8)).
+        new jInputStreamReader(conn.getErrorStream(), jStandardCharsets.UTF_8)).
       lines().
       collect(jCollectors.joining("\n"));
 

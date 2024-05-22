@@ -255,8 +255,8 @@ class RenderContext {
         return TeniosMapColorMap;
       default:
       case "hypixelmap":
-        return HypixelColorMap;}
-
+        return HypixelColorMap;
+    }
   }
 
   get customRoomColorNormal() {
@@ -310,8 +310,8 @@ class RenderContext {
         return 9;
       case "teniosmap":
       default:
-        return 9;}
-
+        return 9;
+    }
   }
 
   get roomSize() {
@@ -322,8 +322,8 @@ class RenderContext {
         return 36;
       case "teniosmap":
       default:
-        return 36;}
-
+        return 36;
+    }
   }
 
   get blockSize() {
@@ -340,8 +340,8 @@ class RenderContext {
         return 15;
       case "teniosmap":
       default:
-        return 15;}
-
+        return 15;
+    }
   }
 
   /**
@@ -367,8 +367,8 @@ class RenderContext {
       case 'tenios':
       case "hypixel-old":
       default:
-        return HypixelTicksOld.get(type);}
-
+        return HypixelTicksOld.get(type);
+    }
   }
 
   /**
@@ -388,8 +388,8 @@ class RenderContext {
           case "greenCheck":
             return [18 * this.iconScale / 10, 18 * this.iconScale / 10];
           case "failedRoom":
-            return [14 * this.iconScale / 8, 14 * this.iconScale / 8];}
-
+            return [14 * this.iconScale / 8, 14 * this.iconScale / 8];
+        }
       case 'tenios':
       case "hypixel-old":
       default:
@@ -400,9 +400,9 @@ class RenderContext {
           case "greenCheck":
             return [18 * this.iconScale / 10, 18 * this.iconScale / 10];
           case "failedRoom":
-            return [14 * this.iconScale / 8, 14 * this.iconScale / 8];}}
-
-
+            return [14 * this.iconScale / 8, 14 * this.iconScale / 8];
+        }
+    }
   }
 
   setSettings(settings) {
@@ -626,19 +626,19 @@ TeniosMapColorMap.set('unknown', new Color(Renderer.color(64, 64, 64)));
 TeniosMapColorMap.set('wither', new Color(Renderer.color(0, 0, 0)));
 
 const HypixelTicksOld = new Map();
-HypixelTicksOld.set("greenCheck", new Image("greenCheckVanilla-old.png", "https://i.imgur.com/h2WM1LO.png").image);
-HypixelTicksOld.set("whiteCheck", new Image("whiteCheckVanilla-old.png", "https://i.imgur.com/hwEAcnI.png").image);
-HypixelTicksOld.set("failedRoom", new Image("failedRoomVanilla.png", "https://i.imgur.com/WqW69z3.png").image);
-HypixelTicksOld.set("questionMark", new Image("questionMarkVanilla-old.png", "https://i.imgur.com/1jyxH9I.png").image);
+HypixelTicksOld.set("greenCheck", Image.fromAsset("greenCheckVanilla-old.png").image);
+HypixelTicksOld.set("whiteCheck", Image.fromAsset("whiteCheckVanilla-old.png").image);
+HypixelTicksOld.set("failedRoom", Image.fromAsset("failedRoomVanilla.png").image);
+HypixelTicksOld.set("questionMark", Image.fromAsset("questionMarkVanilla-old.png").image);
 
 const HypixelTicksNew = new Map();
-HypixelTicksNew.set("greenCheck", new Image("greenCheckVanilla-new.png", "https://i.imgur.com/KFGT3RL.png").image);
-HypixelTicksNew.set("whiteCheck", new Image("whiteCheckVanilla-new.png", "https://i.imgur.com/pfDVZA0.png").image);
-HypixelTicksNew.set("failedRoom", new Image("failedRoomVanilla.png", "https://i.imgur.com/WqW69z3.png").image);
-HypixelTicksNew.set("questionMark", new Image("questionMarkVanilla-new.png", "https://i.imgur.com/xLI4gR6.png").image);
+HypixelTicksNew.set("greenCheck", Image.fromAsset("greenCheckVanilla-new.png").image);
+HypixelTicksNew.set("whiteCheck", Image.fromAsset("whiteCheckVanilla-new.png").image);
+HypixelTicksNew.set("failedRoom", Image.fromAsset("failedRoomVanilla.png").image);
+HypixelTicksNew.set("questionMark", Image.fromAsset("questionMarkVanilla-new.png").image);
 
 const NEUMapTicks = new Map();
-NEUMapTicks.set("greenCheck", new Image("NEUMapGreenCheck.png", "https://i.imgur.com/vwiTAAf.png").image); //old: https://i.imgur.com/GQfTfmp.png
-NEUMapTicks.set("whiteCheck", new Image("NEUMapWhiteCheck.png", "https://i.imgur.com/YOUsTg8.png").image); //old: https://i.imgur.com/9cZ28bJ.png
-NEUMapTicks.set("failedRoom", new Image("NEUMapFailedRoom.png", "https://i.imgur.com/TM8LbGS.png").image); //old: https://i.imgur.com/YOUsTg8.png
-NEUMapTicks.set("questionMark", new Image("NEUMapQuestionMark.png", "https://i.imgur.com/CPBuhXu.png").image); //old: https://i.imgur.com/kp92Inw.png
+NEUMapTicks.set("greenCheck", Image.fromAsset("NEUMapGreenCheck.png").image); //old: https://i.imgur.com/GQfTfmp.png
+NEUMapTicks.set("whiteCheck", Image.fromAsset("NEUMapWhiteCheck.png").image); //old: https://i.imgur.com/9cZ28bJ.png
+NEUMapTicks.set("failedRoom", Image.fromAsset("NEUMapFailedRoom.png").image); //old: https://i.imgur.com/YOUsTg8.png
+NEUMapTicks.set("questionMark", Image.fromAsset("NEUMapQuestionMark.png").image); //old: https://i.imgur.com/kp92Inw.png

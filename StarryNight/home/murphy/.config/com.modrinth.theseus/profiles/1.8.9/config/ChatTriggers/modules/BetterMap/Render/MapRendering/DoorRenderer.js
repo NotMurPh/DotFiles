@@ -44,8 +44,8 @@ class DoorRenderer {
         case 'trap':return new Color(Renderer.color(...renderContext.customRoomColorTrap), true);
         case 'wither':return new Color(Renderer.color(...renderContext.customRoomColorWitherDoor), true);
         default:
-        case 'unknown':return new Color(Renderer.color(...renderContext.customRoomColorUnknown), true);}
-
+        case 'unknown':return new Color(Renderer.color(...renderContext.customRoomColorUnknown), true);
+      }
     }
     return renderContext.colorMap.get(type);
   }

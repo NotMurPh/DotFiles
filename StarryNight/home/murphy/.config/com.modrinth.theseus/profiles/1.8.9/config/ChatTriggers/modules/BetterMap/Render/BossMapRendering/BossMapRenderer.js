@@ -7,13 +7,12 @@ class BossMapRenderer extends MapTab {
   constructor(mapRenderer) {
     super("Boss", mapRenderer);
 
-    const getBossImage = (imageName) => new Image("imgur_" + imageName, "https://i.imgur.com/" + imageName + ".png");
-
     this.dungeonBossImages = {};
     new Thread(() => {
       let imageData = JSON.parse(FileLib.read("BetterMap", "Render/BossMapRendering/imageData.json"));
       Object.keys(imageData).forEach((v) => {
-        for (let i of imageData[v]) i.image = getBossImage(i.image);
+        for (let i of imageData[v])
+        i.image = Image.fromAsset(i.image);
       });
       this.dungeonBossImages = imageData;
     }).start();

@@ -180,8 +180,8 @@ class RoomRenderer {
           break;
         default:
           textColor = "&7";
-          break;}
-
+          break;
+      }
 
       let i = 0;
       for (let line of text) {
@@ -256,8 +256,8 @@ class RoomRenderer {
         case Room.OPENED:
         default:
           textColored = (context.mapStyle === 'teniosmap' ? "&0" : "&8") + text;
-          break;}
-
+          break;
+      }
 
       text = "&0" + text;
 
@@ -306,8 +306,8 @@ class RoomRenderer {
           break;
         default:
           textColor = "&7";
-          break;}
-
+          break;
+      }
 
       let i = 0;
       for (let line of text) {
@@ -373,8 +373,8 @@ class RoomRenderer {
         case 'trap':return new Color(Renderer.color(...context.customRoomColorTrap), true);
         case 'wither':return new Color(Renderer.color(...context.customRoomColorWitherDoor), true);
         default:
-        case 'unknown':return new Color(Renderer.color(...context.customRoomColorUnknown), true);}
-
+        case 'unknown':return new Color(Renderer.color(...context.customRoomColorUnknown), true);
+      }
     } else
     {
       return context.colorMap.get(room.type);

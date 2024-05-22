@@ -95,7 +95,7 @@ key_Open GUI:41
 key_Add item to inventory (Creative-only):38
 key_Set item as favourite:33
 key_Show usages for item:22
-key_Show recipe for item:19
+key_Show recipe for item:0
 key_Show previous recipe:26
 key_Show next recipe:27
 key_Toggle NEU overlay:0
@@ -110,8 +110,8 @@ key_Hide Screen:59
 key_Custom F3:61
 key_Clear Vanilla Shaders:62
 key_Open settings:74
-soundCategory_master:0.102649
-soundCategory_music:0.0
+soundCategory_master:0.0
+soundCategory_music:1.0
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0

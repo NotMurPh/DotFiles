@@ -101,6 +101,9 @@ class DungeonMap {
     this.keys = 0;
     this.bloodOpen = false;
 
+    // The MapID that represents this dungeon, looked for if the player doesn't have a map in the hotbar.
+    this.mapId = undefined;
+
     //initialize with 0, only if score is below threshold will they get set to 1 then set to 2 after said
     this.broadcast270message = 0;
     this.broadcast300message = 0;
@@ -290,7 +293,6 @@ class DungeonMap {
         this.collectedSecrets.add(data.location);
         break;
     }
-
   }
 
   /*
@@ -336,7 +338,8 @@ class DungeonMap {
       let rightRoom = this.rooms.get(right + ',' + y);
       if (leftRoom) leftRoom.addDoor(door);
       if (rightRoom) rightRoom.addDoor(door);
-    } else {
+    } else
+    {
       let up = door.position.arrayY - 1;
       let down = door.position.arrayY;
       let x = Math.round(door.position.arrayX - 0.3);
@@ -370,7 +373,6 @@ class DungeonMap {
   /**
    * Update players from tab list, also sends locations of players in render distance to other players
    */
-
   updatePlayers() {
     if (!Player.getPlayer()) return; //How tf is this null sometimes wtf 
     let pl = Player.getPlayer()["field_71174_a"]["func_175106_d"]().sort((a, b) => sorter.compare(a, b)); // Tab player list
@@ -407,15 +409,15 @@ class DungeonMap {
       this.players[i].networkPlayerInfo = networkInfo;
       this.playersNameToId[thePlayer[1]] = i;
       if (this.playerNick)
-        this.playersNameToId[Player.getName()] = i;
+      this.playersNameToId[Player.getName()] = i;
       this.players[i].updateTablistInfo(matchObject);
     } else if (!this.playerNick) {
       //find the players nick
-      pl.forEach(playerInfo => {
+      pl.forEach((playerInfo) => {
         if (playerInfo.func_178845_a().getId() == Player.getUUID()) {
           this.playerNick = playerInfo.func_178845_a().getName();
         }
-      })
+      });
     }
 
     for (let player of this.players) {
@@ -458,7 +460,8 @@ class DungeonMap {
         var newTabLine;
         if (displayName.includes('/')) {
           newTabLine = displayName.split('/')[0] + '§6/' + totalCryptCount;
-        } else {
+        } else
+        {
           newTabLine = displayName + '§6/' + totalCryptCount;
         }
         playerInfo.func_178859_a(new ChatComponentText(newTabLine));
@@ -470,7 +473,8 @@ class DungeonMap {
         var newTabLine;
         if (displayName.includes('/')) {
           newTabLine = displayName.split('/')[0] + '§b/' + totalSecretCount;
-        } else {
+        } else
+        {
           newTabLine = displayName + '§b/' + totalSecretCount;
         }
         playerInfo.func_178859_a(new ChatComponentText(newTabLine));
@@ -651,7 +655,8 @@ class DungeonMap {
             this.roomsArr.add(room);
             room.checkmarkState = room.type === Room.UNKNOWN ? Room.ADJACENT : Room.OPENED;
             this.markChanged();
-          } else {
+          } else
+          {
             if (currRoom.type !== roomColors[pixelColor] && !currRoom.roomId) {
               currRoom.setType(roomColors[pixelColor]);
               currRoom.checkmarkState = currRoom.type === Room.UNKNOWN ? Room.ADJACENT : Room.OPENED;
@@ -744,7 +749,7 @@ class DungeonMap {
         // Check for doors
 
         if (mapColors[mapX + this.widthRoomImageMap / 2 + (mapY - 1) * 128] !== 0 // Door above room
-          && mapColors[mapX + (mapY - 1) * 128] === 0) {
+        && mapColors[mapX + (mapY - 1) * 128] === 0) {
 
           let color = mapColors[mapX + this.widthRoomImageMap / 2 + (mapY - 1) * 128];
 
@@ -763,8 +768,8 @@ class DungeonMap {
           if (door && door.type !== type) {
             // Door already exists, update it.
             door.type = type;
-            if (type === Room.BLACK || type === Room.BLOOD) this.witherDoors.add(door); else
-              this.witherDoors.delete(door);
+            if (type === Room.BLACK || type === Room.BLOOD) this.witherDoors.add(door);else
+            this.witherDoors.delete(door);
             this.markChanged();
           }
           if (!door) {
@@ -778,7 +783,7 @@ class DungeonMap {
         }
 
         if (mapColors[mapX - 1 + (mapY + this.widthRoomImageMap / 2) * 128] !== 0 // Door left of room
-          && mapColors[mapX - 1 + mapY * 128] === 0) {
+        && mapColors[mapX - 1 + mapY * 128] === 0) {
 
           let color = mapColors[mapX - 1 + (mapY + this.widthRoomImageMap / 2) * 128];
 
@@ -800,12 +805,14 @@ class DungeonMap {
             this.addDoorToAdjacentRooms(door);
             if (type === Room.BLACK || type === Room.BLOOD) this.witherDoors.add(door);
             this.markChanged();
-          } else {
+          } else
+          {
             // Door already there
             let door = this.doors.get(position.arrayX + "," + position.arrayY);
             if (door.type !== type) {
               door.type = type;
-              if (type === Room.BLACK || type === Room.BLOOD) { this.witherDoors.add(door); } else { this.witherDoors.delete(door); }
+              if (type === Room.BLACK || type === Room.BLOOD) {this.witherDoors.add(door);} else
+              {this.witherDoors.delete(door);}
               this.markChanged();
             }
           }
@@ -845,7 +852,7 @@ class DungeonMap {
     this.roomsArr.forEach((room) => {
       if (room.type === Room.PUZZLE && room.checkmarkState !== Room.ADJACENT) {
         if (room.roomId)
-          identifiedPuzzleList.push(room.data?.name?.toLowerCase() || '???');
+        identifiedPuzzleList.push(room.data?.name?.toLowerCase() || '???');
         puzzleCount++;
       }
     });
@@ -948,9 +955,9 @@ class DungeonMap {
     }
 
     if (total < 270 && this.broadcast270message === 0)
-      this.broadcast270message = 1;
+    this.broadcast270message = 1;
     if (total < 300 && this.broadcast300message === 0)
-      this.broadcast300message = 1;
+    this.broadcast300message = 1;
 
     this.cachedScore = {
       time: Date.now(),
@@ -1096,8 +1103,8 @@ class DungeonMap {
 
     if (button === 1) {// Right click -> store x, y and render even if chat not open
       this.dropdownXY = undefined;
-      if (this.cursorStoreXY) this.cursorStoreXY = undefined; else
-        this.cursorStoreXY = [cursorX, cursorY];
+      if (this.cursorStoreXY) this.cursorStoreXY = undefined;else
+      this.cursorStoreXY = [cursorX, cursorY];
       return;
     }
 
@@ -1285,7 +1292,8 @@ class DungeonMap {
         components.push(new Position(x, y));
         if (rotation === 0) {
           components.push(new Position(x + 32, y));
-        } else {
+        } else
+        {
           components.push(new Position(x, y + 32));
         }
         break;
@@ -1294,7 +1302,8 @@ class DungeonMap {
         if (rotation === 0) {
           components.push(new Position(x + 32, y));
           components.push(new Position(x + 64, y));
-        } else {
+        } else
+        {
           components.push(new Position(x, y + 32));
           components.push(new Position(x, y + 64));
         }
@@ -1305,7 +1314,8 @@ class DungeonMap {
           components.push(new Position(x + 32, y));
           components.push(new Position(x + 64, y));
           components.push(new Position(x + 96, y));
-        } else {
+        } else
+        {
           components.push(new Position(x, y + 32));
           components.push(new Position(x, y + 64));
           components.push(new Position(x, y + 96));
@@ -1326,7 +1336,6 @@ class DungeonMap {
         if (rotation === 2) locstr = x + ',' + (y + 32);
         break;
     }
-
 
     let room = this.rooms.get(locstr);
     if (room) {// Already a room there
@@ -1364,11 +1373,11 @@ class DungeonMap {
     let id = World.getBlockAt(new BlockPos(x, 69, y)).type.getID(); //get type of door
 
     if (type === -1) {
-      if (id === 0) type = Room.UNKNOWN; else
-        if (id === 97) type = Room.NORMAL; else
-          if (id === 173) type = Room.BLACK; else
-            if (id === 159) type = Room.BLOOD; else
-              return; // Return if door issnt made of those blocks (maby its not actually a door, eg back of green room)
+      if (id === 0) type = Room.UNKNOWN;else
+      if (id === 97) type = Room.NORMAL;else
+      if (id === 173) type = Room.BLACK;else
+      if (id === 159) type = Room.BLOOD;else
+      return; // Return if door issnt made of those blocks (maby its not actually a door, eg back of green room)
     }
 
     if (ishorizontal) {
@@ -1404,7 +1413,8 @@ class DungeonMap {
           this.roomsArr.add(room);
         }
       }
-    } else {
+    } else
+    {
       {
         // Add Room.UNKNOWN to the top if needed
 
@@ -1442,7 +1452,8 @@ class DungeonMap {
     let door = new Door(type, pos, ishorizontal);
     this.addDoorToAdjacentRooms(door);
     this.doors.set(pos.arrayX + "," + pos.arrayY, door);
-    if (type === Room.BLACK || type === Room.BLOOD) { this.witherDoors.add(door); } else { this.witherDoors.delete(door); }
+    if (type === Room.BLACK || type === Room.BLOOD) {this.witherDoors.add(door);} else
+    {this.witherDoors.delete(door);}
     this.markChanged();
 
     if (locallyFound) {
@@ -1490,7 +1501,8 @@ class DungeonMap {
       if (this.getTopBlockAt(x + width, y, roofY) === 11) return 1;
       if (this.getTopBlockAt(x + width, y + height, roofY) === 11) return 2;
       if (this.getTopBlockAt(x, y + height, roofY) === 11) return 3;
-    } else {
+    } else
+    {
       let one = this.getTopBlockAt2(x + width / 2 + 1, y + height / 2, roofY);
       let two = this.getTopBlockAt2(x + width / 2 - 1, y + height / 2, roofY);
       let three = this.getTopBlockAt2(x + width / 2, y + height / 2 + 1, roofY);
@@ -1544,12 +1556,12 @@ class DungeonMap {
       width += 32;
     }
     while (this.getBlockIdAt(x + width, roofY, y - 1) !== 0 &&
-      this.getBlockIdAt(x + width, roofY, y - 1 + (height === 30 ? 0 : 32)) !== 0) {// Second iteration incase of L shape
+    this.getBlockIdAt(x + width, roofY, y - 1 + (height === 30 ? 0 : 32)) !== 0) {// Second iteration incase of L shape
       y -= 32;
       height += 32;
     }
     while (this.getBlockIdAt(x - 1, roofY, y + height) !== 0 &&
-      this.getBlockIdAt(x - 1 + (width === 30 ? 0 : 32), roofY, y + height) !== 0) {// Third iteration incase of L shape
+    this.getBlockIdAt(x - 1 + (width === 30 ? 0 : 32), roofY, y + height) !== 0) {// Third iteration incase of L shape
       x -= 32;
       width += 32;
     }
@@ -1646,16 +1658,16 @@ export default DungeonMap;
 
 
 let dungeonMapButtons = [
-  ["Show RoomInfo In Chat", (dungeonMap, clickedRoom) => {
-    ChatLib.chat("&c" + ChatLib.getChatBreak("-"));
-    clickedRoom.getLore().forEach((l) => ChatLib.chat(l));
-    ChatLib.chat("&c" + ChatLib.getChatBreak("-"));
-  }],
-  ["Show RoomEvents In Chat", (dungeonMap, clickedRoom) => {
-    ChatLib.chat("&c" + ChatLib.getChatBreak("-"));
-    for (let event of clickedRoom.roomEvents) {
-      ChatLib.chat(toDisplayString(clickedRoom, event));
-    }
-    ChatLib.chat("&c" + ChatLib.getChatBreak("-"));
-  }],
-  ["Navigate", (dungeonMap, clickedRoom) => { ChatLib.chat("NAVIGATION NOT ADDED YET D:"); }]];
+["Show RoomInfo In Chat", (dungeonMap, clickedRoom) => {
+  ChatLib.chat("&c" + ChatLib.getChatBreak("-"));
+  clickedRoom.getLore().forEach((l) => ChatLib.chat(l));
+  ChatLib.chat("&c" + ChatLib.getChatBreak("-"));
+}],
+["Show RoomEvents In Chat", (dungeonMap, clickedRoom) => {
+  ChatLib.chat("&c" + ChatLib.getChatBreak("-"));
+  for (let event of clickedRoom.roomEvents) {
+    ChatLib.chat(toDisplayString(clickedRoom, event));
+  }
+  ChatLib.chat("&c" + ChatLib.getChatBreak("-"));
+}],
+["Navigate", (dungeonMap, clickedRoom) => {ChatLib.chat("NAVIGATION NOT ADDED YET D:");}]];

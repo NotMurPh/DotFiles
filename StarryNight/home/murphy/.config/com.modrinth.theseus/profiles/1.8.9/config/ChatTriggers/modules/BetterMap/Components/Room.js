@@ -352,8 +352,8 @@ class Room {
         return { x: this.height - dz, y: dy, z: dx };;
       case 1:
       default:
-        return { x: dx, y: dy, z: dz };}
-
+        return { x: dx, y: dy, z: dz };
+    }
   }
 
   rotateCoords(x, y, z) {
@@ -367,8 +367,8 @@ class Room {
       case 1:
       // No break, default rotation
       default:
-        return { x: x, y: y, z: z };}
-
+        return { x: x, y: y, z: z };
+    }
   }
 
   drawRoomSecrets() {

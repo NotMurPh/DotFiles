@@ -23,8 +23,8 @@ function getRequiredSecrets(floor, masterMode) {
     case 6:
       return 85;
     default:
-      return 100;}
-
+      return 100;
+  }
 }
 
 function getTabListInfo() {

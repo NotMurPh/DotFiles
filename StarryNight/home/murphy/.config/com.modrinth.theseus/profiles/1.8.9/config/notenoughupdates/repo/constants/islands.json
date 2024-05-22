@@ -16,7 +16,8 @@
     "crystal_hollows": "Crystal Hollows",
     "garden": "The Garden",
     "rift": "Rift",
-    "kuudra": "Kuudra's Hollow"
+    "kuudra": "Kuudra's Hollow",
+    "mineshaft": "Glacite Mineshafts"
   },
   "teleporters": [
     {
@@ -405,6 +406,20 @@
       "aliases": [
         "jerry",
         "workshop"
+      ]
+    },
+    {
+      "warp": "basecamp",
+      "mode": "mining_3",
+      "x": 0,
+      "y": 128,
+      "z": 200,
+      "aliases": [
+        "camp",
+        "base",
+        "tunnel",
+        "glacite",
+        "tunnels"
       ]
     }
   ]

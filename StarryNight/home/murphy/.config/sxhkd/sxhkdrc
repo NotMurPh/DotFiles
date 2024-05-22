@@ -115,4 +115,4 @@ super + alt + c
 
 # Toggle manual recording
 super + shift + c
-	CaptureSwitcher
+	CaptureSwitch

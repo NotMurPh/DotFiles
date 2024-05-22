@@ -32,7 +32,7 @@ source /home/$USER/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.z
 
 # vim plugin (https://github.com/softmoth/zsh-vim-mode)
 source /home/$USER/.config/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-bindkey -M viins ',c' vi-cmd-mode
+# bindkey -M viins ',c' vi-cmd-mode
 
 #lfcd
 lf() {
@@ -119,4 +119,11 @@ dns() {
 
 	echo "DNS Updated successfully"
 
+}
+
+chains () {
+	for chain in 1 2 3 4 5 6 7 8 9 10 11; do
+		echo -e $chain 👇
+		ping -c 1 -W 0.1 c$chain.aghamanjal.com | awk 'NR==1{gsub(/\(|\)/,"",$3);print $3 "\n"}'
+	done
 }

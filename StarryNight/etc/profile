@@ -80,6 +80,12 @@ export WINIT_X11_SCALE_FACTOR=1
 # Pfetch
 export PF_INFO="ascii title os kernel wm uptime pkgs memory"
 
+# TeamSpeak3 Client
+export TS3_CONFIG_DIR="$XDG_CONFIG_HOME"/ts3client
+
+# Wine
+export WINEPREFIX="$XDG_DATA_HOME"/wine
+
 # Modrinth
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
 

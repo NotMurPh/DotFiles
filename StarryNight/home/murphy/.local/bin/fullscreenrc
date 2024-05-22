@@ -19,7 +19,7 @@ bspc subscribe node_geometry node_focus desktop_focus node_remove | while read ;
 	elif [[ $foucused_window_width != "1920" && -f ~/.cache/fullscreen ]]; then
 		echo "Left fullscreen"
 		rm ~/.cache/fullscreen
-		eww open-many actions spotify info dates &> /dev/null && init_eww
+		eww open-many actions spotify info &> /dev/null && init_eww
 		imwheel -b "45" -k &> /dev/null
 		sed -i "$(( $(wc -l <$dunst_config_path)-3+1 )),$ d" $dunst_config_path
 		pkill dunst

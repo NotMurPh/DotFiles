@@ -31,7 +31,7 @@ nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings -l &
 # Startup -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 pkill openrgb ; openrgb -p blue > /dev/null &
-vpn on > /dev/null &
+sudo -E NetScope vpn on > /dev/null &
 xset q | grep -o "Num Lock:    on" || xdotool key Num_Lock &
 imwheel -b "45" -k &> /dev/null
 pgrep -x ClipGuard > /dev/null || ClipGuard > /dev/null &

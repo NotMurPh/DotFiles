@@ -110,7 +110,7 @@
                         box
                         :space-evenly false
 
-                        ( button :class "cycle_btn_class ${cycle_btn_class}" :onclick "cycle_networks &" "直")
+                        ( button :class "cycle_btn_class ${cycle_btn_class}" :onclick "NetScope cycle &" "直")
 
                         (
                                 revealer
@@ -118,7 +118,7 @@
 								:reveal network_hover
 								:duration "400ms"
 
-                                ( button :class "cycle_btn_status_class ${cycle_btn_status_class}" :onclick "cycle_networks &" "${cycle_btn_status}" )
+                                ( button :class "cycle_btn_status_class ${cycle_btn_status_class}" :onclick "NetScope cycle &" "${cycle_btn_status}" )
                         )
 
                 )
@@ -154,7 +154,7 @@
                         box
                         :space-evenly false
 
-                        ( button :class "${vpn_status=='connected' ? 'vpn_btn_on' : 'vpn_btn_off'}" :onclick "vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? '聯' : '輦' }" )
+                        ( button :class "${vpn_status=='connected' ? 'vpn_btn_on' : 'vpn_btn_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? '聯' : '輦' }" )
 
                         (
                                 revealer
@@ -162,7 +162,7 @@
 								:reveal vpn_hover
 								:duration "400ms"
 
-                                ( button :class "${vpn_status=='connected' ? 'vpn_status_on' : 'vpn_status_off'}" :onclick "vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? 'On' : 'Off'}" )
+                                ( button :class "${vpn_status=='connected' ? 'vpn_status_on' : 'vpn_status_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? 'On' : 'Off'}" )
                         )
                 )
         )

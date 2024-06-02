@@ -2,6 +2,10 @@
 super + p
 	rofi -show drun
 
+# Direct netns program launcher
+super + alt + p
+	sudo -E NetScope direct run "rofi -show drun"
+
 # Calculator
 super + ctrl + c 
 	rofi -show calc -modi calc -no-show-match -no-sort -theme calc -no-history -calc-command "printf '\{expression\} = \{result\}' | xclip -sel clip"

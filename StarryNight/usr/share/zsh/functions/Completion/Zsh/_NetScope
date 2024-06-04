@@ -6,10 +6,18 @@ function _NetScope() {
     local context state state_descr line
     typeset -A opt_args
 
+    # Function to get all network interfaces
+    local -a interfaces
+    interfaces=(${(f)"$(nmcli device status | awk 'NR > 1 {print $1}')"})
+
+    # Function to get isolate namespace names
+    local -a namespaces
+    namespaces=(${(f)"$(ip netns | awk '{print $1}')"})
+
     _arguments -C \
         '1:command:->commands' \
         '2:subcommand:->subcommands' \
-        '3:argument:_files' && return 0
+        '*:interface:->interfaces' && return 0
 
     if [[ $state == commands ]]; then
         _describe -t commands 'NetScope commands' '(
@@ -29,15 +37,15 @@ function _NetScope() {
                 "off:Disable VPN"
                 "reload:Reload VPN settings"
                 "kill:Kill VPN forwarder process"
-                "close:Close VPN forwarder process"
+                "close:Kill VPN forwarder process"
             )' && return 0
             ;;
         route)
             _describe -t subcommands 'Route subcommands' '(
                 "add:Add a new route"
                 "remove:Remove an existing route"
-                "delete:Delete an existing route"
-				"check:Check and synchronize routes with configuration"
+                "delete:Remove an existing route"
+                "check:Check and synchronize routes with configuration"
             )' && return 0
             ;;
         dns)
@@ -54,27 +62,36 @@ function _NetScope() {
             _describe -t subcommands 'Direct subcommands' '(
                 "status:Check the status of the Direct namespace"
                 "create:Create the Direct namespace"
-                "delete:Delete the Direct namespace"
+                "delete:Remove the Direct namespace"
                 "remove:Remove the Direct namespace"
                 "exec:Execute a command in the Direct namespace"
-                "run:Run a command in the Direct namespace"
+                "run:Execute a command in the Direct namespace"
             )' && return 0
             ;;
         isolate)
-            _describe -t subcommands 'Isolate subcommands' '(
-                "status:Check the status of isolate namespaces"
-                "create:Add an isolate namespace"
-                "add:Add an isolate namespace"
-                "delete:Remove an isolate namespace"
-                "remove:Remove an isolate namespace"
-                "exec:Execute a command in an isolate namespace"
-                "run:Run a command in an isolate namespace"
-            )' && return 0
-            ;;
-        *)
-            _message "Unknown command: $line[1]"
+            if [[ $line[2] == "add" || $line[2] == "create" ]]; then
+                _describe -t interfaces 'Network interfaces' interfaces && return 0
+            elif [[ $line[2] == "exec" || $line[2] == "run" ]]; then
+                _describe -t namespaces 'Isolate namespaces' namespaces && return 0
+            elif [[ $line[2] == "delete" || $line[2] == "remove" ]]; then
+                _describe -t namespaces 'Isolate namespaces' namespaces && return 0
+            else
+                _describe -t subcommands 'Isolate subcommands' '(
+                    "status:Check the status of isolate namespaces"
+                    "create:Add an isolate namespace"
+                    "add:Add an isolate namespace"
+                    "delete:Remove an isolate namespace"
+                    "remove:Remove an isolate namespace"
+                    "exec:Execute a command in an isolate namespace"
+                    "run:Execute a command in an isolate namespace"
+                )' && return 0
+            fi
             ;;
     esac
+
+    if [[ $state == interfaces ]]; then
+        _describe -t interfaces 'Network interfaces' interfaces && return 0
+    fi
 }
 
 _NetScope "$@"

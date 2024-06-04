@@ -225,7 +225,7 @@ CreateNetNS() {
 	# Check to see if the interface provided actually exists
 	if ! ip -br a | grep -Fq "$interface"; then 
 		echo "Interface not found!"
-		exit 1 
+		return 
 	fi
 	
 	# Create & setup the namespace if it's not already created
@@ -241,14 +241,14 @@ CreateNetNS() {
 		ip netns add "$name"
 
 		# Check if we should move the interface into the namespace
-		if [ move = true ]; then
+		if [ "$move" = true ]; then
 
 			# If the interface is a wireless one do as follows to move it:
 			if [[ "$interface" = "wl"* ]]; then
 
 				iw phy phy0 set netns name "$name"
 				ip -n "$name" link set dev "$interface" address "16:93:e3:46:7a:88"
-				wpa_passphrase "I-Murphy" "Password" | sed "$d;"| sed "$a\\tscan_ssid=1\n}" > /tmp/wpa-"$name".conf
+				wpa_passphrase "I-Murphy" "Password" | sed '$d;'| sed '$a\\tscan_ssid=1\n}' > /tmp/wpa-"$name".conf
 				ip netns exec "$name" wpa_supplicant -B -D wext -i "$interface" -c /tmp/wpa-"$name".conf
 				echo "! Add 16:93:e3:46:7a:88 to your wifi macfilter !"
 
@@ -427,7 +427,7 @@ case "${1,,}" in
 			exit 1
 		fi
 
-		Isolate "$1" "$2" "$3"
+		Isolate "$1" "$2" "$3" "$4"
 
 	;;
 

@@ -40,6 +40,7 @@ source /home/murphy/.config/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # bindkey -M viins ',c' vi-cmd-mode
 
 alias vim=nvim
+alias vpn="sudo -E NetScope vpn"
 
 #lfcd
 lf() {

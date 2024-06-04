@@ -1,1 +1,2 @@
 ZDOTDIR=/home/murphy/.config/zsh
+WEBKIT_DISABLE_COMPOSITING_MODE=1

@@ -22,7 +22,7 @@ return require("packer").startup(function(use)
     use("RishabhRD/popfix")
     use("RishabhRD/nvim-cheat.sh")
     use("norcalli/nvim-colorizer.lua")
-    use("JASONews/glow-hover.nvim")
+    use("Arian8j2/glow-hover.nvim")
     use("nvim-telescope/telescope.nvim")
 	use{"nvim-telescope/telescope-fzf-native.nvim" , run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" }
 	use("glepnir/dashboard-nvim")

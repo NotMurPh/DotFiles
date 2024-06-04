@@ -11,8 +11,12 @@ vim.api.nvim_create_autocmd("BufReadPost" , { -- Overriding hardcoded default in
         vim.bo.tabstop = 4
     end
 })
-require("indent_blankline").setup({})
-vim.g.indent_blankline_filetype_exclude = { "lspinfo" , "packer" , "checkhealth" , "help" , "man" , "" , "dashboard" }
+
+require("ibl").setup({
+	exclude = {
+		filetypes = { "lspinfo" , "packer" , "checkhealth" , "help" , "man" , "" , "dashboard" }
+	}
+})
 
 -- Git signs
 vim.cmd("set fillchars+=diff:/") -- Diffview.nvim diagonal lines

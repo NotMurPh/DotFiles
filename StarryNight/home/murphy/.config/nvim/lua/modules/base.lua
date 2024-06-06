@@ -58,6 +58,7 @@ vim.o.wrap = false
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.shiftround = true
+vim.opt.iskeyword:remove({'-','_'})
 
 -- Disable mouse
 vim.o.mouse = ""

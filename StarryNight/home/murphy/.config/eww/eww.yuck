@@ -1,66 +1,75 @@
 
+
+
 ; actions window ( left bar ) ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-(
-        defwindow actions
-        :monitor 0
-        :geometry (
-                geometry 
-                :x "-759px"
-                :y "15px"
-                :width "373px"
-                :height "35px"
-                :anchor "top center"
-        )
-        :stacking "fg"
-        :windowtype "desktop"
-        :reserve ( struts :distance "50px" :side "top" )
-        :wm-ignore false
-        ( actions :class "actions" )
+
+
+( defwindow actions
+
+    :monitor 0
+    :geometry ( geometry :x "-759px" :y "15px" :width "373px" :height "35px" :anchor "top center" )
+    :stacking "fg"
+    :windowtype "desktop"
+    :reserve ( struts :distance "50px" :side "top" )
+    :wm-ignore false
+
+    ( actions :class "actions" )
+
 )
 
 ; actions widget all of actions goes into this widget 
 
-(
-        defwidget actions [ ]
-        ( 
-                centerbox
-                (
-                        box
-                        :space-evenly false
+( defwidget actions [ ]
 
-                        ( power_menu )
+    ( centerbox
 
-                        ( network )
+        ( box :space-evenly false
 
-                        ( vpn )
-                )
+            ( power_menu )
 
-                ( box )
-                        
-                ;; ( literal :content workspaces :halign "end" )
-                ( box :class "workspaces_box" :space-evenly "false" 
-                    ( button :class "workspace ${workspace1_class}" :onclick "bspc desktop -f 1" "${workspace1_icon}" ) 
-                    ( button :class "workspace ${workspace2_class}" :onclick "bspc desktop -f 2" "${workspace2_icon}" )
-                    ( button :class "workspace ${workspace3_class}" :onclick "bspc desktop -f 3" "${workspace3_icon}" ) 
-                    ( label :class "workspace_spliter" :text "|" ) 
-                    ( button :class "workspace ${workspace4_class}" :onclick "bspc desktop -f 4" "${workspace4_icon}" ) 
-                    ( button :class "workspace ${workspace5_class}" :onclick "bspc desktop -f 5" "${workspace5_icon}" ) 
-                    ( button :class "workspace ${workspace6_class}" :onclick "bspc desktop -f 6" "${workspace6_icon}" )
-                )
+            ( network )
+
+            ( vpn )
         )
+
+        ( box )
+
+        ( workspaces )
+
+    )
+
 )
 
-; workspaces variable gets workspaces widget from wrokspaces script -------------------------------------------------------------------------------------------------------------------
+; workspaces widget ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-( deflisten workspaces "workspaces" )
+( defwidget workspaces[ ]
 
+    ( box :class "workspaces_box" :space-evenly "false" 
+
+        ( button :class "workspace ${workspace1_class}" :onclick "bspc desktop -f 1" "${workspace1_icon}" ) 
+        ( button :class "workspace ${workspace2_class}" :onclick "bspc desktop -f 2" "${workspace2_icon}" )
+        ( button :class "workspace ${workspace3_class}" :onclick "bspc desktop -f 3" "${workspace3_icon}" ) 
+
+        ( label :class "workspace_spliter" :text "|" ) 
+
+        ( button :class "workspace ${workspace4_class}" :onclick "bspc desktop -f 4" "${workspace4_icon}" ) 
+        ( button :class "workspace ${workspace5_class}" :onclick "bspc desktop -f 5" "${workspace5_icon}" ) 
+        ( button :class "workspace ${workspace6_class}" :onclick "bspc desktop -f 6" "${workspace6_icon}" )
+
+    )
+
+)
+
+; workspace_class variable representing each workspaces_class
 ( defvar workspace1_class "workspace_unoccupied" )
 ( defvar workspace2_class "workspace_unoccupied" )
 ( defvar workspace3_class "workspace_unoccupied" )
 ( defvar workspace4_class "workspace_unoccupied" )
 ( defvar workspace5_class "workspace_unoccupied" )
 ( defvar workspace6_class "workspace_unoccupied" )
+
+; workspace_icon variable representing each workspaces_icon
 ( defvar workspace1_icon "" )
 ( defvar workspace2_icon "" )
 ( defvar workspace3_icon "" )
@@ -70,54 +79,30 @@
 
 ; power menu widget ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-(
-        defwidget power_menu [ ]
-	(
-                eventbox
-                :onhover "eww update power_menu=true"
-                :onhoverlost "eww update power_menu=false"
-                (
-                        box
-                        :space-evenly false
+( defwidget power_menu [ ]
+
+    ( eventbox :onhover "eww update power_menu=true" :onhoverlost "eww update power_menu=false"
+
+        ( box :space-evenly false
                         
-                        (
-                                button
-                                :class "shutdown_btn"
-                                :tooltip "Shutdown"
-                                :onclick "shutdown now"
-                                ""
-                        )
+            ( button :class "shutdown_btn" :tooltip "Shutdown" :onclick "shutdown now" "" )
 
-                        (
-                                revealer
-                                :transition "slideleft"
-                                :reveal power_menu
-                                :duration "400ms"
-	
-                                (
-                                        box
-                                        :space-evenly false
+            ( revealer :transition "slideleft" :reveal power_menu :duration "400ms"
 
-                                        (
-                                                button
-                                                :class "reboot_btn"
-                                                :tooltip "Reboot"
-                                                :onclick "reboot"
-                                                ""
-                                        )
+                ( box :space-evenly false
 
-                                        (
-                                                button
-                                                :class "lock_btn"
-                                                :tooltip "Lock"
-                                                :onclick "light-locker-command -l"
-                                                ""
-                                        )
+                    ( button :class "reboot_btn" :tooltip "Reboot" :onclick "reboot" "" )
 
-                                )
-                        )
-                ) 
-        )
+                    ( button :class "lock_btn" :tooltip "Lock" :onclick "light-locker-command -l" "" )
+
+                )
+
+            )
+
+        ) 
+
+    )
+
 )
 
 ; power_menu variable representing hover
@@ -126,29 +111,24 @@
 
 ; network widget ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-(
-        defwidget network [ ] 
-        (
-                eventbox
-                :onhover "eww update network_hover=true"
-				:onhoverlost "eww update network_hover=false"
-                (
-                        box
-                        :space-evenly false
+( defwidget network [ ] 
 
-                        ( button :class "cycle_btn_class ${cycle_btn_class}" :onclick "NetScope cycle &" "直")
+    ( eventbox :onhover "eww update network_hover=true" :onhoverlost "eww update network_hover=false"
 
-                        (
-                                revealer
-                                :transition "slideleft"
-								:reveal network_hover
-								:duration "400ms"
+        ( box :space-evenly false
 
-                                ( button :class "cycle_btn_status_class ${cycle_btn_status_class}" :onclick "NetScope cycle &" "${cycle_btn_status}" )
-                        )
+            ( button :class "cycle_btn_class ${cycle_btn_class}" :onclick "NetScope cycle &" "直" )
 
-                )
+            ( revealer :transition "slideleft" :reveal network_hover :duration "400ms"
+
+                ( button :class "cycle_btn_status_class ${cycle_btn_status_class}" :onclick "NetScope cycle &" "${cycle_btn_status}" )
+
+            )
+
         )
+
+    )
+
 )
 
 ; network_hover variable representing hover
@@ -169,118 +149,96 @@
 
 ; vpn widget ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-(
-        defwidget vpn [ ]
-        (
-                eventbox
-                :onhover "eww update vpn_hover=true"
-                :onhoverlost "eww update vpn_hover=false"
+( defwidget vpn [ ]
 
-                (
-                        box
-                        :space-evenly false
+    ( eventbox :onhover "eww update vpn_hover=true" :onhoverlost "eww update vpn_hover=false"
 
-                        ( button :class "${vpn_status=='connected' ? 'vpn_btn_on' : 'vpn_btn_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? '聯' : '輦' }" )
+        ( box :space-evenly false
 
-                        (
-                                revealer
-                                :transition "slideleft"
-								:reveal vpn_hover
-								:duration "400ms"
+            ( button :class "${vpn_status=='connected' ? 'vpn_btn_on' : 'vpn_btn_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? '聯' : '輦' }" )
 
-                                ( button :class "${vpn_status=='connected' ? 'vpn_status_on' : 'vpn_status_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? 'On' : 'Off'}" )
-                        )
-                )
+            ( revealer :transition "slideleft" :reveal vpn_hover :duration "400ms"
+
+                ( button :class "${vpn_status=='connected' ? 'vpn_status_on' : 'vpn_status_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? 'On' : 'Off'}" )
+
+            )
+
         )
+
+    )
+
 )
 
 ; vpn_hover variable representing hover
 
-( defvar vpn_hover false)
+( defvar vpn_hover false )
 
 ; vpn_status variable representing vpn status
 
 ( defvar vpn_status "connected" )
 
+
+
 ; spotify window ( middle bar ) ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-(
-        defwindow spotify
-        :monitor 0
-        :geometry (
-                geometry 
-                :x "0%"
-                :y "15px"
-                :width "900px"
-                :height "35px"
-                :anchor "center top"
-        )
-        :stacking "fg"
-        :windowtype "desktop"
-        :reserve ( struts :distance "40px" :side "top" )
-        :wm-ignore false
-        ( spotify :class "spotify" )
+
+
+( defwindow spotify 
+
+    :monitor 0
+    :geometry ( geometry :x "0%" :y "15px" :width "900px" :height "35px" :anchor "center top" )
+    :stacking "fg"
+    :windowtype "desktop"
+    :reserve ( struts :distance "40px" :side "top" )
+    :wm-ignore false
+
+    ( spotify :class "spotify" )
+
 )
 
 ; spotify widget all of spotify goes into this widget 
 
-(
-        defwidget spotify [ ]
-        (
-                centerbox
-                
-                (
-                        box
-                        :space-evenly false
+( defwidget spotify [ ]
 
-                        ( label :class "${ spotify_status=='' ? 'spotify_off_icon' : 'spotify_on_icon' }" :text "" )
-                
-                        ( label :class "${ spotify_status=='' ? 'spotify_status_off' : 'spotify_status_on' }" :style "padding-right:${ strlength(track) * 0.4 }px;" :text "${ spotify_status=='' ? 'Spotify is offline' : '${track}'}" )
-                )
+    ( centerbox
+            
+        ( box :space-evenly false
 
-                (
-                        scale
-                        :visible "${ spotify_status=='' ? false : true }"
-                        :class "player_time"
-                        :value player_progress
-                        :max 101
-                        :min 0
-                        :width { 580 - strlength(track) * 9 }
-                        :onchange "spotify_ctl --seek {}"
-                )
-
-                (
-                        box
-                        :space-evenly false
-                        :visible "${ spotify_status=='' ? false : true }"
-                        :halign "end" 
-
-                        ( button :class "${ shuffle_status=='On' ? 'shuffle_btn_on' : 'shuffle_btn_off' }" :onclick "${ shuffle_status=='On' ? 'eww update shuffle_status=Off && spotify_ctl --shuffle' : 'eww update shuffle_status=On && spotify_ctl --shuffle' }" "列" )
-
-                        ( button :class "prev_btn" :onclick "spotify_ctl --prev" "玲" )
-        
-                        ( button :class "play_btn" :onclick "${ spotify_status=='Playing' ? 'eww update spotify_status=Paused && spotify_ctl --toggle-player' : 'eww update spotify_status=Playing && spotify_ctl --toggle-player'}" "${ spotify_status=='Playing' ? '' : '契' }" )
-
-                        ( button :class "next_btn" :onclick "spotify_ctl --next" "怜" )
-
-                        ( button :class "${ loop_status!='None' ? 'loop_btn_on' : 'loop_btn_off' }" :onclick "spotify_ctl --loop" "${ loop_status=='Playlist' || loop_status=='None' ? '凌' : '綾' }" )
-        
-                        ( label :class "volume_icon" :text "墳" )
-
-                        (
-                                scale  
-                                :class "volume"
-                                :value spotify_volume
-                                :max 101
-                                :min 0
-                                :width 100
-                                :onchange "spotify_ctl --volume {}"
-                        )
-                )
+            ( label :class "${ spotify_status=='' ? 'spotify_off_icon' : 'spotify_on_icon' }" :text "" )
+    
+            ( label :class "${ spotify_status=='' ? 'spotify_status_off' : 'spotify_status_on' }" :style "padding-right:${ strlength(track) * 0.4 }px;" :text "${ spotify_status=='' ? 'Spotify is offline' : '${track}'}" )
 
         )
 
-        
+        ( scale
+
+            :visible "${ spotify_status=='' ? false : true }"
+            :class "player_time"
+            :value player_progress
+            :max 101
+            :min 0
+            :width { 580 - strlength(track) * 9 }
+            :onchange "spotify_ctl --seek {}"
+
+        )
+
+        ( box :space-evenly false :visible "${ spotify_status=='' ? false : true }" :halign "end" 
+
+            ( button :class "${ shuffle_status=='On' ? 'shuffle_btn_on' : 'shuffle_btn_off' }" :onclick "${ shuffle_status=='On' ? 'eww update shuffle_status=Off && spotify_ctl --shuffle' : 'eww update shuffle_status=On && spotify_ctl --shuffle' }" "列" )
+
+            ( button :class "prev_btn" :onclick "spotify_ctl --prev" "玲" )
+            ( button :class "play_btn" :onclick "${ spotify_status=='Playing' ? 'eww update spotify_status=Paused && spotify_ctl --toggle-player' : 'eww update spotify_status=Playing && spotify_ctl --toggle-player'}" "${ spotify_status=='Playing' ? '' : '契' }" )
+            ( button :class "next_btn" :onclick "spotify_ctl --next" "怜" )
+
+            ( button :class "${ loop_status!='None' ? 'loop_btn_on' : 'loop_btn_off' }" :onclick "spotify_ctl --loop" "${ loop_status=='Playlist' || loop_status=='None' ? '凌' : '綾' }" )
+
+            ( label :class "volume_icon" :text "墳" )
+            ( scale  :class "volume" :value spotify_volume :max 101 :min 0 :width 100 :onchange "spotify_ctl --volume {}")
+
+        )
+
+    )
+
 )
 
 ; track variable gets the current track from playerctl
@@ -309,63 +267,46 @@
 
 ; info window ( right bar ) -----------------------------------------------------------------------------------------------------------------------------------
 
-(
-        defwindow info
-        :monitor 0
-        :geometry (
-                geometry 
-                :x "760px"
-                :y "15px"
-                :width "370px"
-                :height "35px"
-                :anchor "center top"
-        )
-        :stacking "fg"
-        :windowtype "desktop"
-        :reserve ( struts :distance "40px" :side "top" )
-        :wm-ignore false
-        ( info :class "info" )
+( defwindow info
+
+    :monitor 0
+    :geometry ( geometry :x "760px" :y "15px" :width "370px" :height "35px" :anchor "center top" )
+    :stacking "fg"
+    :windowtype "desktop"
+    :reserve ( struts :distance "40px" :side "top" )
+    :wm-ignore false
+
+    ( info :class "info" )
+
 )
 
 ; info widget all of info goes into this widget 
 
-(
-	defwidget info [] 
-        (
-                centerbox
+( defwidget info [] 
 
-                (       
-                        box
-                        :space-evenly false
+    ( centerbox
 
-                        ( label :class "disk_icon" :text "" )
+        ( box :space-evenly false
 
-                        ( label :class "disk_space" :text "${round(EWW_DISK["/"].free/(1024*1024*1024),1)}GB" )
+            ( label :class "disk_icon" :text "" )
+            ( label :class "disk_space" :text "${round(EWW_DISK["/"].free/(1024*1024*1024),1)}GB" )
 
-                        ( label :class "ram_icon" :text "" )
+            ( label :class "ram_icon" :text "" )
+            ( label :class "ram_usage" :text "${ram_usage}B" )
 
-                        ( label :class "ram_usage" :text "${ram_usage}B" )
-                )
+        )
 
-                (
-                        box
-                        :space-evenly false
-                        
-                        ( label :class "cpu_icon" :text "" )
+        ( box :space-evenly false
+            ( label :class "cpu_icon" :text "" )
+            ( label :class "cpu_usage" :text "${round(cpu_usage,0)}%" )
+        )
 
-                        ( label :class "cpu_usage" :text "${round(cpu_usage,0)}%" )
-                )
+        ( box :space-evenly false :halign "end"
+            ( label :class "clock_icon" :text "" :tooltip "${date}" )
+            ( label :class "time" :text "${time}" :tooltip "${date}" )
+        )
 
-                (       
-                        box
-                        :space-evenly false
-                        :halign "end"
-
-                        ( label :class "clock_icon" :text "" :tooltip "${date}" )
-        
-                        ( label :class "time" :text "${time}" :tooltip "${date}" )
-                )
-	)
+    )
 )
 
 ; ram_usage variable gets the free ram size every one second
@@ -392,47 +333,37 @@
 
 ( defpoll time2 :initial "time" :interval "1s" "echo $( date +%I:%M ; date +%p )" )
 
+
+
 ; date window ( second monitor middle ) -----------------------------------------------------------------------------------------------------------------------------------
 
-(
-        defwindow dates
-        :monitor 1
-        :geometry (
-                geometry 
-                :x "0%"
-                :y "15px"
-                :width "1890px"
-                :height "35px"
-                :anchor "center top"
-        )
-        :stacking "fg"
-        :windowtype "desktop"
-        :reserve ( struts :distance "50px" :side "top" )
-        :wm-ignore false
-        ( dates )
+
+
+( defwindow dates
+
+    :monitor 1
+    :geometry ( geometry :x "0%" :y "15px" :width "1890px" :height "35px" :anchor "center top" )
+    :stacking "fg"
+    :windowtype "desktop"
+    :reserve ( struts :distance "50px" :side "top" )
+    :wm-ignore false
+
+    ( dates )
+
 )
 
 ; dates widget all of dates goes into this widget
 
-(
-        defwidget dates []
-        (
-                centerbox
-                :class "dates"
+( defwidget dates []
 
-                ( label :class "gorgian" :text "${date}" :halign "start" )
+    ( centerbox :class "dates"
 
-                (
-                        box
-                        :space-evenly false
-                        
-                        ( label :class "arrow_left" :text "<~~" )
+        ( label :class "jalali" :text "${date_jalali}" :halign "start" )
 
-                        ( label :class "time" :text "${time2}" )
+        ( label :class "time" :text "${time2}" )
 
-                        ( label :class "arrow_right" :text "~~>" )
-                )
+        ( label :class "gorgian" :text "${date}" :halign "end" )
 
-                ( label :class "jalali" :text "${date_jalali}" :halign "end" )
-        )
+    )
+
 )

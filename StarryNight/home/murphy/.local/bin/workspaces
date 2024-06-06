@@ -43,18 +43,18 @@ bspc subscribe desktop node_transfer | while read -r line ; do
 
 		# If we changed to a monitor1 workspace, update the old monitor1 workspace and remember the current workspace as the old one 
 		if [[ $(echo "$line" | awk '{print $2}') == "$monitor1" ]]; then
-			CheckWorkspace $monitor1_last_focused_workspace
+			UpdateWorkspace $monitor1_last_focused_workspace
 			monitor1_last_focused_workspace=$focused_workspace
 
 		# Otherwise do that for monitor2
 		else
-			CheckWorkspace $monitor2_last_focused_workspace
+			UpdateWorkspace $monitor2_last_focused_workspace
 			monitor2_last_focused_workspace=$focused_workspace
 		fi
 
 	# If we transferd a node, update the destination workspace
 	else
-		CheckWorkspace $(echo "$line" | awk '{print $6}')
+		UpdateWorkspace $(echo "$line" | awk '{print $6}')
 	fi
 
 done

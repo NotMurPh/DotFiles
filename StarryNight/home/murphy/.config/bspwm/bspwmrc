@@ -20,7 +20,7 @@ xsetroot -cursor_name left_ptr &
 xrandr --output DP-4 --mode 1920x1080 --rate 240 &
 xrdb -merge "$XDG_CONFIG_HOME"/X11/Xresources
 picom -b
-pgrep -x eww > /dev/null || eww open-many actions spotify info dates &> /dev/null && init_eww &
+pgrep -x eww > /dev/null || eww open-many actions spotify info dates &> /dev/null && init_eww && workspaces &
 pgrep -x sxhkd > /dev/null || sxhkd &
 nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings -l &
 

@@ -1,55 +1,60 @@
-#!/bin/sh
-workspaces() {
+#!/bin/bash
 
-# workspaces
-ws1="1"
-ws2="2"
-ws3="3"
-ws4="4"
-ws5="5"
-ws6="6"
+UpdateWorkspace() {
 
-# Unoccupied
-un="u"
+	# Get the workspace status
+	id=$(bspc query -D -d $1 --names)
+	occupied=$(bspc query -D -d "$1.occupied" &> /dev/null && echo "true" || echo "false")
+	active=$(bspc query -D -d "$1.active" &> /dev/null && echo "true" || echo "false")
 
-# check if Occupied
-o1=$(bspc query -D -d .occupied --names | grep "$ws1" )
-o2=$(bspc query -D -d .occupied --names | grep "$ws2" )
-o3=$(bspc query -D -d .occupied --names | grep "$ws3" )
-o4=$(bspc query -D -d .occupied --names | grep "$ws4" )
-o5=$(bspc query -D -d .occupied --names | grep "$ws5" )
-o6=$(bspc query -D -d .occupied --names | grep "$ws6" )
+	# Update workspace icons
+	if [[ "$active" == "true" ]] ; then
+		eww update workspace"$id"_icon=
+	else
+		eww update workspace"$id"_icon=
+	fi
 
-# check if active
-a1=$(bspc query -D -d .active --names | grep "$ws1" )
-a2=$(bspc query -D -d .active --names | grep "$ws2" )
-a3=$(bspc query -D -d .active --names | grep "$ws3" )
-a4=$(bspc query -D -d .active --names | grep "$ws4" )
-a5=$(bspc query -D -d .active --names | grep "$ws5" )
-a6=$(bspc query -D -d .active --names | grep "$ws6" )
-
-# default icons
-ic_1=""
-ic_2=""
-ic_3=""
-ic_4=""
-ic_5=""
-ic_6=""
-
-# change the icon if active
-[ $a1 ] && ic_1=""
-[ $a2 ] && ic_2=""
-[ $a3 ] && ic_3=""
-[ $a4 ] && ic_4=""
-[ $a5 ] && ic_5=""
-[ $a6 ] && ic_6=""
-
-# tell eww
-echo "( box :class \"workspaces_box\" :space-evenly \"false\" ( button :class \"$un$o1$a1\" :onclick \"bspc desktop -f $ws1\" \"$ic_1\" ) ( button :class \"$un$o2$a2\" :onclick \"bspc desktop -f $ws2\" \"$ic_2\" ) ( button :class \"$un$o3$a3\" :onclick \"bspc desktop -f $ws3\" \"$ic_3\" ) ( label :class \"workspace_spliter\" :text \"|\" ) ( button :class \"$un$o4$a4\" :onclick \"bspc desktop -f $ws4\" \"$ic_4\" ) ( button :class \"$un$o5$a5\" :onclick \"bspc desktop -f $ws5\" \"$ic_5\" ) ( button :class \"$un$o6$a6\" :onclick \"bspc desktop -f $ws6\" \"$ic_6\" ) )"
+	# Update workspace colors
+	if [[ "$occupied" == "true" ]] ; then
+		eww update workspace"$id"_class=workspace_occupied
+	elif [[ "$active" == "true" ]]; then
+		eww update workspace"$id"_class=workspace_occupied
+	else
+		eww update workspace"$id"_class=workspace_unoccupied
+	fi
 
 }
 
-workspaces
-bspc subscribe desktop node_transfer | while read -r _ ; do
-workspaces
+# Get the monitor1
+monitor1=$(bspc query -M -m \^1)
+
+# Remember the current workspaces as the old ones
+monitor1_last_focused_workspace=$(bspc query -D -m \^1 -d focused --names)
+monitor2_last_focused_workspace=$(bspc query -D -m \^2 -d focused --names)
+
+bspc subscribe desktop node_transfer | while read -r line ; do
+
+	# If we changed workspace do:
+	if [[ $(echo "$line" | awk '{print $1}') == "desktop_focus" ]]; then
+
+		# Get the current workspace and update it
+		focused_workspace=$(echo "$line" | awk '{print $3}')
+		UpdateWorkspace $focused_workspace
+
+		# If we changed to a monitor1 workspace, update the old monitor1 workspace and remember the current workspace as the old one 
+		if [[ $(echo "$line" | awk '{print $2}') == "$monitor1" ]]; then
+			CheckWorkspace $monitor1_last_focused_workspace
+			monitor1_last_focused_workspace=$focused_workspace
+
+		# Otherwise do that for monitor2
+		else
+			CheckWorkspace $monitor2_last_focused_workspace
+			monitor2_last_focused_workspace=$focused_workspace
+		fi
+
+	# If we transferd a node, update the destination workspace
+	else
+		CheckWorkspace $(echo "$line" | awk '{print $6}')
+	fi
+
 done

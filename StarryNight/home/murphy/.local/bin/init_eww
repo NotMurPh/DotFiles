@@ -1,5 +1,6 @@
 #!/bin/bash
-#this script will set the initial values of some variables in eww
+
+# this script will set the initial values of some variables in eww
 
 GetCurrentInterface() {
 	if [[ $( nmcli connection | grep -o "enp4s0"  ) == "enp4s0" ]]; then
@@ -13,11 +14,36 @@ GetCurrentInterface() {
 	fi
 }
 
-#Network
+# Network
 current_interface=$( GetCurrentInterface )
 eww update cycle_btn_class="cycle_btn_class${current_interface:9:9}"
 eww update cycle_btn_status_class="cycle_btn_status_class${current_interface:9:9}"
 eww update cycle_btn_status="${current_interface:0:8}" 
 
-#Vpn
+# Vpn
 eww update vpn_status=$( nmcli device show l-hetzner1-1 | grep -o connected )
+
+# Workspaces
+for number in {1..6} ; do
+
+	# Get the occupied and active workspaces
+	occupied_workspaces=$(bspc query -D -d .occupied --names)
+	active_workspaces=$(bspc query -D -d .active --names)
+
+	# Update the workspace icons
+	if echo $active_workspaces | grep -q "$number" ; then
+		eww update workspace"$number"_icon=
+	else
+		eww update workspace"$number"_icon=
+	fi
+
+	# Update the workspace colors
+	if echo $occupied_workspaces | grep -q "$number" ; then
+		eww update workspace"$number"_class=workspace_occupied
+	elif echo $active_workspaces | grep -q "$number" ; then
+		eww update workspace"$number"_class=workspace_occupied
+	else
+		eww update workspace"$number"_class=workspace_unoccupied
+	fi
+	
+done

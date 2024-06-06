@@ -38,9 +38,35 @@
 
                 ( box )
                         
-                ( literal :content workspaces :halign "end" )
+                ;; ( literal :content workspaces :halign "end" )
+                ( box :class "workspaces_box" :space-evenly "false" 
+                    ( button :class "workspace ${workspace1_class}" :onclick "bspc desktop -f 1" "${workspace1_icon}" ) 
+                    ( button :class "workspace ${workspace2_class}" :onclick "bspc desktop -f 2" "${workspace2_icon}" )
+                    ( button :class "workspace ${workspace3_class}" :onclick "bspc desktop -f 3" "${workspace3_icon}" ) 
+                    ( label :class "workspace_spliter" :text "|" ) 
+                    ( button :class "workspace ${workspace4_class}" :onclick "bspc desktop -f 4" "${workspace4_icon}" ) 
+                    ( button :class "workspace ${workspace5_class}" :onclick "bspc desktop -f 5" "${workspace5_icon}" ) 
+                    ( button :class "workspace ${workspace6_class}" :onclick "bspc desktop -f 6" "${workspace6_icon}" )
+                )
         )
 )
+
+; workspaces variable gets workspaces widget from wrokspaces script -------------------------------------------------------------------------------------------------------------------
+
+( deflisten workspaces "workspaces" )
+
+( defvar workspace1_class "workspace_unoccupied" )
+( defvar workspace2_class "workspace_unoccupied" )
+( defvar workspace3_class "workspace_unoccupied" )
+( defvar workspace4_class "workspace_unoccupied" )
+( defvar workspace5_class "workspace_unoccupied" )
+( defvar workspace6_class "workspace_unoccupied" )
+( defvar workspace1_icon "" )
+( defvar workspace2_icon "" )
+( defvar workspace3_icon "" )
+( defvar workspace4_icon "" )
+( defvar workspace5_icon "" )
+( defvar workspace6_icon "" )
 
 ; power menu widget ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -49,10 +75,10 @@
 	(
                 eventbox
                 :onhover "eww update power_menu=true"
-		:onhoverlost "eww update power_menu=false"
+                :onhoverlost "eww update power_menu=false"
                 (
                         box
-			:space-evenly false
+                        :space-evenly false
                         
                         (
                                 button
@@ -65,8 +91,8 @@
                         (
                                 revealer
                                 :transition "slideleft"
-				:reveal power_menu
-				:duration "400ms"
+                                :reveal power_menu
+                                :duration "400ms"
 	
                                 (
                                         box
@@ -175,10 +201,6 @@
 ; vpn_status variable representing vpn status
 
 ( defvar vpn_status "connected" )
-
-; workspaces variable gets workspaces widget from wrokspaces script -------------------------------------------------------------------------------------------------------------------
-
-( deflisten workspaces "workspaces" )
 
 ; spotify window ( middle bar ) ------------------------------------------------------------------------------------------------------------------------------------------------------------
 

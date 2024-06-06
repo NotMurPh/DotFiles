@@ -96,28 +96,23 @@ tooltip {
     padding: 0px 12px 0px 0px;
 }
 
-// every workspace
-.u , .u1 , .u2 , .u3 , .u4 , .u5 , .u6 , .u11 , .u22 , .u33 , .u44 , .u55 , .u66 {
+// Every workspace
+.workspace {
     padding: 4px 9px 1px 3px;
     font-size: 20px;
+}
+
+.workspace_unoccupied {
+    color: #736e7d;
+}
+
+.workspace_occupied {
+    color: #ffffff;
 }
 
 .workspace_spliter {
     padding: 5px 10px 0px 10px;
     font-size: 12;
-}
-
-/* Unoccupied */
-.u {
-    color: #736e7d;
-}
-
-/* Occupied */
-.u1, .u2, .u3, .u4, .u5, .u6 {
-}
-
-/* Focused */
-.u11, .u22, .u33, .u44, .u55, .u66 {
 }
 
 // spotify bar section ------------------------------------------------------------------------------------------------------------------------------------------

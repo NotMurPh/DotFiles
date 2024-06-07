@@ -46,4 +46,6 @@ for number in {1..6} ; do
 		eww update workspace"$number"_class=workspace_unoccupied
 	fi
 	
+	sleep 0.05
+	
 done

@@ -313,7 +313,7 @@ Direct() {
 
 		"exec"|"run")
 			CreateNetNS "Direct" "$interface" "$gateway" false
-			ip netns exec Direct sudo -E -u "$USER" $3
+			ip netns exec Direct sudo -E -u murphy $3
 		;;
 
 		*)
@@ -349,7 +349,7 @@ Isolate() {
 
 		"exec"|"run")
 			CreateNetNS "$3" "$3" "192.168.1.1" true
-			ip netns exec "$3" sudo -E -u "$USER" $4
+			ip netns exec "$3" sudo -E -u murphy $4
 		;;
 
 		*)

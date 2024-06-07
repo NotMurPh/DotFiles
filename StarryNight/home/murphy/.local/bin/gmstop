@@ -1,2 +1,1 @@
-#imwheel -b "45" -k
-notify-send " " "Gamemode Deactivated"
+notify-send "Gamemode" "Gamemode Over" -i ~/Media/Icons/GameOver.png

@@ -1,2 +1,1 @@
-#pkill imwheel
-notify-send " " "Gamemode Activated"
+notify-send "Gamemode" "Gamemode Activated" -i ~/Media/Icons/GameOn.png

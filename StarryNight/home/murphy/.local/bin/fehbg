@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-scale '/home/murphy/.backgrounds/upscaled-apofiss-wallpaper-m1.png' '/home/murphy/.backgrounds/upscaled-apofiss-wallpaper-m2.png' 
+feh --no-fehbg --bg-scale "/home/murphy/Media/Backgrounds/upscaled-apofiss-wallpaper-m1.png" "/home/murphy/Media/Backgrounds/upscaled-apofiss-wallpaper-m2.png" 

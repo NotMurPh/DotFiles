@@ -2,7 +2,7 @@
 # /home/murphy/.config/nvidia/settings
 #
 # Configuration file for nvidia-settings - the NVIDIA Settings utility
-# Generated on Mon Dec 18 01:43:35 2023
+# Generated on Thu Jun  6 20:31:51 2024
 #
 
 # ConfigProperties:
@@ -12,9 +12,9 @@ DisplayStatusBar = Yes
 SliderTextEntries = Yes
 IncludeDisplayNameInConfigFile = No
 UpdateRulesOnProfileNameChange = Yes
-Timer = Memory_Used_(GPU_0),Yes,3000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
 Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = Memory_Used_(GPU_0),Yes,3000
 
 # Attributes:
 

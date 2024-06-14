@@ -24,7 +24,7 @@ eww update cycle_btn_status="${current_interface:0:8}"
 eww update vpn_status=$( nmcli device show l-hetzner1-1 | grep -o connected )
 
 # Workspaces
-for number in {1..6} ; do
+for number in {1..6} ; do (
 
 	# Get the occupied and active workspaces
 	occupied_workspaces=$(bspc query -D -d .occupied --names)
@@ -45,7 +45,6 @@ for number in {1..6} ; do
 	else
 		eww update workspace"$number"_class=workspace_unoccupied
 	fi
-	
-	sleep 0.05
-	
+
+) &
 done

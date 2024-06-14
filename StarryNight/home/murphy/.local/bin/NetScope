@@ -69,11 +69,11 @@ Route() {
 	case "${2,,}" in
 
 		"add")
-			nmcli c modify "$interface" +ipv4.routes "$2 $gateway"
+			nmcli c modify "$interface" +ipv4.routes "$3 $gateway"
 		;;
 
 		"remove"|"delete")
-			nmcli c modify "$interface" -ipv4.routes "$2 $gateway"
+			nmcli c modify "$interface" -ipv4.routes "$3 $gateway"
 		;;
 
 		"check")
@@ -108,7 +108,7 @@ Route() {
 	esac
 
 	# Reload the interface
-	nmcli c up "$interface"
+	nmcli c up "$interface" > /dev/null
 
 	echo "$interface Updated successfully"
 

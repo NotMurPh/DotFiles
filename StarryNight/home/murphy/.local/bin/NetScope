@@ -355,12 +355,46 @@ Isolate() {
 		*)
 
 			# If the argument is an interface name create the namespace
-			if ! ip -br a | grep -Fq "$2"; then 
-				CreateNetNS "$3" "$3" "192.168.1.1" true
+			if ip -br a | grep -Fq "$2"; then 
+				CreateNetNS "$2" "$2" "192.168.1.1" true
+			else
+				# Otherwise we don't know what user wants :\
+				echo "Couldn't find the subcommand $2"
 			fi
 
-			# Otherwise we don't know what user wants :\
-			echo "Couldn't find the subcommand $2"
+		;;
+
+	esac
+
+}
+
+# NetScope integration for rofi
+Rofi() {
+
+	# Get the inerface names
+	interfaces=$(ip netns | grep -v Direct | awk '{print $1}')
+	interfaces+="$(echo && nmcli device status | awk 'NR > 1 {print $1}')"
+
+	# Prosses the subcommands
+	case "${2,,}" in
+
+		"direct")
+			sudo -E daemon -u murphy -D ~ -- sudo -E NetScope direct exec "rofi -show drun"
+		;;
+
+		"isolate")
+			echo "$interfaces"
+		;;
+
+		*)
+
+			# If the argument is an interface name run the isolate command
+			if [ -n "$2" ] && echo "$interfaces" | grep -Fq "$2" ; then
+				sudo -E daemon -u murphy -D ~ -- sudo -E NetScope isolate exec "$2" "rofi -show drun"
+			else
+				echo Direct
+				echo Isolate
+			fi
 
 		;;
 
@@ -374,7 +408,7 @@ case "${1,,}" in
 	"vpn")
 
 		# Only execute commands if we are not executing already
-		if [[ "$(pgrep 'NetScope')" != "$$" ]]; then
+		if [[ "$(ps aux | grep 'Ss' | grep 'NetScope vpn' | grep -v 'grep' | wc -l)" -gt 1 ]]; then
 			exit 1
 		fi
 
@@ -384,22 +418,22 @@ case "${1,,}" in
 			exit 1
 		fi
 
-		Vpn "$1" "$2" "$3"
+		Vpn "$1" "$2" "$3" "$4"
 
 	;;
 
 	"route")
-		Route "$1" "$2" "$3"
+		Route "$1" "$2" "$3" "$4"
 	;;
 
 	"dns")
-		Dns "$1" "$2" "$3"
+		Dns "$1" "$2" "$3" "$4"
 	;;
 
 	"cycle")
 
 		# Only execute commands if we are not executing already
-		if [[ "$(pgrep 'NetScope')" != "$$" ]]; then
+		if [[ "$(ps aux | grep 'Ss' | grep 'NetScope cycle' | grep -v 'grep' | wc -l)" -gt 1 ]]; then
 			exit 1
 		fi
 
@@ -415,7 +449,7 @@ case "${1,,}" in
 			exit 1
 		fi
 
-		Direct "$1" "$2" "$3"
+		Direct "$1" "$2" "$3" "$4"
 
 	;;
 
@@ -429,6 +463,10 @@ case "${1,,}" in
 
 		Isolate "$1" "$2" "$3" "$4"
 
+	;;
+
+	"rofi")
+		Rofi "$1" "$2" "$3" "$4"
 	;;
 
 	*)

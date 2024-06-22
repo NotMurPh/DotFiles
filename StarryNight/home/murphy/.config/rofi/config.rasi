@@ -21,6 +21,7 @@ configuration {
     display-movie-todo:			"ﳜ";
 	display-emoji: 				"ﲃ";
     display-ssh:                "力";
+	display-NetScope:			"󱫋";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }

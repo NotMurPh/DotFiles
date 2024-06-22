@@ -46,7 +46,7 @@ alias vpn="sudo -E NetScope vpn"
 
 #lfcd
 lf() {
-	cd $(/bin/lf -print-last-dir "$@")
+	cd "$(/bin/lf -print-last-dir $@)"
 }
 
 swap() {

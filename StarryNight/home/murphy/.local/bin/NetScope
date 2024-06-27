@@ -272,10 +272,22 @@ CreateNetNS() {
 
 		fi
 
-		# Turning on the namespace interfaces & giving them ip address + default route
+		# Turning on the namespace interfaces
 		ip -n "$name" link set "$ns_interface" up
 		ip -n "$name" link set lo up
-		ip netns exec "$name" dhcpcd --ipv4only --oneshot --nobackground
+
+		# Waiting for the interface to turn on
+		until ip -n "$name" link show "$ns_interface" | grep -q "state UP\|state UNKNOWN" ; do
+			sleep 0.2
+		done
+
+		# Assign the ip address and default route
+		if [[ -z "$gateway" ]] ; then
+			ip netns exec "$name" dhcpcd --ipv4only --oneshot --nobackground
+		else
+			ip -n "$name" addr add "${gateway%.*}.110/24" dev "$ns_interface"
+			ip -n "$name" route add default via "$gateway"
+		fi
 
 		# Make ping don't require root access
 		ip netns exec "$name" sysctl net.ipv4.ping_group_range='0 2147483647' > /dev/null
@@ -339,19 +351,19 @@ Isolate() {
 		;;
 
 		"create"|"add")
-			CreateNetNS "$3" "$3" "192.168.1.1" true
+			CreateNetNS "$3" "$3" "" true
 		;;
 
 		"delete"|"remove")
 			ip netns exec "$3" iw phy phy0 set netns 1
 			ip netns del "$3"
 			pkill -f "/tmp/wpa-$3.conf"
-			nmcli d disconnect "$3"
+			nmcli d disconnect "$3" &> /dev/null
 			echo "Namespace removed succesfuly"
 		;;
 
 		"exec"|"run")
-			CreateNetNS "$3" "$3" "192.168.1.1" true
+			CreateNetNS "$3" "$3" "" true
 			ip netns exec "$3" sudo -E -u murphy $4
 		;;
 
@@ -359,7 +371,7 @@ Isolate() {
 
 			# If the argument is an interface name create the namespace
 			if ip -br a | grep -Fq "$2"; then 
-				CreateNetNS "$2" "$2" "192.168.1.1" true
+				CreateNetNS "$2" "$2" "" true
 			else
 				# Otherwise we don't know what user wants :\
 				echo "Couldn't find the subcommand $2"

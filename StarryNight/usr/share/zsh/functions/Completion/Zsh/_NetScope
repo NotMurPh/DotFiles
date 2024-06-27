@@ -27,6 +27,7 @@ function _NetScope() {
             "cycle:Cycle through your network interfaces"
             "direct:Manage the Direct namespace"
             "isolate:Isolate network interfaces in namespaces"
+            "configure:Configure your network interfaces"
         )' && return 0
     fi
 
@@ -86,6 +87,9 @@ function _NetScope() {
                     "run:Execute a command in an isolate namespace"
                 )' && return 0
             fi
+            ;;
+        configure)
+            _describe -t interfaces 'Network interfaces' interfaces && return 0
             ;;
     esac
 

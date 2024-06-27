@@ -43,6 +43,7 @@ source /home/murphy/.config/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 alias ls="ls --color=auto"
 alias vim=nvim
 alias vpn="sudo -E NetScope vpn"
+alias ns="sudo -E NetScope"
 
 #lfcd
 lf() {

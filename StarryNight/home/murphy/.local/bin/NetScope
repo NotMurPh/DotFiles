@@ -61,7 +61,7 @@ Route() {
 		echo "You didn't enter the required ip address!" ; exit 1 
 	fi
 
-	# Get main interface name and gateway
+	# Get main connection name and gateway
 	interface=$(nmcli c | awk -F '  ' 'NR==2 {print $1}')
 	gateway=$(nmcli c show "$interface" | grep IP4.GATEWAY | awk '{print $2}')
 
@@ -77,6 +77,11 @@ Route() {
 		;;
 
 		"check")
+
+			# If the thrid argument was an connection name use that instead
+			if nmcli c | awk -F '  ' 'NR > 1 {print $1}' | grep -Fq "$3" ; then
+				interface="$3"
+			fi
 
 			# Get the exsisting and new routes
 			ips=$(awk '{print $2}' ~/.config/NetScope/Routes)
@@ -255,7 +260,6 @@ CreateNetNS() {
 			# If it wasn't a wireless interface do as follows to move it:
 			else
 				ip link set "$interface" netns "$name"
-				#ip netns exec $name dhcpcd --ipv4only --oneshot --nobackground
 			fi
 			
 		# If we shouldn't move the interface do this:
@@ -271,8 +275,7 @@ CreateNetNS() {
 		# Turning on the namespace interfaces & giving them ip address + default route
 		ip -n "$name" link set "$ns_interface" up
 		ip -n "$name" link set lo up
-		ip -n "$name" addr add 192.168.1.110/24 dev "$ns_interface"
-		ip -n "$name" route add default via "$gateway"
+		ip netns exec "$name" dhcpcd --ipv4only --oneshot --nobackground
 
 		# Make ping don't require root access
 		ip netns exec "$name" sysctl net.ipv4.ping_group_range='0 2147483647' > /dev/null
@@ -402,6 +405,33 @@ Rofi() {
 
 }
 
+# Configure network interfaces
+Configure() {
+
+	# Check for interface existance
+	if nmcli d | awk 'NR > 1 {print $1}' | grep -Fq "$2" ; then
+
+		# Turn on the interface
+		nmcli d connect "$2"
+
+		# Get the interface connection name
+		connection=$(nmcli d show "$2" | grep -i general.connection | awk -F ': ' '{print $2}' | sed 's/^ *//')
+
+		# Basic nmcli setup
+		nmcli c modify "$connection" connection.autoconnect no
+		nmcli c modify "$connection" connection.dns-over-tls yes
+		nmcli c modify "$connection" ipv4.ignore-auto-dns yes
+		nmcli c modify "$connection" ipv4.dns "1.1.1.1,8.8.8.8"
+
+		# Setup routes
+		NetScope route check "$connection"
+
+	else
+		echo "Inteface doesn't exists"
+	fi
+
+}
+
 # Main argument handler
 case "${1,,}" in
 
@@ -467,6 +497,10 @@ case "${1,,}" in
 
 	"rofi")
 		Rofi "$1" "$2" "$3" "$4"
+	;;
+
+	"configure")
+		Configure "$1" "$2" "$3" "$4"
 	;;
 
 	*)

@@ -44,6 +44,7 @@ alias ls="ls --color=auto"
 alias vim=nvim
 alias vpn="sudo -E NetScope vpn"
 alias ns="sudo -E NetScope"
+alias mount="sudo mount -o uid=murphy,gid=murphy"
 
 #lfcd
 lf() {

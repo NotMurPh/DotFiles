@@ -107,11 +107,11 @@ XF86AudioLowerVolume
 
 # Screenshot
 super + c
-	addr="/mnt/Murphy/Media/Screenshots/$(date +%F_%H-%M-%S).png" && shotgun -s $addr && xclip -t 'image/png' -selection clipboard $addr && notify-send "Screenshot" "Screen Captured" -i ~/Media/Icons/Screenshot.png
+	addr="$HOME/Media/Screenshots/$(date +%F_%H-%M-%S).png" && shotgun -s $addr && xclip -t 'image/png' -selection clipboard $addr && notify-send "Screenshot" "Screen Captured" -i ~/Media/Icons/Screenshot.png
 
 # Screenshot with selection ( Grab )
 super + g
-	addr="/mnt/Murphy/Media/Screenshots/$(date +%F_%H-%M-%S).png" && sel="$( test -f ~/.cache/fullscreen && ( slop -b 2 -c '1,1,0' ; true ) || slop -b 2 -c '1,1,0,0.5' -l )" && sleep 0.01 && shotgun -g $sel $addr && xclip -t 'image/png' -selection clipboard $addr && notify-send "Screenshot" "Screen Captured" -i ~/Media/Icons/Grab.png
+	addr="$HOME/Media/Screenshots/$(date +%F_%H-%M-%S).png" && sel="$( test -f ~/.cache/fullscreen && ( slop -b 2 -c '1,1,0' ; true ) || slop -b 2 -c '1,1,0,0.5' -l )" && sleep 0.01 && shotgun -g $sel $addr && xclip -t 'image/png' -selection clipboard $addr && notify-send "Screenshot" "Screen Captured" -i ~/Media/Icons/Grab.png
 
 # Record the last minute or so ( Instant replay )
 super + alt + c

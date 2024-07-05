@@ -1,6 +1,6 @@
 #!/bin/bash
 
-addr="/mnt/Murphy/Media/Records/Replay_$(date +%F_%H-%M-%S).mp4"
+addr="$HOME/Media/Records/Replay_$(date +%F_%H-%M-%S).mp4"
 
 if pgrep -f "Replay_" | grep -vw $$ ; then
 

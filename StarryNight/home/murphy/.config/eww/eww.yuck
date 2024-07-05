@@ -117,7 +117,7 @@
 
         ( box :space-evenly false
 
-            ( button :class "cycle_btn_class ${cycle_btn_class}" :onclick "NetScope cycle &" "直" )
+            ( button :class "cycle_btn_class ${cycle_btn_class}" :onclick "NetScope cycle &" "󰖩" )
 
             ( revealer :transition "slideleft" :reveal network_hover :duration "400ms"
 
@@ -155,7 +155,7 @@
 
         ( box :space-evenly false
 
-            ( button :class "${vpn_status=='connected' ? 'vpn_btn_on' : 'vpn_btn_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? '聯' : '輦' }" )
+            ( button :class "${vpn_status=='connected' ? 'vpn_btn_on' : 'vpn_btn_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? '󰒘' : '󰒙' }" )
 
             ( revealer :transition "slideleft" :reveal vpn_hover :duration "400ms"
 
@@ -202,7 +202,7 @@
 
     ( centerbox
             
-        ( box :space-evenly false
+        ( box :space-evenly false :width 64
 
             ( label :class "${ spotify_status=='' ? 'spotify_off_icon' : 'spotify_on_icon' }" :text "" )
     
@@ -224,15 +224,15 @@
 
         ( box :space-evenly false :visible "${ spotify_status=='' ? false : true }" :halign "end" 
 
-            ( button :class "${ shuffle_status=='On' ? 'shuffle_btn_on' : 'shuffle_btn_off' }" :onclick "${ shuffle_status=='On' ? 'eww update shuffle_status=Off && spotify_ctl --shuffle' : 'eww update shuffle_status=On && spotify_ctl --shuffle' }" "列" )
+            ( button :class "${ shuffle_status=='On' ? 'shuffle_btn_on' : 'shuffle_btn_off' }" :onclick "${ shuffle_status=='On' ? 'eww update shuffle_status=Off && spotify_ctl --shuffle' : 'eww update shuffle_status=On && spotify_ctl --shuffle' }" "󰒝" )
 
-            ( button :class "prev_btn" :onclick "spotify_ctl --prev" "玲" )
-            ( button :class "play_btn" :onclick "${ spotify_status=='Playing' ? 'eww update spotify_status=Paused && spotify_ctl --toggle-player' : 'eww update spotify_status=Playing && spotify_ctl --toggle-player'}" "${ spotify_status=='Playing' ? '' : '契' }" )
-            ( button :class "next_btn" :onclick "spotify_ctl --next" "怜" )
+            ( button :class "prev_btn" :onclick "spotify_ctl --prev" "󰒮" )
+            ( button :class "play_btn" :onclick "${ spotify_status=='Playing' ? 'eww update spotify_status=Paused && spotify_ctl --toggle-player' : 'eww update spotify_status=Playing && spotify_ctl --toggle-player'}" "${ spotify_status=='Playing' ? '󰏤' : '󰐊' }" )
+            ( button :class "next_btn" :onclick "spotify_ctl --next" "󰒭" )
 
-            ( button :class "${ loop_status!='None' ? 'loop_btn_on' : 'loop_btn_off' }" :onclick "spotify_ctl --loop" "${ loop_status=='Playlist' || loop_status=='None' ? '凌' : '綾' }" )
+            ( button :class "${ loop_status!='None' ? 'loop_btn_on' : 'loop_btn_off' }" :onclick "spotify_ctl --loop" "${ loop_status=='Playlist' || loop_status=='None' ? '󰑖' : '󰑘' }" )
 
-            ( label :class "volume_icon" :text "墳" )
+            ( label :class "volume_icon" :text "󰕾" )
             ( scale  :class "volume" :value spotify_volume :max 101 :min 0 :width 100 :onchange "spotify_ctl --volume {}")
 
         )
@@ -286,7 +286,7 @@
 
     ( centerbox
 
-        ( box :space-evenly false
+        ( box :space-evenly false :width 200
 
             ( label :class "disk_icon" :text "" )
             ( label :class "disk_space" :text "${round(EWW_DISK["/"].free/(1024*1024*1024),1)}GB" )
@@ -302,7 +302,7 @@
         )
 
         ( box :space-evenly false :halign "end"
-            ( label :class "clock_icon" :text "" :tooltip "${date}" )
+            ( label :class "clock_icon" :text "󱑂" :tooltip "${date}" )
             ( label :class "time" :text "${time}" :tooltip "${date}" )
         )
 

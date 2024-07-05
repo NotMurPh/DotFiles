@@ -109,6 +109,6 @@ require("lualine").setup {
 				padding = { left = 1 , right = 2 }
 			}
 		},
-		lualine_z = {{ Cwd,icon = "" , padding = { left = 1 , right = 2 }}}
+		lualine_z = {{ Cwd,icon = "󰉖" , padding = { left = 1 , right = 2 }}}
 	}
 }

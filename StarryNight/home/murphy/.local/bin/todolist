@@ -12,7 +12,7 @@ task_added=false
 
 # Add the task to todolist if argument starts with special_char
 if [[ "$2" == "$special_char"* ]] ; then
-	echo " $task" >> "$list"
+	echo " $task" >> "$list"
 	task_added=true
 fi
 

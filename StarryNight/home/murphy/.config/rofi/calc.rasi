@@ -16,8 +16,8 @@ configuration {
     display-run:                "";
     display-filebrowser:        "";
     display-window:             "";
-    display-calc:               "";
-    display-ssh:                "力";
+    display-calc:               "󰪚";
+    display-ssh:                "󰒋";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }

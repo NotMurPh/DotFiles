@@ -3,7 +3,7 @@
 # this script will set the initial values of some variables in eww
 
 GetCurrentInterface() {
-	if [[ $( nmcli connection | grep -o "enp4s0"  ) == "enp4s0" ]]; then
+	if [[ $( nmcli connection | grep -o "enp6s0"  ) == "enp6s0" ]]; then
 		echo "M-Murphy 1"
 	elif [[ $( nmcli connection | grep -o "enp0s20f0u1" ) == "enp0s20f0u1" ]]; then
 		echo "P-Murphy 2"

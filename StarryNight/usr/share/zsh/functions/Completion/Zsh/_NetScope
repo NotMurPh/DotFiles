@@ -1,6 +1,6 @@
 #compdef NetScope
 
-# Completion script for NetScope
+# Completion script for NetScope, ChatGPT wrote this, I'm too lazy, don't roast me
 
 function _NetScope() {
     local context state state_descr line
@@ -8,11 +8,24 @@ function _NetScope() {
 
     # Function to get all network interfaces
     local -a interfaces
-    interfaces=(${(f)"$(nmcli device status | awk 'NR > 1 {print $1}')"})
+    interfaces=(${(f)"$(nmcli d | grep -v "lo\|hetzner" | awk 'NR > 1 {print $1}')"})
 
     # Function to get isolate namespace names
     local -a namespaces
     namespaces=(${(f)"$(ip netns | awk '{print $1}')"})
+
+    # Function to filter interfaces based on namespaces
+    local -a filtered_interfaces
+    for interface in "${interfaces[@]}"; do
+        if echo "${namespaces[@]}" | grep -q "$interface"; then
+            filtered_interfaces+=("$interface")
+        fi
+    done
+	filtered_interfaces=("-" "${filtered_interfaces[@]}" "${namespaces[@]}")
+
+    # Function to get VPN modes
+    local -a vpn_modes
+    vpn_modes=("forwarder" "udp2raw")
 
     _arguments -C \
         '1:command:->commands' \
@@ -25,29 +38,39 @@ function _NetScope() {
             "route:Manage your direct routes"
             "dns:Switch between DNS servers"
             "cycle:Cycle through your network interfaces"
-            "direct:Manage the Direct namespace"
-            "isolate:Isolate network interfaces in namespaces"
+            "netns:Create and manage network namespaces"
+            "rofi:NetScope NetNS integration for Rofi"
             "configure:Configure your network interfaces"
         )' && return 0
     fi
 
     case $line[1] in
         vpn)
-            _describe -t subcommands 'VPN subcommands' '(
-                "on:Enable VPN and open forwarder"
-                "off:Disable VPN"
-                "reload:Reload VPN settings"
-                "kill:Kill VPN forwarder process"
-                "close:Kill VPN forwarder process"
-            )' && return 0
+            if [[ ${line[2]} == "on" || ${line[2]} == "reload" || ${line[2]} == "kill" || ${line[2]} == "close" ]]; then
+                _describe -t vpn_modes 'VPN modes' vpn_modes && return 0
+            elif [[ ${line[2]} == "off" ]]; then
+                _message "No further arguments needed for 'off'" && return 0
+            else
+                _describe -t subcommands 'VPN subcommands' '(
+                    "on:Enable VPN and open forwarder"
+                    "off:Disable VPN"
+                    "reload:Reload VPN settings"
+                    "kill:Kill VPN forwarder process"
+                    "close:Kill VPN forwarder process"
+                )' && return 0
+            fi
             ;;
         route)
-            _describe -t subcommands 'Route subcommands' '(
-                "add:Add a new route"
-                "remove:Remove an existing route"
-                "delete:Remove an existing route"
-                "check:Check and synchronize routes with configuration"
-            )' && return 0
+            if [[ ${line[2]} == "add" || ${line[2]} == "remove" || ${line[2]} == "delete" ]]; then
+                _describe -t interfaces 'Network interfaces' filtered_interfaces && return 0
+            else
+                _describe -t subcommands 'Route subcommands' '(
+                    "add:Add a new route"
+                    "remove:Remove an existing route"
+                    "delete:Remove an existing route"
+                    "check:Check and synchronize routes with configuration"
+                )' && return 0
+            fi
             ;;
         dns)
             _describe -t subcommands 'DNS subcommands' '(
@@ -59,42 +82,41 @@ function _NetScope() {
         cycle)
             _message "No subcommands for cycle" && return 0
             ;;
-        direct)
-            _describe -t subcommands 'Direct subcommands' '(
-                "status:Check the status of the Direct namespace"
-                "create:Create the Direct namespace"
-                "delete:Remove the Direct namespace"
-                "remove:Remove the Direct namespace"
-                "exec:Execute a command in the Direct namespace"
-                "run:Execute a command in the Direct namespace"
-            )' && return 0
-            ;;
-        isolate)
-            if [[ $line[2] == "add" || $line[2] == "create" ]]; then
+        netns)
+            local -a netns_interfaces
+            netns_interfaces=("${interfaces[@]}" "${namespaces[@]}")
+            
+            if [[ $line[2] == "create" ]]; then
                 _describe -t interfaces 'Network interfaces' interfaces && return 0
             elif [[ $line[2] == "exec" || $line[2] == "run" ]]; then
-                _describe -t namespaces 'Isolate namespaces' namespaces && return 0
+                _describe -t netns_interfaces 'Network namespaces' netns_interfaces && return 0
             elif [[ $line[2] == "delete" || $line[2] == "remove" ]]; then
-                _describe -t namespaces 'Isolate namespaces' namespaces && return 0
+                _describe -t netns_fi 'Network namespaces' filtered_interfaces && return 0
             else
-                _describe -t subcommands 'Isolate subcommands' '(
-                    "status:Check the status of isolate namespaces"
-                    "create:Add an isolate namespace"
-                    "add:Add an isolate namespace"
-                    "delete:Remove an isolate namespace"
-                    "remove:Remove an isolate namespace"
-                    "exec:Execute a command in an isolate namespace"
-                    "run:Execute a command in an isolate namespace"
+                _describe -t subcommands 'NetNS subcommands' '(
+                    "status:Check the status of network namespaces"
+                    "create:Create a new network namespace"
+                    "delete:Remove a network namespace"
+                    "remove:Remove a network namespace"
+                    "exec:Execute a command in a network namespace"
+                    "run:Execute a command in a network namespace"
                 )' && return 0
             fi
             ;;
+        rofi)
+            _message "No subcommands for rofi" && return 0
+            ;;
         configure)
-            _describe -t interfaces 'Network interfaces' interfaces && return 0
+            local -a all_interfaces
+            all_interfaces=("${interfaces[@]}" "${namespaces[@]}")
+            _describe -t all_interfaces 'Network interfaces' all_interfaces && return 0
             ;;
     esac
 
     if [[ $state == interfaces ]]; then
-        _describe -t interfaces 'Network interfaces' interfaces && return 0
+        local -a all_interfaces
+        all_interfaces=("${interfaces[@]}" "${namespaces[@]}")
+        _describe -t all_interfaces 'Network interfaces' all_interfaces && return 0
     fi
 }
 

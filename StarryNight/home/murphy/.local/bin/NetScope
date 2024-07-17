@@ -46,60 +46,99 @@ Vpn() (
 		;;
 
 		*)
-			echo "Couldn't find the subcommand $2"	
+			echo "Error: Couldn't find the subcommand $2"	
 		;;
 
 	esac
 
 )
 
+# Check and fix carrier for wireless interfaces configured using NetworkManager
+CheckCarrier() {
+
+	# Rename variables for clarity
+	interface="$1"
+
+	# Return if the intreface isn't a wireless one
+	if [[ "$interface" != "wl"* ]]; then return 1 ; fi
+
+	# Return if interface already has a carrier
+	if ! ip -br l show "$interface" | grep -q "NO"; then return 1 ; fi
+
+	# Get the interface configuration from NetworkManager
+	interface_config_file=$(grep -rl "name=$interface" "/etc/NetworkManager/system-connections/" | xargs -n 1 basename)
+	ssid=$(grep "ssid=" "/etc/NetworkManager/system-connections/$interface_config_file" | cut -d '=' -f 2)
+	password=$(grep "psk=" "/etc/NetworkManager/system-connections/$interface_config_file" | cut -d '=' -f 2)
+
+	# Fix the interface without messing up with NetworkManager
+	dbus_interface_path=$(gdbus call --system --dest fi.w1.wpa_supplicant1 --object-path /fi/w1/wpa_supplicant1 --method fi.w1.wpa_supplicant1.GetInterface "$interface" | sed -n "s/.*'\([^']*\)'.*/\1/p" )
+	gdbus call --system --dest fi.w1.wpa_supplicant1 --object-path "$dbus_interface_path" --method fi.w1.wpa_supplicant1.Interface.RemoveAllNetworks > /dev/null
+	dbus_network_path=$(gdbus call --system --dest fi.w1.wpa_supplicant1 --object-path "$dbus_interface_path" --method fi.w1.wpa_supplicant1.Interface.AddNetwork '{"ssid":<"'$ssid'">,"scan_ssid":<1>,"psk":<"'$password'">}' | sed -n "s/.*'\([^']*\)'.*/\1/p" )
+	gdbus call --system --dest fi.w1.wpa_supplicant1 --object-path "$dbus_interface_path" --method fi.w1.wpa_supplicant1.Interface.SelectNetwork "$dbus_network_path" > /dev/null
+
+}
+
 # Manage your direct routes easily
 Route() {
 
-	# Check if user provided an ip address
-	if [[ -z "$3" && "${2,,}" != "check" ]] ; then
-		echo "You didn't enter the required ip address!" ; exit 1 
+	# Define some default variables
+	interface=$(ip r | awk 'NR==1 {print $5}')
+	ip="$3"
+
+	# Check if user provided an interface
+	if [ -n "$3" ] && nmcli d | grep -Eq "(^| )$3($| )"; then
+		interface="$3"
+		ip="$4"
 	fi
 
-	# Get main connection name and gateway
-	interface=$(nmcli c | awk -F '  ' 'NR==2 {print $1}')
-	gateway=$(nmcli c show "$interface" | grep IP4.GATEWAY | awk '{print $2}')
+	# Check if user provided an ip address
+	if [[ "${2,,}" != "check" && -z "$ip" ]]; then
+		echo "Error: You didn't enter the required ip address!" ; exit 1 
+	fi
+
+	# Get the interface gateway
+	nmcli_interface_info=$(nmcli d show "$interface")
+	if echo "$nmcli_interface_info" | grep -q "disconnected"; then
+		CheckCarrier "$interface"
+		gateway=$(dhclient -v -r "$interface" 2>&1 | grep "DHCPRELEASE" | awk '{print $7}')
+	else
+		gateway=$(echo "$nmcli_interface_info" | grep "IP4.GATEWAY" | awk '{print $2}')
+	fi
+
+	# Get the interface connection name
+	interface_config_file=$(grep -rl "name=$interface" "/etc/NetworkManager/system-connections/" | xargs -n 1 basename)
+	connection=$(grep "^id=" "/etc/NetworkManager/system-connections/$interface_config_file" | cut -d '=' -f 2)
 
 	# Prosses the subcommands
 	case "${2,,}" in
 
 		"add")
-			nmcli c modify "$interface" +ipv4.routes "$3 $gateway"
+			nmcli c modify "$connection" +ipv4.routes "$ip $gateway"
 		;;
 
 		"remove"|"delete")
-			nmcli c modify "$interface" -ipv4.routes "$3 $gateway"
+			nmcli c modify "$connection" -ipv4.routes "$ip $gateway"
 		;;
 
 		"check")
 
-			# If the thrid argument was an connection name use that instead
-			if [ -n "$3" ] && nmcli c | awk -F '  ' 'NR > 1 {print $1}' | grep -Fq "$3" ; then
-				interface="$3"
-			fi
-
 			# Get the exsisting and new routes
 			ips=$(awk '{print $2}' ~/.config/NetScope/Routes)
-			routes=$(nmcli -t -f ipv4.routes c show "$interface" | sed 's/ipv4.routes://; s/, /,/g' )
+			routes=$(nmcli -t -f ipv4.routes c show "$connection" | sed 's/ipv4.routes://; s/, /,/g' )
 
-			# Add the config file route if it doesn't exists
+			# Add the config file routes if they don't exist in the interface
 			for ip in $ips; do
 				if ! echo "$routes" | grep -q "$ip"; then
-					nmcli c modify "$interface" +ipv4.routes "$ip $gateway"
+					nmcli c modify "$connection" +ipv4.routes "$ip $gateway"
 					echo "Route for ip $ip added!"
 				fi
 			done
 
-			# Remove the exsisting route if it doesn't exists in config file
+			# Remove the exsisting routes if they don't exist in the config file
 			IFS=','
 			for route in $routes; do
 				if ! echo "$ips" | grep -q "$(echo $route | awk -F '/' '{print $1}')"; then
-					nmcli c modify "$interface" -ipv4.routes "$route"
+					nmcli c modify "$connection" -ipv4.routes "$route"
 					echo "Route $route removed!"
 				fi
 			done
@@ -107,13 +146,15 @@ Route() {
 		;;
 
 		*)
-			echo "Couldn't find the subcommand $2"	
+			echo "Error: Couldn't find the subcommand $2"
 		;;
 
 	esac
 
-	# Reload the interface
-	nmcli c up "$interface" > /dev/null
+	# Reload the interface if it's connected
+	if echo "$nmcli_interface_info" | grep -wq "connected"; then
+		nmcli c up "$connection" > /dev/null
+	fi
 
 	echo "$interface Updated successfully"
 
@@ -140,12 +181,12 @@ Dns() {
 		;;
 
 		*)
-			echo "Couldn't find the subcommand $2"	
+			echo "Error: Couldn't find the subcommand $2"	
 		;;
 
 	esac
 
-	# Change the dns temporarily from the resolv.conf file
+	# Change the dns temporarily using the /etc/resolv.conf file
 	echo -e "# Generated by ye iranie badbakht \\nnameserver $server1 \\nnameserver $server2" | sudo tee /etc/resolv.conf
 
 	echo "DNS Updated successfully"
@@ -155,10 +196,9 @@ Dns() {
 # Cycle through your network interfaces activating one at a time
 Cycle() (
 
-	# Show message
 	echo "Cycling through network interfaces!"
 
-	# Interfaces and their ssids to loop through & list of nmcli devices
+	# Interfaces and their ssids to loop through
 	interfaces=("enp6s0" "enp0s20f0u1" "wlp0s20f0u10" "enp0s20f0u6u1")
 	ssids=("M-Murphy" "P-Murphy" "I-Murphy" "S-Murphy")
 	nmcli_devices=$(nmcli d)
@@ -168,19 +208,20 @@ Cycle() (
 	active_interface_index=$(printf "%s\n" "${interfaces[@]}" | grep -n "$active_interface" | cut -d: -f1 | awk '{print $1 - 1}')
 
 	# loop through the next possible interfaces
-	for (( offset=1 ; offset <= 3 ; offset++ )) ; do
+	for (( offset=1 ; offset <= 3 ; offset++ )); do
 
 		# Get the index of the next interface in the list
 		next_interface_index=$(( ($active_interface_index + offset) % ${#interfaces[@]} ))
 
 		# Make sure that interface exists otherwise use the next one
-		echo "$nmcli_devices" | grep -Fq "${interfaces[$next_interface_index]}" && break
+		echo "$nmcli_devices" | grep -q "${interfaces[$next_interface_index]}" && break
 
 	done
 
-	# Cycle to the next avilabe interface
+	# Cycle to the next available interface
+	nmcli d connect "${interfaces[$next_interface_index]}" || exit 1
 	nmcli d disconnect "$active_interface"
-	nmcli d connect "${interfaces[$next_interface_index]}"
+	CheckCarrier "$active_interface"
 
 	# Updateing eww variables to match the current interface
 	eww update cycle_btn_class="cycle_btn_class$((next_interface_index + 1))"
@@ -189,217 +230,137 @@ Cycle() (
 
 )
 
-# The function responsable for setuping namespaces
+# The function responsable for setting up namespaces
 CreateNetNS() {
 
-	# Rename the input variables for clarity
-	name="$1"
-	interface="$2"
-	gateway="$3"
-	move="$4"
-	ns_interface="$interface"
+	# Define some variables
+	interface="$1"
+	name="$interface-$(echo $(ip netns | grep $interface | wc -l) + 1 | bc)"
+
+	# Don't run if we're in a namespace
+	if [[ -n $(ip netns identify) ]]; then echo "Error: Cannot create a nested network namespace!" ; return 1 ; fi
 
 	# Check to see if the interface provided actually exists
-	if ! ip -br a | grep -Fq "$interface"; then 
-		echo "Interface not found!"
-		return 
+	if ! ip -br a | grep -Eq "(^| )$interface($| )"; then echo "Error: Interface not found!" ; return 1 ; fi
+
+	# If interface is a wireless one make sure it has a carrier
+	CheckCarrier "$interface"
+
+	# Create the namespace
+	ip netns add "$name"
+
+	# Make the namespace resolv.conf file
+	if [ ! -f /etc/netns/"$name"/resolv.conf ]; then
+		mkdir -p /etc/netns/"$name"
+		cp /etc/resolv.conf /etc/netns/"$name"/resolv.conf
 	fi
-	
-	# Create & setup the namespace if it's not already created
-	if ! ip netns | grep -Fq "$name"; then
 
-		# Make the namespace resolv.conf file
-		if [ ! -f /etc/netns/"$name"/resolv.conf ]; then
-			mkdir -p /etc/netns/"$name"/
-			cp /etc/resolv.conf /etc/netns/"$name"/resolv.conf
-		fi
-
-		# Create the namespace
-		ip netns add "$name"
-
-		# Check if we should move the interface into the namespace
-		if [ "$move" = true ]; then
-
-			# If the interface is a wireless one do as follows to move it:
-			if [[ "$interface" = "wl"* ]]; then
-
-				iw phy phy0 set netns name "$name"
-				ip -n "$name" link set dev "$interface" address "16:93:e3:46:7a:88"
-				wpa_passphrase "I-Murphy" "Password" | sed '$d;'| sed '$a\\tscan_ssid=1\n}' > /tmp/wpa-"$name".conf
-				ip netns exec "$name" wpa_supplicant -B -D wext -i "$interface" -c /tmp/wpa-"$name".conf
-				echo "! Add 16:93:e3:46:7a:88 to your wifi macfilter !"
-
-			# If it wasn't a wireless interface do as follows to move it:
-			else
-				ip link set "$interface" netns "$name"
-			fi
-			
-		# If we shouldn't move the interface do this:
-		else
-
-			# Create an ipvlan interface that is linked to the main interface and move it to the namespace
-			ip link add ipvlan0 link "$interface" type ipvlan mode l2
-			ip link set ipvlan0 netns "$name"
-			ns_interface="ipvlan0"
-
-		fi
-
-		# Turning on the namespace interfaces
-		ip -n "$name" link set "$ns_interface" up
-		ip -n "$name" link set lo up
-
-		# Waiting for the interface to turn on
-		until ip -n "$name" link show "$ns_interface" | grep -q "state UP\|state UNKNOWN" ; do
-			sleep 0.2
-		done
-
-		# Assign the ip address and default route
-		if [[ -z "$gateway" ]] ; then
-			ip netns exec "$name" dhcpcd --ipv4only --oneshot --nobackground
-		else
-			ip -n "$name" addr add "${gateway%.*}.110/24" dev "$ns_interface"
-			ip -n "$name" route add default via "$gateway"
-		fi
-
-		# Make ping don't require root access
-		ip netns exec "$name" sysctl net.ipv4.ping_group_range='0 2147483647' > /dev/null
-
-		echo "Succesfuly created the namespace!"
-
+	# Get the gateway of the interface
+	nmcli_interface_info=$(nmcli d show "$interface")
+	if echo "$nmcli_interface_info" | grep -q "disconnected"; then
+		gateway=$(dhclient -v -r "$interface" 2>&1 | grep "DHCPRELEASE" | awk '{print $7}')
 	else
-		echo "The namespace is already created!"
+		gateway=$(echo "$nmcli_interface_info" | grep "IP4.GATEWAY" | awk '{print $2}')
 	fi
 
-}
+	# Find a free ip address to use
+	taken_ips=$(ip -br a ; ip -all netns exec ip -br a)
+	for each_subnet in {2..255}; do
+		! echo "$taken_ips" | grep -wq "${gateway%.*}.$each_subnet" && ip="${gateway%.*}.$each_subnet" && break
+	done
 
-# Manage a direct namespace that clones the main interface raw ( without a vpn )
-Direct() {
+	# Create an ipvlan interface that is linked to the main interface then move it to the created namespace
+	ip link add ipvlan link "$interface" type ipvlan mode l2
+	ip link set ipvlan netns "$name"
 
-	# Get the active interface/gateway
-	routes=$(ip r)
-	interface=$(echo "$routes" | grep default | awk '{print $5}')
-	gateway=$(echo "$routes" | grep default | awk '{print $3}')
+	# Turning on the namespace interfaces
+	ip -n "$name" link set ipvlan up
+	ip -n "$name" link set lo up
 
-	# Prosses the subcommands
-	case "${2,,}" in
+	# Assign the ip address and the default route
+	ip -n "$name" addr add "$ip/24" dev ipvlan
+	ip -n "$name" route add default via "$gateway"
 
-		"status")
-			text="doesn't exists!"
-			if ip netns | grep -Fq Direct; then text="is up and running :)" ; fi
-			echo "Direct namespace $text"
-		;;
+	# Make pinging don't require root access
+	ip netns exec "$name" sysctl net.ipv4.ping_group_range='0 2147483647' > /dev/null
 
-		"create"|"")
-			CreateNetNS "Direct" "$interface" "$gateway" false
-		;;
-
-		"delete"|"remove")
-			ip netns delete Direct
-			echo "Namespace deleted succesfuly"
-		;;
-
-		"exec"|"run")
-			CreateNetNS "Direct" "$interface" "$gateway" false
-			ip netns exec Direct sudo -E -u murphy $3
-		;;
-
-		*)
-			echo "Couldn't find the subcommand $2"
-		;;
-
-	esac
+	echo "Succesfuly created the namespace $name!"
 
 }
 
-# Isolate network interfaces from the main namespace
-Isolate() {
+# Create and manage network namespaces assigned to your interfaces
+NetNS() {
+
+	# Get the active interface
+	interface=$(ip r | awk 'NR==1 {print $5}')
+	if [ -n "$3" ];then interface="$3" ; fi
 
 	# Prosses the subcommands
 	case "${2,,}" in
 
 		"status"|"")
-			echo "Running isolate namespaces are:"
-			echo $(ip netns | grep -v "Direct")
+			ip netns
 		;;
 
-		"create"|"add")
-			CreateNetNS "$3" "$3" "" true
+		"create")
+			CreateNetNS "$interface"
 		;;
 
 		"delete"|"remove")
-			ip netns exec "$3" iw phy phy0 set netns 1
-			ip netns del "$3"
-			pkill -f "/tmp/wpa-$3.conf"
-			nmcli d disconnect "$3" &> /dev/null
-			echo "Namespace removed succesfuly"
+			if [[ ! "$interface" =~ -[0-9]+$ ]]; then
+				for netns in $(ip netns | grep "$interface" | awk '{print $1}'); do
+					ip netns delete "$netns"
+					rm -r /etc/netns/"$netns"
+					echo "NetNS $netns removed successfully!"
+				done
+			else
+				ip netns delete "$interface"
+				rm -r /etc/netns/"$interface"
+				echo "NetNS $interface removed successfully!"
+			fi
 		;;
 
 		"exec"|"run")
-			CreateNetNS "$3" "$3" "" true
-			ip netns exec "$3" sudo -E -u murphy $4
+			if [[ ! "$interface" =~ -[0-9]+$ ]]; then
+				CreateNetNS "$interface" || exit 1
+				interface="$interface-$(ip netns | grep $interface | wc -l)"
+			fi
+			ip netns exec "$interface" sudo -Esu $(logname) eval "${@:4}"
 		;;
 
 		*)
-
-			# If the argument is an interface name create the namespace
-			if ip -br a | grep -Fq "$2"; then 
-				CreateNetNS "$2" "$2" "" true
-			else
-				# Otherwise we don't know what user wants :\
-				echo "Couldn't find the subcommand $2"
-			fi
-
+			echo "Error: Couldn't find the subcommand $2"
 		;;
 
 	esac
 
 }
 
-# NetScope integration for rofi
+# NetScope NetNS integration for Rofi
 Rofi() {
 
 	# Get the inerface names
-	interfaces=$(ip netns | grep -v Direct | awk '{print $1}')
-	interfaces+="$(echo && nmcli device status | awk 'NR > 1 {print $1}')"
+	interfaces=$(ip netns | awk '{print $1}')
+	interfaces+="$(echo && nmcli d | grep -v "loopback\|wireguard" | awk 'NR > 1 {print $1}')"
 
-	# Prosses the subcommands
-	case "${2,,}" in
-
-		"direct")
-			sudo -E daemon -u murphy -D ~ -- sudo -E NetScope direct exec "rofi -show drun"
-		;;
-
-		"isolate")
-			echo "$interfaces"
-		;;
-
-		*)
-
-			# If the argument is an interface name run the isolate command
-			if [ -n "$2" ] && echo "$interfaces" | grep -Fq "$2" ; then
-				sudo -E daemon -u murphy -D ~ -- sudo -E NetScope isolate exec "$2" "rofi -show drun"
-			else
-				echo Direct
-				echo Isolate
-			fi
-
-		;;
-
-	esac
+	# If we got an interface use it otherwise show the interfaces
+	if [ -n "$2" ]; then
+		daemon -u $(logname) -D ~ -- sudo -E NetScope NetNS Run "$2" "rofi -show drun"
+	else
+		echo "$interfaces"
+	fi
 
 }
 
-# Configure network interfaces
+# Configure your network interfaces
 Configure() {
 
 	# Check for interface existance
-	if nmcli d | awk 'NR > 1 {print $1}' | grep -Fq "$2" ; then
+	if nmcli d | awk 'NR > 1 {print $1}' | grep -Eq "(^| )$2($| )"; then
 
-		# Turn on the interface
-		nmcli d connect "$2"
-
-		# Get the interface connection name
-		connection=$(nmcli d show "$2" | grep -i general.connection | awk -F ': ' '{print $2}' | sed 's/^ *//')
+		# Get the connection name
+		interface_config_file=$(grep -rl "name=$2" "/etc/NetworkManager/system-connections/" | xargs -n 1 basename)
+		connection=$(grep "^id=" "/etc/NetworkManager/system-connections/$interface_config_file" | cut -d '=' -f 2)
 
 		# Basic nmcli setup
 		nmcli c modify "$connection" connection.autoconnect no
@@ -408,13 +369,18 @@ Configure() {
 		nmcli c modify "$connection" ipv4.dns "1.1.1.1,8.8.8.8"
 
 		# Setup routes
-		NetScope route check "$connection"
+		NetScope route check "$2"
 
 	else
-		echo "Inteface doesn't exists"
+		echo "Error: Inteface doesn't exists"
 	fi
 
 }
+
+# Make sure we have root access ;)
+if [ $(id -u) -ne 0 ]; then
+	echo "Error: Root access required!, run using sudo -E" ; exit 1
+fi
 
 # Main argument handler
 case "${1,,}" in
@@ -426,22 +392,16 @@ case "${1,,}" in
 			exit 1
 		fi
 
-		# Make sure we have root access ;)
-		if [ $(id -u) -ne 0 ]; then
-			echo "Root access required!, run using sudo -E"
-			exit 1
-		fi
-
-		Vpn "$1" "$2" "$3" "$4"
+		Vpn "$@"
 
 	;;
 
 	"route")
-		Route "$1" "$2" "$3" "$4"
+		Route "$@"
 	;;
 
 	"dns")
-		Dns "$1" "$2" "$3" "$4"
+		Dns "$@"
 	;;
 
 	"cycle")
@@ -451,44 +411,24 @@ case "${1,,}" in
 			exit 1
 		fi
 
-		Cycle
+		Cycle "$@"
 
 	;;
 
-	"direct")
-
-		# Make sure we have root access ;)
-		if [ $(id -u) -ne 0 ]; then
-			echo "Root access required!, run using sudo -E"
-			exit 1
-		fi
-
-		Direct "$1" "$2" "$3" "$4"
-
-	;;
-
-	"isolate")
-
-		# Make sure we have root access ;)
-		if [ $(id -u) -ne 0 ]; then
-			echo "Root access required!, run using sudo -E"
-			exit 1
-		fi
-
-		Isolate "$1" "$2" "$3" "$4"
-
+	"netns")
+		NetNS "$@"
 	;;
 
 	"rofi")
-		Rofi "$1" "$2" "$3" "$4"
+		Rofi "$@"
 	;;
 
 	"configure")
-		Configure "$1" "$2" "$3" "$4"
+		Configure "$@"
 	;;
 
 	*)
-		echo "Couldn't find command $1"
+		echo "Error: Couldn't find command $1"
 	;;
 
 esac

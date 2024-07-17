@@ -4,7 +4,7 @@ super + p
 
 # Direct netns program launcher
 super + alt + p
-	rofi -modi "NetScope:NetScope rofi" -show NetScope
+	rofi -modi "NetScope:sudo -E NetScope rofi" -show NetScope
 
 # Calculator
 super + ctrl + c 

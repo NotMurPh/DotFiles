@@ -147,7 +147,7 @@ Cycle() (
 
 	# Get the active interface index
 	active_interface=$(ip r | awk 'NR==1 {print $5}')
-	echo "$interfaces" | grep -q "$active_interface" || active_interface="enp0s20f0u6u1"
+	echo "${interfaces[@]}" | grep -q "$active_interface" || active_interface="enp0s20f0u6u1"
 	active_interface_index=$(printf "%s\n" "${interfaces[@]}" | grep -n "$active_interface" | cut -d: -f1 | awk '{print $1 - 1}')
 
 	# loop through the next possible interfaces

@@ -3,25 +3,23 @@
 # this script will set the initial values of some variables in eww
 
 GetCurrentInterface() {
-	if [[ $( nmcli connection | grep -o "enp6s0"  ) == "enp6s0" ]]; then
-		echo "M-Murphy 1"
-	elif [[ $( nmcli connection | grep -o "enp0s20f0u1" ) == "enp0s20f0u1" ]]; then
-		echo "P-Murphy 2"
-	elif [[ $( nmcli connection | grep -o "wlp0s20f0u10"  ) == "wlp0s20f0u10" ]]; then
-		echo "I-Murphy 3"
-	elif [[ $( nmcli connection | grep -o "enp0s20f0u6u1"  ) == "enp0s20f0u6u1" ]]; then
-		echo "S-Murphy 4"
-	fi
+	interfaces=("enp6s0" "enp0s20f0u1" "wlp0s20f0u10" "enp0s20f0u6u1")
+	ssids=("M-Murphy" "P-Murphy" "I-Murphy" "S-Murphy")
+	routes=$(ip r)
+	for index in $(seq "${#interfaces[@]}");do
+		echo "$routes" | grep -q "default.*${interfaces[$index-1]}" && echo "${ssids[$index-1]} $index"
+	done
 }
 
 # Network
 current_interface=$( GetCurrentInterface )
+test -z "$current_interface" && current_interface="M-Murphy"
 eww update cycle_btn_class="cycle_btn_class${current_interface:9:9}"
 eww update cycle_btn_status_class="cycle_btn_status_class${current_interface:9:9}"
 eww update cycle_btn_status="${current_interface:0:8}" 
 
 # Vpn
-eww update vpn_status=$( nmcli device show l-hetzner1-1 | grep -o connected )
+eww update vpn_status=$( networkctl | grep -o wireguard )
 
 # Workspaces
 for number in {1..6} ; do (

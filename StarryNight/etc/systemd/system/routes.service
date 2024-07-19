@@ -1,0 +1,11 @@
+[Unit]
+Description=Check and update the routes after the network is online
+After=network-online.target
+
+[Service]
+Type=oneshot
+Environment=HOME=/home/murphy
+ExecStart=/bin/bash -c 'until ip r | grep -q "default"; do sleep 0.2; done; /home/murphy/.local/bin/NetScope route load'
+
+[Install]
+WantedBy=multi-user.target

@@ -155,11 +155,11 @@
 
         ( box :space-evenly false
 
-            ( button :class "${vpn_status=='connected' ? 'vpn_btn_on' : 'vpn_btn_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? '󰒘' : '󰒙' }" )
+            ( button :class "${vpn_status=='wireguard' ? 'vpn_btn_on' : 'vpn_btn_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='wireguard' ? 'off' : 'on'} &" "${vpn_status=='wireguard' ? '󰒘' : '󰒙' }" )
 
             ( revealer :transition "slideleft" :reveal vpn_hover :duration "400ms"
 
-                ( button :class "${vpn_status=='connected' ? 'vpn_status_on' : 'vpn_status_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='connected' ? 'off' : 'on'} &" "${vpn_status=='connected' ? 'On' : 'Off'}" )
+                ( button :class "${vpn_status=='wireguard' ? 'vpn_status_on' : 'vpn_status_off'}" :onclick "sudo -E NetScope vpn ${vpn_status=='wireguard' ? 'off' : 'on'} &" "${vpn_status=='wireguard' ? 'On' : 'Off'}" )
 
             )
 
@@ -175,7 +175,7 @@
 
 ; vpn_status variable representing vpn status
 
-( defvar vpn_status "connected" )
+( defvar vpn_status "wireguard" )
 
 
 

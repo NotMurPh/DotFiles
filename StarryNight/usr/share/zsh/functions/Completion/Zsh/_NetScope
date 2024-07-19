@@ -8,7 +8,7 @@ function _NetScope() {
 
     # Function to get all network interfaces
     local -a interfaces
-    interfaces=(${(f)"$(nmcli d | grep -v "lo\|hetzner" | awk 'NR > 1 {print $1}')"})
+    interfaces=(${(f)"$(networkctl | grep "ether\|wlan" | awk '{print $2}')"})
 
     # Function to get isolate namespace names
     local -a namespaces
@@ -34,13 +34,12 @@ function _NetScope() {
 
     if [[ $state == commands ]]; then
         _describe -t commands 'NetScope commands' '(
-            "vpn:Manage your VPN connections"
+            "vpn:Manage your VPN connection"
             "route:Manage your direct routes"
             "dns:Switch between DNS servers"
             "cycle:Cycle through your network interfaces"
             "netns:Create and manage network namespaces"
             "rofi:NetScope NetNS integration for Rofi"
-            "configure:Configure your network interfaces"
         )' && return 0
     fi
 
@@ -68,7 +67,7 @@ function _NetScope() {
                     "add:Add a new route"
                     "remove:Remove an existing route"
                     "delete:Remove an existing route"
-                    "check:Check and synchronize routes with configuration"
+                    "load:Load the routes from the configuration file"
                 )' && return 0
             fi
             ;;
@@ -105,11 +104,6 @@ function _NetScope() {
             ;;
         rofi)
             _message "No subcommands for rofi" && return 0
-            ;;
-        configure)
-            local -a all_interfaces
-            all_interfaces=("${interfaces[@]}" "${namespaces[@]}")
-            _describe -t all_interfaces 'Network interfaces' all_interfaces && return 0
             ;;
     esac
 

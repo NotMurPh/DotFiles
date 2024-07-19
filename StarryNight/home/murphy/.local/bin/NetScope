@@ -28,12 +28,12 @@ Vpn() (
 		"on")
 			wg-quick up "$name" &> /dev/null
 			open_middle_man
-			sudo -E eww update vpn_status="connected"
+			sudo -E eww update vpn_status="wireguard"
 		;;
 
 		"off")
 			wg-quick down "$name" &> /dev/null
-			sudo -E eww update vpn_status="disconnected"
+			sudo -E eww update vpn_status=""
 		;;
 
 		"reload")
@@ -53,94 +53,41 @@ Vpn() (
 
 )
 
-# Check and fix carrier for wireless interfaces configured using NetworkManager
-CheckCarrier() {
-
-	# Rename variables for clarity
-	interface="$1"
-
-	# Return if the intreface isn't a wireless one
-	if [[ "$interface" != "wl"* ]]; then return 1 ; fi
-
-	# Return if interface already has a carrier
-	if ! ip -br l show "$interface" | grep -q "NO"; then return 1 ; fi
-
-	# Get the interface configuration from NetworkManager
-	interface_config_file=$(grep -rl "name=$interface" "/etc/NetworkManager/system-connections/" | xargs -n 1 basename)
-	ssid=$(grep "ssid=" "/etc/NetworkManager/system-connections/$interface_config_file" | cut -d '=' -f 2)
-	password=$(grep "psk=" "/etc/NetworkManager/system-connections/$interface_config_file" | cut -d '=' -f 2)
-
-	# Fix the interface without messing up with NetworkManager
-	dbus_interface_path=$(gdbus call --system --dest fi.w1.wpa_supplicant1 --object-path /fi/w1/wpa_supplicant1 --method fi.w1.wpa_supplicant1.GetInterface "$interface" | sed -n "s/.*'\([^']*\)'.*/\1/p" )
-	gdbus call --system --dest fi.w1.wpa_supplicant1 --object-path "$dbus_interface_path" --method fi.w1.wpa_supplicant1.Interface.RemoveAllNetworks > /dev/null
-	dbus_network_path=$(gdbus call --system --dest fi.w1.wpa_supplicant1 --object-path "$dbus_interface_path" --method fi.w1.wpa_supplicant1.Interface.AddNetwork '{"ssid":<"'$ssid'">,"scan_ssid":<1>,"psk":<"'$password'">}' | sed -n "s/.*'\([^']*\)'.*/\1/p" )
-	gdbus call --system --dest fi.w1.wpa_supplicant1 --object-path "$dbus_interface_path" --method fi.w1.wpa_supplicant1.Interface.SelectNetwork "$dbus_network_path" > /dev/null
-
-}
-
 # Manage your direct routes easily
 Route() {
 
 	# Define some default variables
-	interface=$(ip r | awk 'NR==1 {print $5}')
+	routes=$(ip r)
+	interface=$(echo "$routes" | awk 'NR==1 {print $5}')
+	gateway=$(echo "$routes" | awk 'NR==1 {print $3}')
 	ip="$3"
 
-	# Check if user provided an interface
-	if [ -n "$3" ] && nmcli d | grep -Eq "(^| )$3($| )"; then
-		interface="$3"
-		ip="$4"
-	fi
-
-	# Check if user provided an ip address
-	if [[ "${2,,}" != "check" && -z "$ip" ]]; then
+	# Check if the user provided the necessary ip address
+	if [[ "${2,,}" != "load" && -z "$ip" ]]; then
 		echo "Error: You didn't enter the required ip address!" ; exit 1 
 	fi
-
-	# Get the interface gateway
-	nmcli_interface_info=$(nmcli d show "$interface")
-	if echo "$nmcli_interface_info" | grep -q "disconnected"; then
-		CheckCarrier "$interface"
-		gateway=$(dhclient -v -r "$interface" 2>&1 | grep "DHCPRELEASE" | awk '{print $7}')
-	else
-		gateway=$(echo "$nmcli_interface_info" | grep "IP4.GATEWAY" | awk '{print $2}')
-	fi
-
-	# Get the interface connection name
-	interface_config_file=$(grep -rl "name=$interface" "/etc/NetworkManager/system-connections/" | xargs -n 1 basename)
-	connection=$(grep "^id=" "/etc/NetworkManager/system-connections/$interface_config_file" | cut -d '=' -f 2)
 
 	# Prosses the subcommands
 	case "${2,,}" in
 
 		"add")
-			nmcli c modify "$connection" +ipv4.routes "$ip $gateway"
+			ip r add "$ip" via "$gateway" dev "$interface"
 		;;
 
 		"remove"|"delete")
-			nmcli c modify "$connection" -ipv4.routes "$ip $gateway"
+			ip r delete "$ip" via "$gateway" dev "$interface"
 		;;
 
-		"check")
+		"load")
 
-			# Get the exsisting and new routes
-			ips=$(awk '{print $2}' ~/.config/NetScope/Routes)
-			routes=$(nmcli -t -f ipv4.routes c show "$connection" | sed 's/ipv4.routes://; s/, /,/g' )
+			# Get the routes from the config file
+			names=($(awk '{print $1}' ~/.config/NetScope/Routes))
+			ips=($(awk '{print $2}' ~/.config/NetScope/Routes))
 
-			# Add the config file routes if they don't exist in the interface
-			for ip in $ips; do
-				if ! echo "$routes" | grep -q "$ip"; then
-					nmcli c modify "$connection" +ipv4.routes "$ip $gateway"
-					echo "Route for ip $ip added!"
-				fi
-			done
-
-			# Remove the exsisting routes if they don't exist in the config file
-			IFS=','
-			for route in $routes; do
-				if ! echo "$ips" | grep -q "$(echo $route | awk -F '/' '{print $1}')"; then
-					nmcli c modify "$connection" -ipv4.routes "$route"
-					echo "Route $route removed!"
-				fi
+			# Add all of the routes
+			for index in $(seq "${#names[@]}");do
+				ip r add "${ips[$index-1]}" via "$gateway" dev "$interface" &&
+				echo "Route ${names[$index-1]} added!"
 			done
 
 		;;
@@ -151,19 +98,14 @@ Route() {
 
 	esac
 
-	# Reload the interface if it's connected
-	if echo "$nmcli_interface_info" | grep -wq "connected"; then
-		nmcli c up "$connection" > /dev/null
-	fi
-
-	echo "$interface Updated successfully"
+	echo "Routes for $interface updated successfully"
 
 }
 
 # Change between dns servers easily like a badbakhte irani
 Dns() {
 
-	case "{$2,,}" in
+	case "${2,,}" in
 
 		"default"|"")
 			server1="1.1.1.1"
@@ -187,7 +129,8 @@ Dns() {
 	esac
 
 	# Change the dns temporarily using the /etc/resolv.conf file
-	echo -e "# Generated by ye iranie badbakht \\nnameserver $server1 \\nnameserver $server2" | sudo tee /etc/resolv.conf
+	echo -e "# Generated by ye badbakhte irani \\nnameserver $server1 \\nnameserver $server2" | sudo tee /etc/resolv.conf > /dev/null
+	echo -e "# Generated by ye badbakhte irani \\nsupersede domain-name-servers $server1,$server2;" | sudo tee /etc/dhclient.conf > /dev/null
 
 	echo "DNS Updated successfully"
 
@@ -201,10 +144,10 @@ Cycle() (
 	# Interfaces and their ssids to loop through
 	interfaces=("enp6s0" "enp0s20f0u1" "wlp0s20f0u10" "enp0s20f0u6u1")
 	ssids=("M-Murphy" "P-Murphy" "I-Murphy" "S-Murphy")
-	nmcli_devices=$(nmcli d)
 
 	# Get the active interface index
 	active_interface=$(ip r | awk 'NR==1 {print $5}')
+	echo "$interfaces" | grep -q "$active_interface" || active_interface="enp0s20f0u6u1"
 	active_interface_index=$(printf "%s\n" "${interfaces[@]}" | grep -n "$active_interface" | cut -d: -f1 | awk '{print $1 - 1}')
 
 	# loop through the next possible interfaces
@@ -214,14 +157,18 @@ Cycle() (
 		next_interface_index=$(( ($active_interface_index + offset) % ${#interfaces[@]} ))
 
 		# Make sure that interface exists otherwise use the next one
-		echo "$nmcli_devices" | grep -q "${interfaces[$next_interface_index]}" && break
+		ip -br l | grep -q "${interfaces[$next_interface_index]}" && break
 
 	done
 
 	# Cycle to the next available interface
-	nmcli d connect "${interfaces[$next_interface_index]}" || exit 1
-	nmcli d disconnect "$active_interface"
-	CheckCarrier "$active_interface"
+	dhclient -x &> /dev/null
+	dhclient "${interfaces[$next_interface_index]}" || exit 1
+	echo "Interface ${interfaces[$next_interface_index]} Activated!"
+	ip r flush dev "$active_interface"
+	echo "Interface $active_interface Deactivated!"
+	NetScope route load
+	NetScope vpn reload
 
 	# Updateing eww variables to match the current interface
 	eww update cycle_btn_class="cycle_btn_class$((next_interface_index + 1))"
@@ -241,10 +188,7 @@ CreateNetNS() {
 	if [[ -n $(ip netns identify) ]]; then echo "Error: Cannot create a nested network namespace!" ; return 1 ; fi
 
 	# Check to see if the interface provided actually exists
-	if ! ip -br a | grep -Eq "(^| )$interface($| )"; then echo "Error: Interface not found!" ; return 1 ; fi
-
-	# If interface is a wireless one make sure it has a carrier
-	CheckCarrier "$interface"
+	if ! ip -br l | grep -Eq "(^| )$interface($| )"; then echo "Error: Interface not found!" ; return 1 ; fi
 
 	# Create the namespace
 	ip netns add "$name"
@@ -255,12 +199,12 @@ CreateNetNS() {
 		cp /etc/resolv.conf /etc/netns/"$name"/resolv.conf
 	fi
 
-	# Get the gateway of the interface
-	nmcli_interface_info=$(nmcli d show "$interface")
-	if echo "$nmcli_interface_info" | grep -q "disconnected"; then
-		gateway=$(dhclient -v -r "$interface" 2>&1 | grep "DHCPRELEASE" | awk '{print $7}')
+	# Get the interface gateway
+	routes=$(ip r)
+	if echo "$routes" | grep -q "default.*$interface"; then
+		gateway=$(echo "$routes" | grep "default.*$interface" | awk '{print $3}')
 	else
-		gateway=$(echo "$nmcli_interface_info" | grep "IP4.GATEWAY" | awk '{print $2}')
+		gateway=$(dhclient -v -r "$interface" 2>&1 | grep "DHCPRELEASE" | awk '{print $7}')
 	fi
 
 	# Find a free ip address to use
@@ -341,38 +285,13 @@ Rofi() {
 
 	# Get the inerface names
 	interfaces=$(ip netns | awk '{print $1}')
-	interfaces+="$(echo && nmcli d | grep -v "loopback\|wireguard" | awk 'NR > 1 {print $1}')"
+	interfaces+="$(echo && networkctl | grep "ether\|wlan" | awk '{print $2}')"
 
 	# If we got an interface use it otherwise show the interfaces
 	if [ -n "$2" ]; then
 		daemon -u $(logname) -D ~ -- sudo -E NetScope NetNS Run "$2" "rofi -show drun"
 	else
 		echo "$interfaces"
-	fi
-
-}
-
-# Configure your network interfaces
-Configure() {
-
-	# Check for interface existance
-	if nmcli d | awk 'NR > 1 {print $1}' | grep -Eq "(^| )$2($| )"; then
-
-		# Get the connection name
-		interface_config_file=$(grep -rl "name=$2" "/etc/NetworkManager/system-connections/" | xargs -n 1 basename)
-		connection=$(grep "^id=" "/etc/NetworkManager/system-connections/$interface_config_file" | cut -d '=' -f 2)
-
-		# Basic nmcli setup
-		nmcli c modify "$connection" connection.autoconnect no
-		nmcli c modify "$connection" connection.dns-over-tls yes
-		nmcli c modify "$connection" ipv4.ignore-auto-dns yes
-		nmcli c modify "$connection" ipv4.dns "1.1.1.1,8.8.8.8"
-
-		# Setup routes
-		NetScope route check "$2"
-
-	else
-		echo "Error: Inteface doesn't exists"
 	fi
 
 }
@@ -421,10 +340,6 @@ case "${1,,}" in
 
 	"rofi")
 		Rofi "$@"
-	;;
-
-	"configure")
-		Configure "$@"
 	;;
 
 	*)

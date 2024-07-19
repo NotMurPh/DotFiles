@@ -232,6 +232,23 @@ CreateNetNS() {
 
 }
 
+# The function responsable for removing namespaces
+RemoveNetNS() {
+
+	# Define some variables
+	interface="$1"
+
+	# Kill all off the prosses running in the namespace
+	for pid in $(ip netns pids "$interface"); do kill "$pid"; done
+
+	# Remove the namespace and it's configs
+	ip netns delete "$interface"
+	rm -r /etc/netns/"$interface"
+
+	echo "NetNS $netns removed successfully!"
+
+}
+
 # Create and manage network namespaces assigned to your interfaces
 NetNS() {
 
@@ -253,14 +270,10 @@ NetNS() {
 		"delete"|"remove")
 			if [[ ! "$interface" =~ -[0-9]+$ ]]; then
 				for netns in $(ip netns | grep "$interface" | awk '{print $1}'); do
-					ip netns delete "$netns"
-					rm -r /etc/netns/"$netns"
-					echo "NetNS $netns removed successfully!"
+					RemoveNetNS "$netns"
 				done
 			else
-				ip netns delete "$interface"
-				rm -r /etc/netns/"$interface"
-				echo "NetNS $interface removed successfully!"
+				RemoveNetNS "$interface"
 			fi
 		;;
 

@@ -254,7 +254,7 @@ NetNS() {
 
 	# Get the active interface
 	interface=$(ip r | awk 'NR==1 {print $5}')
-	if [ -n "$3" ];then interface="$3" ; fi
+	if [ -n "$3" ]; then interface="$3" ; fi
 
 	# Prosses the subcommands
 	case "${2,,}" in
@@ -268,6 +268,11 @@ NetNS() {
 		;;
 
 		"delete"|"remove")
+
+			# Target all interfaces if user didn't provide any
+			if [ -z "$3" ]; then interface="-" ; fi
+
+			# If the name didn't end with -Num then remove all of the instances of that interface otherwise just remove the namespace with the name
 			if [[ ! "$interface" =~ -[0-9]+$ ]]; then
 				for netns in $(ip netns | grep "$interface" | awk '{print $1}'); do
 					RemoveNetNS "$netns"
@@ -275,14 +280,20 @@ NetNS() {
 			else
 				RemoveNetNS "$interface"
 			fi
+
 		;;
 
 		"exec"|"run")
+
+			# If the name didn't end with -Num create a new netns and exec in that
 			if [[ ! "$interface" =~ -[0-9]+$ ]]; then
 				CreateNetNS "$interface" || exit 1
 				interface="$interface-$(ip netns | grep $interface | wc -l)"
 			fi
+
+			# Execute the provided command in the provided namespace
 			ip netns exec "$interface" sudo -Esu $(logname) eval "${@:4}"
+
 		;;
 
 		*)

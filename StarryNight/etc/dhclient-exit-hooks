@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ "$new_ip_address" ] && [ "$new_routers" ]; then
+	if ! ip r | grep -q "default.*$interface"; then
+		ip r add default via "$new_routers" dev "$interface" metric "1"
+	fi
+fi
+

@@ -147,7 +147,7 @@ Cycle() (
 
 	# Get the active interface index
 	active_interface=$(ip r | awk 'NR==1 {print $5}')
-	echo "${interfaces[@]}" | grep -q "$active_interface" || active_interface="enp0s20f0u6u1"
+	echo "${interfaces[@]}" | grep -wq "$active_interface" || active_interface="enp0s20f0u6u1"
 	active_interface_index=$(printf "%s\n" "${interfaces[@]}" | grep -n "$active_interface" | cut -d: -f1 | awk '{print $1 - 1}')
 
 	# loop through the next possible interfaces
@@ -162,11 +162,13 @@ Cycle() (
 	done
 
 	# Cycle to the next available interface
-	dhclient -x &> /dev/null
 	dhclient "${interfaces[$next_interface_index]}" || exit 1
 	echo "Interface ${interfaces[$next_interface_index]} Activated!"
-	ip r flush dev "$active_interface"
+
+	ip a flush dev "$active_interface"
+	pkill -f "dhclient.*$interfaces"
 	echo "Interface $active_interface Deactivated!"
+
 	NetScope route load
 	NetScope vpn reload
 
@@ -331,7 +333,7 @@ case "${1,,}" in
 	"vpn")
 
 		# Only execute commands if we are not executing already
-		if [[ "$(ps aux | grep 'Ss' | grep 'NetScope vpn' | grep -v 'grep' | wc -l)" -gt 1 ]]; then
+		if [[ "$(ps aux | grep '/NetScope vpn' | grep -v 'grep' | wc -l)" -gt 2 ]]; then
 			exit 1
 		fi
 
@@ -350,7 +352,7 @@ case "${1,,}" in
 	"cycle")
 
 		# Only execute commands if we are not executing already
-		if [[ "$(ps aux | grep 'Ss' | grep 'NetScope cycle' | grep -v 'grep' | wc -l)" -gt 1 ]]; then
+		if [[ "$(ps aux | grep '/NetScope cycle' | grep -v 'grep' | wc -l)" -gt 2 ]]; then
 			exit 1
 		fi
 

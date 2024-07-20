@@ -162,6 +162,7 @@ Cycle() (
 	done
 
 	# Cycle to the next available interface
+	ip l set "${interfaces[$next_interface_index]}" up || exit 1
 	dhclient "${interfaces[$next_interface_index]}" || exit 1
 	echo "Interface ${interfaces[$next_interface_index]} Activated!"
 
@@ -206,6 +207,7 @@ CreateNetNS() {
 	if echo "$routes" | grep -q "default.*$interface"; then
 		gateway=$(echo "$routes" | grep "default.*$interface" | awk '{print $3}')
 	else
+		ip l set "${interfaces[$next_interface_index]}" up
 		gateway=$(dhclient -v -r "$interface" 2>&1 | grep "DHCPRELEASE" | awk '{print $7}')
 	fi
 

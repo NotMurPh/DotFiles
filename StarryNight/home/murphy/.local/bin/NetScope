@@ -209,7 +209,7 @@ CreateNetNS() {
 	if echo "$routes" | grep -q "default.*$interface"; then
 		gateway=$(echo "$routes" | grep "default.*$interface" | awk '{print $3}')
 	else
-		ip l set "${interfaces[$next_interface_index]}" up
+		ip l set "$interface" up
 		gateway=$(dhclient -v -r "$interface" 2>&1 | grep "DHCPRELEASE" | awk '{print $7}')
 	fi
 
@@ -315,7 +315,7 @@ Rofi() {
 
 	# Get the inerface names
 	interfaces=$(ip netns | awk '{print $1}')
-	interfaces+="$(echo && networkctl | grep "ether\|wlan" | awk '{print $2}')"
+	interfaces+="$(echo && networkctl 2>&1 | grep "ether\|wlan" | awk '{print $2}')"
 
 	# If we got an interface use it otherwise show the interfaces
 	if [ -n "$2" ]; then

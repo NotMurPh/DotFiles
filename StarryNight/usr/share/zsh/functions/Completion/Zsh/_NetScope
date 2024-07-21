@@ -8,7 +8,7 @@ function _NetScope() {
 
     # Function to get all network interfaces
     local -a interfaces
-    interfaces=(${(f)"$(networkctl | grep "ether\|wlan" | awk '{print $2}')"})
+    interfaces=(${(f)"$(networkctl 2>&1 | grep "ether\|wlan" | awk '{print $2}')"})
 
     # Function to get isolate namespace names
     local -a namespaces

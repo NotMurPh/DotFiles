@@ -1,0 +1,4 @@
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="d8:5e:d3:ae:82:b4", NAME="Lan"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="60:e3:27:1e:37:85", NAME="Wifi"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="0c:5b:8f:27:9a:64", NAME="Usb"
+SUBSYSTEM=="net", DEVPATH=="/devices/pci*/*14.0/*/1-1/1-1:1.0/*", NAME="Phone"

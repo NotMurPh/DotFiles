@@ -144,12 +144,12 @@ Cycle() (
 	echo "Cycling through network interfaces."
 
 	# Interfaces and their ssids to loop through
-	interfaces=("enp6s0" "enp0s20f0u1" "wlp0s20f0u10" "enp0s20f0u6u1")
+	interfaces=("Lan" "Phone" "Wifi" "Usb")
 	ssids=("M-Murphy" "P-Murphy" "I-Murphy" "S-Murphy")
 
 	# Get the active interface index
 	active_interface=$(ip r | awk 'NR==1 {print $5}')
-	echo "${interfaces[@]}" | grep -wq "$active_interface" || active_interface="enp0s20f0u6u1"
+	echo "${interfaces[@]}" | grep -wq "$active_interface" || active_interface="Usb"
 	active_interface_index=$(printf "%s\n" "${interfaces[@]}" | grep -n "$active_interface" | cut -d: -f1 | awk '{print $1 - 1}')
 
 	# loop through the next possible interfaces
@@ -166,11 +166,11 @@ Cycle() (
 	# Cycle to the next available interface
 	ip l set "${interfaces[$next_interface_index]}" up || exit 1
 	dhclient "${interfaces[$next_interface_index]}" || exit 1
-	echo -e "${bgreen}Interface ${interfaces[$next_interface_index]} Activated.${clear}"
+	echo -e "${bgreen}Interface '${interfaces[$next_interface_index]}' Activated.${clear}"
 
 	ip a flush dev "$active_interface"
-	pkill -f "dhclient.*$interfaces"
-	echo "Interface $active_interface Deactivated."
+	pkill -f "dhclient.*$active_interface"
+	echo "Interface '$active_interface' Deactivated."
 
 	NetScope route load
 	NetScope vpn reload

@@ -266,7 +266,52 @@ NetNS() {
 	case "${2,,}" in
 
 		"status"|"")
-			ip netns
+
+			# Get the ps list for faster processing
+			pslist=$(ps -A -o pid=,ppid=,cmd=)
+
+			# Loop through all of the network namespaces
+			for netns in $(ip netns | awk '{print $1}'); do
+
+				# Show the netns
+				echo "$netns"
+
+				# Reset some variables
+				first=true
+				blacklist=()
+
+				# Loop through that netns processes
+				for pid in $(ip netns pids "$netns"); do
+					if [[ $(echo "$pslist" | awk "\$1 == $pid { print \$2 }") -eq 1 ]]; then
+
+						# Continue if process is blacklisted
+						for psname in "${blacklist[@]}"; do
+							echo "$pslist" | awk "\$1 == $pid { print \$3 }" | grep -q "$psname" && continue=true && break
+						done
+						if [ "$continue" = true ]; then continue ; fi
+
+						# Show the process using a compacted tree format
+						echo -n " └───"
+						pstree=$(pstree -T -U "$pid")
+						if [[ $(echo "$pstree" | wc -l ) -eq 1 ]]; then
+							echo "$pstree"
+						else
+							psname=$(basename "$(echo "$pslist" | awk "\$1 == "$pid" { print substr(\$0, index(\$0,\$3)) }")" | cut -d ' ' -f 1)
+							echo "$psname"
+							blacklist+=("$psname")
+						fi
+
+						# Fix the perivous lines '└' charachter if there is one
+						if [[ "$first" == false ]]; then
+							echo -ne "\033[2A ├\033[2B\r"
+						fi
+						first=false
+
+					fi
+				done
+
+			done
+
 		;;
 
 		"create")

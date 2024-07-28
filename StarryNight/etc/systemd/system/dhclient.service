@@ -1,8 +1,8 @@
 [Unit]
-Description=Run dhclient for enp6s0
+Description=Run dhclient for Lan
 
 [Service]
-ExecStart=/bin/dhclient -d enp6s0
+ExecStart=/bin/dhclient -d Lan
 
 [Install]
 WantedBy=multi-user.target

@@ -187,7 +187,7 @@ CreateNetNS() {
 
 	# Define some variables
 	interface="$1"
-	name="$interface-$(echo $(ip netns | grep $interface | wc -l) + 1 | bc)"
+	netns="$interface-$(echo $(ip netns | grep $interface | wc -l) + 1 | bc)"
 
 	# Don't run if we're in a namespace
 	if [[ -n $(ip netns identify) ]]; then echo -e "${bred}Error: Cannot create a nested network namespace!${clear}" ; return 1 ; fi
@@ -196,12 +196,12 @@ CreateNetNS() {
 	if ! ip -br l | grep -Eq "(^| )$interface($| )"; then echo -e "${bred}Error: Interface '$interface' not found!${clear}" ; return 1 ; fi
 
 	# Create the namespace
-	ip netns add "$name"
+	ip netns add "$netns"
 
 	# Make the namespace resolv.conf file
-	if [ ! -f /etc/netns/"$name"/resolv.conf ]; then
-		mkdir -p /etc/netns/"$name"
-		cp /etc/resolv.conf /etc/netns/"$name"/resolv.conf
+	if [ ! -f /etc/netns/"$netns"/resolv.conf ]; then
+		mkdir -p /etc/netns/"$netns"
+		cp /etc/resolv.conf /etc/netns/"$netns"/resolv.conf
 	fi
 
 	# Get the interface gateway
@@ -221,20 +221,20 @@ CreateNetNS() {
 
 	# Create an ipvlan interface that is linked to the main interface then move it to the created namespace
 	ip link add ipvlan link "$interface" type ipvlan mode l2
-	ip link set ipvlan netns "$name"
+	ip link set ipvlan netns "$netns"
 
 	# Turning on the namespace interfaces
-	ip -n "$name" link set ipvlan up
-	ip -n "$name" link set lo up
+	ip -n "$netns" link set ipvlan up
+	ip -n "$netns" link set lo up
 
 	# Assign the ip address and the default route
-	ip -n "$name" addr add "$ip/24" dev ipvlan
-	ip -n "$name" route add default via "$gateway"
+	ip -n "$netns" addr add "$ip/24" dev ipvlan
+	ip -n "$netns" route add default via "$gateway"
 
 	# Make pinging don't require root access
-	ip netns exec "$name" sysctl net.ipv4.ping_group_range='0 2147483647' > /dev/null
+	ip netns exec "$netns" sysctl net.ipv4.ping_group_range='0 2147483647' > /dev/null
 
-	echo -e "${bgreen}Created the namespace '$name' successfully.${clear}"
+	echo -e "${bgreen}Created the namespace '$netns' successfully.${clear}"
 
 }
 
@@ -242,14 +242,14 @@ CreateNetNS() {
 RemoveNetNS() {
 
 	# Define some variables
-	interface="$1"
+	netns="$1"
 
 	# Kill all off the prosses running in the namespace
-	for pid in $(ip netns pids "$interface"); do kill "$pid"; done
+	for pid in $(ip netns pids "$netns"); do kill "$pid"; done
 
 	# Remove the namespace and it's configs
-	ip netns delete "$interface"
-	rm -r /etc/netns/"$interface"
+	ip netns delete "$netns"
+	rm -r /etc/netns/"$netns"
 
 	echo -e "${bgreen}NetNS '$netns' removed successfully.${clear}"
 

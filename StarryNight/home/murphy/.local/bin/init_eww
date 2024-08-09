@@ -3,7 +3,7 @@
 # this script will set the initial values of some variables in eww
 
 GetCurrentInterface() {
-	interfaces=("enp6s0" "enp0s20f0u1" "wlp0s20f0u10" "enp0s20f0u6u1")
+	interfaces=("Lan" "Phone" "Wifi" "Usb")
 	ssids=("M-Murphy" "P-Murphy" "I-Murphy" "S-Murphy")
 	routes=$(ip r)
 	for index in $(seq "${#interfaces[@]}");do

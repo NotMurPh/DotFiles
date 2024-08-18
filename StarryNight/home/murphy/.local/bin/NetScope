@@ -279,13 +279,17 @@ NetNS() {
 
 				# Reset some variables
 				first=true
+				continue=false
 				blacklist=()
 
 				# Loop through that netns processes
 				for pid in $(ip netns pids "$netns"); do
-					if [[ $(echo "$pslist" | awk "\$1 == $pid { print \$2 }") -eq 1 ]]; then
 
-						# Continue if process is blacklisted
+					# Show processes that have a valid parent ( systemd or SHELL )
+					ppid=$(echo "$pslist" | awk "\$1 == $pid { print \$2 }") ; test -z "$ppid" && ppid="0"
+					if [[ $ppid -eq 1 ]] || echo "$pslist" | awk "\$1 == $ppid { print \$3 }" | grep -q "$SHELL"; then
+
+						# Skip if process is blacklisted
 						for psname in "${blacklist[@]}"; do
 							echo "$pslist" | awk "\$1 == $pid { print \$3 }" | grep -q "$psname" && continue=true && break
 						done

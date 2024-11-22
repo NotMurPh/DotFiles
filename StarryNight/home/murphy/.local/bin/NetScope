@@ -3,7 +3,7 @@
 # Simplify managing your VPN
 Vpn() (
 
-	name="l-hetzner1-1"
+	name="ip1"
 	ip="199.83.103.100"
 	
 	open_middle_man() {
@@ -28,7 +28,7 @@ Vpn() (
 		"on")
 			wg-quick up "$name" &> /dev/null
 			open_middle_man
-			sudo -E eww update vpn_status="wireguard"
+			sudo -E eww update vpn_status="$name"
 		;;
 
 		"off")

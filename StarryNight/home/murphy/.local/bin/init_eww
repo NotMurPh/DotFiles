@@ -19,7 +19,7 @@ eww update cycle_btn_status_class="cycle_btn_status_class${current_interface:9:9
 eww update cycle_btn_status="${current_interface:0:8}" 
 
 # Vpn
-eww update vpn_status=$( networkctl | grep -o wireguard )
+eww update vpn_status=$( networkctl | grep -o ip1 )
 
 # Workspaces
 for number in {1..6} ; do (

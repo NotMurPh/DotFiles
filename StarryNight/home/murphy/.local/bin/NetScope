@@ -126,6 +126,11 @@ Dns() {
 			server2="185.51.200.2"
 		;;
 
+		"radar")
+			server1="10.202.10.10"
+			server2="10.202.10.11"
+		;;
+
 		*)
 			echo -e "${bred}Error: Couldn't find the subcommand '$2'!${clear}"	
 		;;

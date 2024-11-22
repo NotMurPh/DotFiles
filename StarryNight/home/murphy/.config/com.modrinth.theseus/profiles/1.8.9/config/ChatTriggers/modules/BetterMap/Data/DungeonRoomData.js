@@ -1,4 +1,4 @@
-const { fetch } = require("../Utils/networkUtils.js");
+const { fetch } = require("../Utils/networkUtils.js")
 
 /**
  * @typedef {Object} SecretDetails
@@ -27,56 +27,69 @@ const { fetch } = require("../Utils/networkUtils.js");
  */
 
 class DungeonRoomStaticData {
-  constructor() {
-    this.fullRoomData = JSON.parse(FileLib.read("BetterMap", "Data/roomdata.json"));
+    constructor() {
+        this.fullRoomData = JSON.parse(FileLib.read("BetterMap", "Data/roomdata.json"))
 
-    this.idMap = new Map();
-    this.fullRoomData?.forEach((d, i) => {
-      d.id.forEach((id) => {
-        this.idMap.set(id, i);
-      });
-      this.idMap.set(d.index, i);
-    });
+        this.idMap = new Map()
+        this.coreMap = new Map() // "CORE": "ROOMDATA"
 
-    fetch("https://soopy.dev/api/bettermap/roomdata").json((data) => {
-      FileLib.write("BetterMap", "Data/roomdata.json", JSON.stringify(data, null, 4));
+        this.update()
 
-      this.fullRoomData = data;
-      this.idMap = new Map();
-      this.fullRoomData.forEach((d, i) => {
-        d.id.forEach((id) => {
-          this.idMap.set(id, i);
-        });
-        this.idMap.set(d.index, i);
-      });
-    });
-  }
-
-  reloadData() {
-    this.fullRoomData = JSON.parse(FileLib.read("BetterMap", "Data/roomdata.json"));
-  }
-
-  /**
-   * 
-   * @param {String} id the room id
-   * @returns {DungeonData}
-   */
-  getDataFromId(id) {
-    if (!this.fullRoomData) return;
-    return this.fullRoomData[this.idMap.get(id)];
-  }
-
-  /**
-   * 
-   * @param {String} name the room id
-   * @returns {DungeonData}
-   */
-  getRoomIdsFromName(name) {
-    if (!name) return;
-    for (let room of this.fullRoomData) {
-      if ('name' in room && room.name.toLowerCase().includes(name.toLowerCase()) && room.id) return room.id;
+        // fetch("https://soopy.dev/api/bettermap/roomdata").json(data => {
+        //     FileLib.write("BetterMap", "Data/roomdata.json", JSON.stringify(data, null, 4))
+        //     this.fullRoomData = data
+        //     this.update()
+        // })
     }
-  }
+
+    update() {
+        this.fullRoomData?.forEach((roomData, i) => {
+            roomData.id.forEach(roomId => {
+                this.idMap.set(roomId, i)
+            })
+            this.idMap.set(roomData.index, i)
+
+            // Map cores to room IDs
+            for (let core of roomData.cores) {
+                this.coreMap.set(core, roomData)
+            }
+        })
+    }
+
+    reloadData() {
+        this.fullRoomData = JSON.parse(FileLib.read("BetterMap", "Data/roomdata.json"))
+    }
+
+    /**
+     * 
+     * @param {String} id the room id
+     * @returns {DungeonData}
+     */
+    getDataFromId(id) {
+        if(!this.fullRoomData) return;
+        return this.fullRoomData[this.idMap.get(id)]
+    }
+
+    /**
+     * Gets room data given a room's core
+     * @param {Number} core 
+     * @returns 
+     */
+    getDataFromCore(core) {
+        return this.coreMap.get(core) ?? null
+    }
+
+    /**
+     * 
+     * @param {String} name the room id
+     * @returns {DungeonData}
+     */
+    getRoomIdsFromName(name) {
+        if (!name) return;
+        for (let room of this.fullRoomData) {
+            if ('name' in room && room.name.toLowerCase().includes(name.toLowerCase()) && room.id) return room.id;
+        }
+    }
 }
 
-export default new DungeonRoomStaticData();
+export default new DungeonRoomStaticData()

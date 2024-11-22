@@ -709,7 +709,7 @@
         "commissionsCompleted": 0,
         "lastFreeRiftInfusionApplied": 0,
         "experimentsCompleted": 0,
-        "cookieBuffRemaining": 1721916930825,
+        "cookieBuffRemaining": 1729447282168,
         "forgeItems": [],
         "commissionMilestone": 0,
         "automatonParts": {
@@ -1320,7 +1320,7 @@
       "Looting:\u003e:3:5:0"
     ],
     "dynamicLightItems": [],
-    "firstTimeSearchFocus": true,
+    "firstTimeSearchFocus": false,
     "disableBrokenCapes": false,
     "npcRetextureOnSelf": false,
     "hasOpenedWaypointMenu": false

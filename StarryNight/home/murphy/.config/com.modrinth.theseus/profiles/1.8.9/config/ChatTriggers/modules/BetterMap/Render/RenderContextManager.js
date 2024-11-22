@@ -2,43 +2,43 @@ import RenderContext from "./RenderContext";
 
 class RenderContextManager {
 
-  constructor() {
-    this.renderContexts = [];
-    this.lastContext = 0;
-    this.currentRenderContextId = 0;
-  }
-
-  destroy() {
-    for (context of this.renderContexts) {
-      context?.destroy();
+    constructor() {
+        this.renderContexts = [];
+        this.lastContext = 0;
+        this.currentRenderContextId = 0
     }
-    this.renderContexts = [];
-  }
 
-  /**
-   * @param {Number} contextId 
-   * @returns {RenderContext}
-   */
-  getRenderContextData(contextId) {
-    return this.renderContexts[contextId];
-  }
+    destroy() {
+        for (context of this.renderContexts) {
+            context?.destroy();
+        }
+        this.renderContexts = []
+    }
 
-  /**
-   * Creates a render context with the given settings
-   * @param {*} settings 
-   * @returns 
-   */
-  createRenderContext(settings) {
-    this.lastContext++;
-    let contextId = this.lastContext;
+    /**
+     * @param {Number} contextId 
+     * @returns {RenderContext}
+     */
+    getRenderContextData(contextId) {
+        return this.renderContexts[contextId];
+    }
 
-    let newContext = new RenderContext(settings);
+    /**
+     * Creates a render context with the given settings
+     * @param {*} settings 
+     * @returns 
+     */
+    createRenderContext(settings) {
+        this.lastContext++;
+        let contextId = this.lastContext;
 
-    this.renderContexts[contextId] = newContext;
+        let newContext = new RenderContext(settings);
 
-    return contextId;
-  }
+        this.renderContexts[contextId] = newContext;
+
+        return contextId
+    }
 
 }
 
-export default RenderContextManager;
+export default RenderContextManager

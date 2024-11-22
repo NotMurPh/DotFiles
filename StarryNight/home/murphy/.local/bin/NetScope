@@ -283,8 +283,8 @@ NetNS() {
 			# Loop through all of the network namespaces
 			for netns in $(ip netns | awk '{print $1}'); do
 
-				# Show the netns
-				echo "$netns"
+				# Show the netns and it's vpn
+				echo -e "$netns $bblue$(ip netns exec "$netns" networkctl 2>/dev/null | awk '/wireguard/ {print "("$2")"}')$clear"
 
 				# Reset some variables
 				first=true
@@ -387,6 +387,7 @@ Rofi() {
 
 # Define some color variables
 clear='\033[0m'
+bblue='\033[1;34m'
 bgreen='\033[1;32m'
 bred='\033[1;31m'
 

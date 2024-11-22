@@ -8,18 +8,16 @@ list=~/.config/rofi/"$list_name".todo
 
 # Removing special_char from argument until the first non special_char letter
 task=$(echo "$2" | sed "s/^\\${special_char}*//")
-task_added=false
 
 # Add the task to todolist if argument starts with special_char
 if [[ "$2" == "$special_char"* ]] ; then
 	echo " $task" >> "$list"
-	task_added=true
-fi
 
 # If task addition failed try removing it :)
-if [[ "$task_added" == false ]] ; then 
+else 
 	sed -i "0,/^${2}$/{/^${2}$/d}" "$list"
+	test -z "$2" || echo "$(date +%F) $2" >> "$list".done
 fi
 
 # Show the contents of the specifed todolist
-cat "$list"
+cat "$list" | awk 'NR % 5 == 1 {print "        ~--~--~    "++n"    ~--~--~"} {print $0}'

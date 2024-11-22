@@ -63,6 +63,7 @@ Route() {
 	interface=$(echo "$routes" | awk 'NR==1 {print $5}')
 	gateway=$(echo "$routes" | awk 'NR==1 {print $3}')
 	ip="$3"
+	name="$4"
 
 	# Check if the user provided the necessary IP address
 	if [[ "${2,,}" != "load" && -z "$ip" ]]; then
@@ -74,10 +75,13 @@ Route() {
 
 		"add")
 			ip r add "$ip" via "$gateway" dev "$interface"
+			if [[ -n "$name" ]]; then echo "$name" "$ip" >> ~/.config/NetScope/Routes; fi
 		;;
 
 		"remove"|"delete")
 			ip r delete "$ip" via "$gateway" dev "$interface"
+			if [[ -n "$name" ]]; then sed -i "/$name $ip/d" ~/.config/NetScope/Routes; fi
+
 		;;
 
 		"load")

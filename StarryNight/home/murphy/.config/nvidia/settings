@@ -2,7 +2,7 @@
 # /home/murphy/.config/nvidia/settings
 #
 # Configuration file for nvidia-settings - the NVIDIA Settings utility
-# Generated on Thu Jun  6 20:31:51 2024
+# Generated on Mon Nov 18 16:30:09 2024
 #
 
 # ConfigProperties:
@@ -12,9 +12,9 @@ DisplayStatusBar = Yes
 SliderTextEntries = Yes
 IncludeDisplayNameInConfigFile = No
 UpdateRulesOnProfileNameChange = Yes
-Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
 Timer = Memory_Used_(GPU_0),Yes,3000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 
 # Attributes:
 
@@ -26,16 +26,27 @@ Timer = Memory_Used_(GPU_0),Yes,3000
 0/AllowFlipping=0
 0/FSAAAppControlled=1
 0/LogAnisoAppControlled=1
-0/OpenGLImageSettings=1
+0/OpenGLImageSettings=3
 0/FSAAAppEnhanced=0
 0/AllowGSYNC=1
 0/AllowVRR=1
 0/ShowGSYNCVisualIndicator=0
 0/ShowVRRVisualIndicator=0
 0/ShowGraphicsVisualIndicator=0
+0/XVideoSyncToDisplayID=DP-4
+[DPY:DP-0]/RedBrightness=0.000000
+[DPY:DP-0]/GreenBrightness=0.000000
+[DPY:DP-0]/BlueBrightness=0.000000
+[DPY:DP-0]/RedContrast=0.000000
+[DPY:DP-0]/GreenContrast=0.000000
+[DPY:DP-0]/BlueContrast=0.000000
+[DPY:DP-0]/RedGamma=1.000000
+[DPY:DP-0]/GreenGamma=1.000000
+[DPY:DP-0]/BlueGamma=1.000000
 [DPY:DP-0]/Dithering=0
 [DPY:DP-0]/DitheringMode=0
 [DPY:DP-0]/DitheringDepth=0
+[DPY:DP-0]/DigitalVibrance=0
 [DPY:DP-0]/ColorSpace=0
 [DPY:DP-0]/ColorRange=0
 [DPY:DP-0]/SynchronousPaletteUpdates=0
@@ -79,19 +90,9 @@ Timer = Memory_Used_(GPU_0),Yes,3000
 [DPY:HDMI-1]/ColorSpace=0
 [DPY:HDMI-1]/ColorRange=0
 [DPY:HDMI-1]/SynchronousPaletteUpdates=0
-[DPY:DP-4]/RedBrightness=0.000000
-[DPY:DP-4]/GreenBrightness=0.000000
-[DPY:DP-4]/BlueBrightness=0.000000
-[DPY:DP-4]/RedContrast=0.000000
-[DPY:DP-4]/GreenContrast=0.000000
-[DPY:DP-4]/BlueContrast=0.000000
-[DPY:DP-4]/RedGamma=1.000000
-[DPY:DP-4]/GreenGamma=1.000000
-[DPY:DP-4]/BlueGamma=1.000000
 [DPY:DP-4]/Dithering=0
 [DPY:DP-4]/DitheringMode=0
 [DPY:DP-4]/DitheringDepth=0
-[DPY:DP-4]/DigitalVibrance=0
 [DPY:DP-4]/ColorSpace=0
 [DPY:DP-4]/ColorRange=0
 [DPY:DP-4]/SynchronousPaletteUpdates=0

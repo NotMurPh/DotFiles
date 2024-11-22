@@ -1,6 +1,6 @@
 #!/bin/bash
 
-xrandr --output DP-4 --mode 1920x1080 --rate 240 &
+xrandr --output DP-0 --mode 1920x1080 --rate 240 &
 xrdb -merge /home/murphy/.config/X11/Xresources
 xsetroot -cursor_name left_ptr &
 xdotool mousemove 960 540 &

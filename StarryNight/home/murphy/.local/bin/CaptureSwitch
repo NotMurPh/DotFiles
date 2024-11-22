@@ -9,7 +9,7 @@ if pgrep -f "Replay_" | grep -vw $$ ; then
 
 else
 
-		gpu-screen-recorder -w "DP-4" -q "ultra" -f 60 -a "FilteredMic|alsa_output.pci-0000_00_1f.3.analog-stereo.monitor" -o "$addr" -v no > /dev/null &
+		gpu-screen-recorder -w "DP-0" -q "ultra" -f 60 -a "FilteredMic|alsa_output.pci-0000_00_1f.3.analog-stereo.monitor" -o "$addr" -v no > /dev/null &
 		notify-send "GpuScreenRecorder" "Recording Started" -i ~/Media/Icons/Record.png;
 
 fi

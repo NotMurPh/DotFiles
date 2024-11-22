@@ -66,7 +66,7 @@ cmd compress-video %{{
     set -f
 	IFS=$'\n'
     for file in $fx ; do
-        ffmpeg -i "$file" -vf "scale=trunc(iw/4)*2:trunc(ih/4)*2" -c:v libx265 -crf 28 Compressed_$(basename "$file")
+        ffmpeg -i "$file" -c:v libx265 -crf 32 Compressed_$(basename "$file")
     done
 }}
 

@@ -169,8 +169,8 @@ Cycle() (
 		# Get the index of the next interface in the list
 		next_interface_index=$(( ($active_interface_index + offset) % ${#interfaces[@]} ))
 
-		# Make sure that interface exists otherwise use the next one
-		ip -br l | grep -q "${interfaces[$next_interface_index]}" && break
+		# Make sure that interface exists and has a carrier otherwise use the next one
+		ip -br l | grep "${interfaces[$next_interface_index]}" | grep -qv "NO-CARRIER" && break
 
 	done
 

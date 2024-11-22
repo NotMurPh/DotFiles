@@ -210,6 +210,7 @@ CreateNetNS() {
 
 	# Make the namespace resolv.conf file
 	if [[ ! -f /etc/netns/"$netns"/resolv.conf ]]; then
+		rm -r /etc/netns/"$netns"
 		mkdir -p /etc/netns/"$netns"
 		cp /etc/resolv.conf /etc/netns/"$netns"/resolv.conf
 	fi

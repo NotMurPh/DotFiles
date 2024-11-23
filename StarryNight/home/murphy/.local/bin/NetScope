@@ -4,13 +4,13 @@
 Vpn() (
 
 	name="ip1"
-	ip="199.83.103.100"
+	ip="172.104.225.13"
 	
 	open_middle_man() {
 		if [[ "$3" == "udp2raw" ]]; then
 			udp2raw -c -l 0.0.0.0:4444 -r "$ip":2001 --cipher-mode xor --auth-mode simple --raw-mode icmp &> /dev/null &
 		else
-			forwarder -l 127.0.0.1:4444 -r "$ip":3001 -p passdg &> /dev/null &
+			forwarder-icmp -l 127.0.0.1:4444 -r "$ip":7001/icmp -p passdg &> /dev/null &
 		fi
 	}
 
@@ -210,7 +210,7 @@ CreateNetNS() {
 
 	# Make the namespace resolv.conf file
 	if [[ ! -f /etc/netns/"$netns"/resolv.conf ]]; then
-		rm -r /etc/netns/"$netns"
+		rm -r /etc/netns/"$netns" &> /dev/null
 		mkdir -p /etc/netns/"$netns"
 		cp /etc/resolv.conf /etc/netns/"$netns"/resolv.conf
 	fi
